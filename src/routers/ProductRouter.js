@@ -15,4 +15,8 @@ ProductRouter.get(
 // [사용자] 상품 상세 조회
 ProductRouter.get('/products/:productId', ProductController.getProductById);
 
+// [관리자] 상품 추가
+// [관리자] 상품 수정
+// [관리자] 상품 삭제
+
 module.exports = ProductRouter;

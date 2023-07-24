@@ -39,7 +39,7 @@ const getProducts = newProduct => {
     <img class="product-img"
     src='${newProduct.imageURL}' alt="product-item"/>
     <div class="product-title">${newProduct.title}</div>
-    <div class='product-price'>${newProduct.price.toLocaleString()} 원</div>
+    <div class='product-price'>KRW ${newProduct.price.toLocaleString()}</div>
     </div>
     </a>
     </li>`;

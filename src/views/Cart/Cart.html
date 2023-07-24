@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="./Cart.css" />
 		<script type="module" src="./Cart.js" defer></script>
 		<!-- 페이지에 맞는 타이틀 입력 -->
-		<title>장바구니</title>
+		<title>CART</title>
 	</head>
 	<body>
 		<div id="global-wrap">
@@ -21,15 +21,15 @@
 						<ol class="cart-step">
 							<li class="active">
 								<span>1</span>
-								<h2>장바구니</h2>
+								<h2>CART</h2>
 							</li>
 							<li>
 								<span>2</span>
-								주문하기
+								ORDER
 							</li>
 							<li>
 								<span>3</span>
-								결제완료
+								COMPLETE
 							</li>
 						</ol>
 						<!-- 장바구니 목록 -->
@@ -50,24 +50,24 @@
 						<!-- 금액 정보 -->
 						<section class="cart-price">
 							<div>
-								<span>상품금액</span>
+								<span>Product : </span>
 								<span id="products-price"></span>
 							</div>
 							<div>
-								<span>배송비</span>
+								<span>Shipping Cost : </span>
 								<span id="shipping-price"></span>
 							</div>
 							<div class="total">
 								<strong>
-									<span>결제예정금액</span>
+									<span>Total : </span>
 									<span id="order-price"></span>
 								</strong>
 							</div>
 						</section>
 						<button type="submit" class="order-btn">
 							<!-- 비회원 상태일 경우 해당 요소 노출-->
-							<span id="guest-mode">비회원으로</span>
-							주문하기
+							<span id="guest-mode">Guest</span>
+							Buy Now
 						</button>
 					</div>
 				</div>

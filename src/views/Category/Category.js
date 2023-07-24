@@ -10,19 +10,19 @@ let categoryTitle;
 
 switch (category) {
 	case 'Christmas':
-		categoryTitle = '크리스마스';
+		categoryTitle = 'Ring';
 		break;
 	case 'newYear':
-		categoryTitle = '새해';
+		categoryTitle = 'Necklace';
 		break;
 	case 'birthDay':
-		categoryTitle = '생일';
+		categoryTitle = 'Earring';
 		break;
 	case 'Halloween':
-		categoryTitle = '할로윈';
+		categoryTitle = 'Bracelet';
 		break;
 	case 'partySet':
-		categoryTitle = '파티세트';
+		categoryTitle = 'Jewelry set';
 		break;
 	default:
 		categoryTitle = '잘못된 접근입니다.';
@@ -62,7 +62,7 @@ const getProducts = newProduct => {
     <img class="product-img"
     src='${newProduct.imageURL}'/>
     <div class="product-title">${newProduct.title}</div>
-    <div class='product-price'>${newProduct.price.toLocaleString()} 원</div>
+    <div class='product-price'>KRW ${newProduct.price.toLocaleString()}</div>
     </div>
     </a>
     </li>`;

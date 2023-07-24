@@ -46,7 +46,7 @@ if (hasToken) {
 			.join('')
 	);
 	const tokenData = JSON.parse(jsonPayload);
-	userName.innerHTML = `<strong style="font-weight:700">${tokenData.name}</strong> 님의`;
+	userName.innerHTML = `<strong style="font-weight:700">${tokenData.name}</strong>님 💙`;
 } else {
 	console.log('JWT 토큰이 쿠키에 존재하지 않습니다.');
 	userName.innerHTML = '';

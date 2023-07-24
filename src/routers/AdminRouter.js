@@ -8,9 +8,19 @@ const AdminRouter = express.Router();
 AdminRouter.get('/admin', VerifyToken, AdminController.adminCheckOrders);
 
 // [관리자] 주문 상세 내역 조회
-AdminRouter.get('/admin/:orderId', VerifyToken, AdminController.adminCheckOrderDetail);
+AdminRouter.get(
+	'/admin/:orderId',
+	VerifyToken,
+	AdminController.adminCheckOrderDetail
+);
 
-// [관리자] 주문 배송 상태 변경
-AdminRouter.post('/admin/:orderId', VerifyToken, AdminController.updateShippingStatus);
+// [관리자] 주문 변경
+AdminRouter.post(
+	'/admin/:orderId',
+	VerifyToken,
+	AdminController.updateShippingStatus
+);
+
+// [관리자] 회원 전체 조회
 
 module.exports = AdminRouter;

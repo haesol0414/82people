@@ -44,13 +44,13 @@ fetch(`/api/products/${productId}`, {
 
 		productMaker.innerText = productInfo.manufacturer;
 		productTitle.innerText = productInfo.title;
-		productPrice.innerText = `${Number(productInfo.price).toLocaleString()} 원`;
+		productPrice.innerText = `KRW ${Number(productInfo.price).toLocaleString()}`;
 		productDescription.innerText = productInfo.description;
 		//  productInfo._id;
 
 		imageURL = productInfo.imageURL[0];
 		productImage.setAttribute('src', imageURL);
-		totalCash.innerText = `${Number(productInfo.price).toLocaleString()} 원`;
+		totalCash.innerText = `KRW ${Number(productInfo.price).toLocaleString()}`;
 
 		price = Number(productInfo.price);
 		totalPrice = Number(productInfo.price);
@@ -63,9 +63,9 @@ let products = JSON.parse(localStorage.getItem(PRODUCT_KEY)) || [];
 productAmount.addEventListener('change', e => {
 	productAmount.value = e.target.value;
 
-	totalCash.innerText = `	${(
+	totalCash.innerText = `KRW ${(
 		price * Number(productAmount.value)
-	).toLocaleString()}  원`;
+	).toLocaleString()}`;
 });
 
 addToCart.addEventListener('click', () => {

@@ -28,7 +28,7 @@ if (hasToken) {
 	guestModeEl.innerText = '';
 } else {
 	console.log('JWT 토큰이 쿠키에 존재하지 않습니다.');
-	guestModeEl.innerText = '비회원으로';
+	guestModeEl.innerText = 'Guest';
 }
 
 // 👉 개발 시작 코드
@@ -64,7 +64,7 @@ function emptyProducts() {
 	const cartControl = document.querySelector('.cart-control-btn').children;
 	[...cartControl].map(el => (el.style.display = 'none'));
 	emptyItems.innerHTML =
-		'<span class="empty-items">장바구니에 담으신 상품이 없습니다. 🥲</span>';
+		'<span class="empty-items"> THIS SHOPPING CART IS EMPTY 🌬️</span>';
 	// 금액정보 안보이게
 	cartPriceBox.style.display = 'none';
 	// 주문 불가
@@ -93,9 +93,9 @@ function getProducts(newProducts) {
 						/>
 						<button type="button" class="adding">+</button>
 					</div>
-					<div>&#215; <span>${newProducts.price.toLocaleString()}</span>원</div>
+					<div>&#215; <span>KRW ${newProducts.price.toLocaleString()}</span></div>
 				</div>
-				<div><span class="product-price">${newProducts.totalPrice.toLocaleString()}</span>원</div>
+				<div><span class="product-price">KRW ${newProducts.totalPrice.toLocaleString()}</span></div>
 			</article>
 			<button type="button" class="delete-btn">삭제</button>
 			</li>`;
@@ -175,11 +175,11 @@ function cartUpdate() {
 			}
 		});
 	}
-	productsPrice.innerText = `${totalPrice.toLocaleString()} 원`;
-	shippingPrice.innerText = `${shippingPriceNumber.toLocaleString()} 원`;
-	orderPrice.innerText = `${(
+	productsPrice.innerText = `KRW ${totalPrice.toLocaleString()}`;
+	shippingPrice.innerText = `KRW ${shippingPriceNumber.toLocaleString()}`;
+	orderPrice.innerText = `KRW ${(
 		totalPrice + shippingPriceNumber
-	).toLocaleString()} 원`;
+	).toLocaleString()}`;
 }
 
 // 전체선택 시 금액 업데이트

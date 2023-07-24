@@ -77,10 +77,10 @@ function getProducts(newProducts) {
                 <span>${newProducts.title}</span>
             </div>
             <div>
-                <span>${newProducts.amount}</span> 개
-                &#215; <span>${newProducts.price.toLocaleString()}</span>원
+                <span>${newProducts.amount}</span> x KRW
+                <span>${newProducts.price.toLocaleString()}</span>
             </div>
-            <div><span>${newProducts.totalPrice.toLocaleString()}</span>원</div>
+            <div><span>KRW ${newProducts.totalPrice.toLocaleString()}</span></div>
         </article>
     </li>`;
 	items += newItem;
@@ -162,11 +162,11 @@ products.map(product => {
 	totalPrice += product.totalPrice;
 });
 
-productsPrice.innerText = `${totalPrice.toLocaleString()} 원`;
-shippingPrice.innerText = `${shippingPriceNumber.toLocaleString()} 원`;
-orderPrice.innerText = `${(
+productsPrice.innerText = `KRW ${totalPrice.toLocaleString()}`;
+shippingPrice.innerText = `KRW ${shippingPriceNumber.toLocaleString()}`;
+orderPrice.innerText = `KRW ${(
 	totalPrice + shippingPriceNumber
-).toLocaleString()} 원`;
+).toLocaleString()}`;
 
 // 주문 정보
 const cartForm = document.querySelector('#cart-form');
