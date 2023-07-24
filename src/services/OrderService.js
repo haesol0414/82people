@@ -1,6 +1,7 @@
 const Order = require('../db/models/OrderModel');
 const User = require('../db/models/UserModel');
 const Product = require('../db/models/ProductModel');
+const { badRequestError } = require('../middleware/ErrorHandler');
 
 const OrderService = {
 	// [회원 비회원 공통] 장바구니 제품 주문 완료
@@ -9,7 +10,7 @@ const OrderService = {
 		purchase,
 		recipient,
 		phone,
-		password,
+		guestPassword,
 		address,
 		detailAddress,
 		shippingRequest,
@@ -22,7 +23,7 @@ const OrderService = {
 		const orderInformation = {
 			purchase,
 			email,
-			password,
+			guestPassword,
 			addressInformation: {
 				recipient,
 				phone,
@@ -74,24 +75,14 @@ const OrderService = {
 		return orderHistory;
 	},
 
-	// [회원] 주문 상세 조회
-	checkOrderDetail: async orderId => {
+	// [회원 || 비회원 ] 주문 상세 조회
+	checkOrderDetail: async (orderId, guestPassword) => {
 		const orderDetail = await Order.findOne(
 			{ _id: orderId },
-			{ _id: 1, password: 0 }
+			{ _id: 1, guestPassword: 0 }
 		);
 
 		return orderDetail;
-	},
-
-	// [비회원] 주문 상세 조회
-	checkGuestkOrderDetail: async (orderId, guestPassword) => {
-		const guestOrderDetail = await Order.findOne({
-			_id: orderId,
-			guestPassword: guestPassword,
-		});
-
-		return guestOrderDetail;
 	},
 
 	// [회원] 기본 배송지 설정

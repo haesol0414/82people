@@ -38,7 +38,7 @@ const OrderController = {
 				purchase,
 				recipient,
 				phone,
-				password,
+				guestPassword,
 				address,
 				detailAddress,
 				shippingRequest,
@@ -93,6 +93,7 @@ const OrderController = {
 	// [회원] 주문 상세 조회
 	checkOrderDetail: async (req, res, next) => {
 		const { orderId } = req.params;
+		const { guestPassword } = req.body;
 
 		try {
 			const orderDetail = await OrderService.checkOrderDetail(orderId);
@@ -104,34 +105,8 @@ const OrderController = {
 			}
 
 			res.status(200).json({
-				message: '회원 주문 상세 내역 조회 성공',
+				message: '주문 상세 내역 조회 성공',
 				orderDetail: orderDetail,
-			});
-		} catch (err) {
-			next(err);
-		}
-	},
-
-	// [비회원] 주문 상세 조회
-	checkGuestkOrderDetail: async (req, res, next) => {
-		const { orderId } = req.params;
-		const { guestPassword } = req.body;
-
-		try {
-			const guestOrderDetail = await OrderService.checkGuestkOrderDetail(
-				orderId,
-				guestPassword
-			);
-
-			if (!guestOrderDetail) {
-				throw new badRequestError(
-					'주문 상세 내역이 존재하지 않습니다. 다시 한 번 확인해주세요.'
-				);
-			}
-
-			res.status(200).json({
-				message: '비회원 주문 상세 내역 조회 성공',
-				guestOrderDetail: guestOrderDetail,
 			});
 		} catch (err) {
 			next(err);

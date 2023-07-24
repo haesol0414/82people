@@ -8,13 +8,13 @@ const orderButton = document.querySelector('#orderButton');
 orderButton.addEventListener('click', e => {
 	e.preventDefault();
 
-	fetch(`/api/orders/${orderId.value}`, {
+	fetch(`/api/orders/history/${orderId.value}`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			password: orderPassword.value,
+			guestPassword: orderPassword.value,
 		}),
 	})
 		.then(res => {
@@ -28,10 +28,10 @@ orderButton.addEventListener('click', e => {
 		.catch(err => {
 			alert(err);
 		})
-		.then(({ guestOrderDetail }) => {
-			console.log('value', guestOrderDetail._id);
+		.then(({ orderDetail }) => {
+			console.log('value', orderDetail._id);
 
-			window.location.href = `/guest/orders/?orderId=${guestOrderDetail._id}`;
+			window.location.href = `/guest/orders/history/?orderId=${orderDetail._id}`;
 		})
 		.catch(err => console.log(err));
 });

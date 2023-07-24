@@ -29,6 +29,5 @@ OrderRouter.get(
 
 // [회원 || 비회원] 주문 상세 내역 조회
 OrderRouter.post('/orders/history/:orderId', OrderController.checkOrderDetail);
-OrderRouter.post('/orders/:orderId', OrderController.checkGuestkOrderDetail);
 
 module.exports = OrderRouter;
