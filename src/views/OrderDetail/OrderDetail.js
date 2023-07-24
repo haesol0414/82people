@@ -69,7 +69,6 @@ fetch(`/api/orders/history/${orderId}`, {
 	},
 })
 	.then(res => {
-		// console.log(res);
 		if (res.ok) {
 			return res.json();
 		}
@@ -83,7 +82,7 @@ fetch(`/api/orders/history/${orderId}`, {
 		const { address, detailAddress, phone, recipient, shippingRequest } =
 			json.orderDetail.addressInformation;
 		const { shippingPrice, totalProductsPrice } = json.orderDetail.totalPrice;
-		console.log(json.orderDetail);
+
 		orderNumber.innerText = orderId;
 		orderStatus.innerText = shippingStatus;
 		orderDate.innerText = new Date(createdAt).toLocaleString();

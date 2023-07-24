@@ -9,7 +9,7 @@ const OrderController = {
 			purchase,
 			recipient,
 			phone,
-			password,
+			guestPassword,
 			address,
 			detailAddress,
 			shippingRequest,
@@ -17,7 +17,7 @@ const OrderController = {
 		} = req.body;
 
 		try {
-			if (!email && !password) {
+			if (!email && !guestPassword) {
 				throw new badRequestError('비회원은 비밀번호 입력이 필요합니다.');
 			}
 			if (
@@ -90,53 +90,55 @@ const OrderController = {
 		}
 	},
 
-	// [회원 || 비회원] 주문 상세 조회
+	// [회원] 주문 상세 조회
 	checkOrderDetail: async (req, res, next) => {
 		const { orderId } = req.params;
-		const { password } = req.body;
-		console.log('orderId', orderId);
-		console.log('password', password);
-		if (password) {
-			try {
-				const orderDetail = await OrderService.guestCheckOrderDetail(
-					orderId,
-					password
+
+		try {
+			const orderDetail = await OrderService.checkOrderDetail(orderId);
+
+			if (!orderDetail) {
+				throw new badRequestError(
+					'주문 상세 내역이 존재하지 않습니다. 다시 한 번 확인해주세요.'
 				);
-
-				if (!orderDetail) {
-					throw new badRequestError(
-						'주문 상세 내역이 존재하지 않습니다. 다시 한 번 확인해주세요.'
-					);
-				}
-				console.log('guest', orderDetail);
-				res.status(200).json({
-					message: '주문 상세 내역 조회 성공',
-					orderDetail: orderDetail,
-				});
-			} catch (err) {
-				next(err);
 			}
-		} else {
-			try {
-				const orderDetail = await OrderService.checkOrderDetail(orderId);
 
-				if (!orderDetail) {
-					throw new badRequestError(
-						'주문 상세 내역이 존재하지 않습니다. 다시 한 번 확인해주세요.'
-					);
-				}
-
-				res.status(200).json({
-					message: '주문 상세 내역 조회 성공',
-					orderDetail: orderDetail,
-				});
-			} catch (err) {
-				next(err);
-			}
+			res.status(200).json({
+				message: '회원 주문 상세 내역 조회 성공',
+				orderDetail: orderDetail,
+			});
+		} catch (err) {
+			next(err);
 		}
 	},
 
-	// [회원] 주문 시 배송지 추가
+	// [비회원] 주문 상세 조회
+	checkGuestkOrderDetail: async (req, res, next) => {
+		const { orderId } = req.params;
+		const { guestPassword } = req.body;
+
+		try {
+			const guestOrderDetail = await OrderService.checkGuestkOrderDetail(
+				orderId,
+				guestPassword
+			);
+
+			if (!guestOrderDetail) {
+				throw new badRequestError(
+					'주문 상세 내역이 존재하지 않습니다. 다시 한 번 확인해주세요.'
+				);
+			}
+
+			res.status(200).json({
+				message: '비회원 주문 상세 내역 조회 성공',
+				guestOrderDetail: guestOrderDetail,
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// [회원] 기본 배송지 설정
 	addAddress: async (req, res, next) => {
 		const email = req.currentUserEmail;
 		const { addressInformation } = req.body;

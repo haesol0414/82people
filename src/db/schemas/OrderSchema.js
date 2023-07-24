@@ -4,6 +4,10 @@ const shippingStat = ['상품 준비 중', '배송 중', '배송 완료'];
 
 const OrderSchema = new Schema(
 	{
+		email: {
+			type: String,
+			default: '비회원',
+		},
 		shippingStatus: {
 			type: String,
 			enum: shippingStat,
@@ -22,14 +26,6 @@ const OrderSchema = new Schema(
 				imageURL: { type: [String], required: true },
 			},
 		],
-		email: {
-			type: String,
-			default: '비회원',
-		},
-		password: {
-			type: String,
-			required: false,
-		},
 		addressInformation: {
 			recipient: { type: String, required: true },
 			phone: { type: String, required: true },
@@ -40,6 +36,10 @@ const OrderSchema = new Schema(
 		totalPrice: {
 			totalProductsPrice: { type: Number, required: true },
 			shippingPrice: { type: Number, required: true, default: 0 },
+		},
+		guestPassword: {
+			type: String,
+			required: false,
 		},
 	},
 	{

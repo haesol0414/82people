@@ -348,7 +348,7 @@ function orderBtn(e) {
 					purchase: orderProducts,
 					recipient: recipient.value,
 					phone: onlyPhoneNumbers,
-					password: guestPwd.value,
+					guestPassword: guestPwd.value,
 					address: address.value,
 					detailAddress: detailAddress.value,
 					shippingRequest: shippingRequest.value,

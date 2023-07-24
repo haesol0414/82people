@@ -31,12 +31,10 @@ const OrderService = {
 				shippingRequest,
 			},
 			totalPrice: {
-				totalProductsPrice: totalProductsPrice,
-				shippingPrice: shippingPrice,
+				totalProductsPrice,
+				shippingPrice,
 			},
 		};
-
-		const newOrderId = await Order.create(orderInformation);
 
 		// salesAmount, currentAmount Update
 		purchase.map(async product => {
@@ -50,6 +48,8 @@ const OrderService = {
 				}
 			);
 		});
+
+		const newOrderId = await Order.create(orderInformation);
 
 		return newOrderId;
 	},
@@ -76,24 +76,25 @@ const OrderService = {
 
 	// [회원] 주문 상세 조회
 	checkOrderDetail: async orderId => {
-		const orderDetails = await Order.findOne(
+		const orderDetail = await Order.findOne(
 			{ _id: orderId },
 			{ _id: 1, password: 0 }
 		);
 
-		return orderDetails;
+		return orderDetail;
 	},
 
 	// [비회원] 주문 상세 조회
-	guestCheckOrderDetail: async (orderId, password) => {
-		const orderDetails = await Order.findOne(
-			{ _id: orderId, password: password },
-			{ _id: 1, password: 1 }
-		);
-		return orderDetails;
+	checkGuestkOrderDetail: async (orderId, guestPassword) => {
+		const guestOrderDetail = await Order.findOne({
+			_id: orderId,
+			guestPassword: guestPassword,
+		});
+
+		return guestOrderDetail;
 	},
 
-	// [회원] 주문 시 배송지 추가
+	// [회원] 기본 배송지 설정
 	addAddress: async (email, addressInformation) => {
 		await User.updateOne(
 			{ email: email },

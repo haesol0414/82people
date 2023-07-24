@@ -1,7 +1,5 @@
 const { Schema } = require('mongoose');
 
-const userRole = ['customer', 'admin'];
-
 const UserSchema = new Schema(
 	{
 		email: {
@@ -25,7 +23,7 @@ const UserSchema = new Schema(
 		},
 		role: {
 			type: String,
-			enum: userRole,
+			enum: ['customer', 'admin'],
 			default: 'customer',
 		},
 		isDeleted: {
