@@ -59,7 +59,7 @@ function renderHeader() {
           </nav>
           <div class="menu-group">
             <div>
-              <span>🦋 <span style="color:#6C4E82; font-weight:600;">${name}님</span></span>
+              <span>🦋 <span style="color:#6C4E82; font-weight:600; font-size: 18px;">${name}님</span></span>
             </div>
             <div>
               <span style="cursor:pointer;" id="logout" onclick="(function(){

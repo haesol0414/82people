@@ -11,9 +11,11 @@
 h2 {
 	font-size: 24px;
 	font-weight: 900;
+	color: #6c4e82;
 }
 h3 {
 	font-size: 24px;
+	color: #6c4e82;
 }
 #order-history-wrap > section {
 	padding: 30px;
@@ -27,7 +29,7 @@ h3 {
 	margin-bottom: 30px;
 }
 .user-info {
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	padding: 16px;
 	font-size: 26px;
 	background-color: #fff;
@@ -35,12 +37,13 @@ h3 {
 }
 .user-info > div {
 	display: flex;
+	color: #6c4e82;
 	justify-content: space-between;
 	align-items: center;
 }
 .user-info .profile {
 	font-size: 26px;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	width: 50px;
 	height: 50px;
 	line-height: 55px;
@@ -49,44 +52,47 @@ h3 {
 }
 .user-info .user-role {
 	text-align: center;
+	color: #6c4e82;
 	display: block;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	font-size: 20px;
 	padding: 7px 0;
 	margin-top: 10px;
 }
 .myparty-menubar nav li.active a {
-	background-color: #000;
+	background-color: #6c4e82;
 	color: #fff;
 }
 .myparty-menubar nav a {
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	background-color: #fff;
 	font-size: 20px;
 	margin-top: 10px;
 	display: block;
 	padding: 20px;
 	text-decoration: none;
-	color: #000;
+	color: #6c4e82;
 }
 .order-history {
 	flex: 1;
 }
 .order-history .history-list > li {
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	margin-bottom: 20px;
-	background-color: #fff;
+	background-color: #fff; 
+	color:#6c4e82
 }
 .order-history .history-list .info {
 	display: flex;
-	align-items: center;
+	align-items: center; 
+	color:#6c4e82;
 	justify-content: space-between;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #6c4e82;
 	padding: 10px 20px;
 	font-size: 18px;
 }
 .order-history .history-list .info .status {
-	background-color: #000;
+	background-color: #6c4e82;
 	color: #fff;
 	padding: 3px 16px;
 	border-radius: 999px;
@@ -97,12 +103,12 @@ h3 {
 }
 .order-history .history-list .info .detail-btn {
 	text-decoration: none;
-	color: inherit;
 	margin-right: 10px;
 	border-bottom: 1px solid transparent;
+	color: #6c4e82;
 }
 .order-history .history-list .info .detail-btn:hover {
-	border-color: #000;
+	border-color: #6c4e82;
 }
 .order-history .history-list .products-list {
 	padding: 20px;

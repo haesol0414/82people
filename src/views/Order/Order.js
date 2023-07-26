@@ -27,7 +27,9 @@ const hasToken = checkJWTTokenInCookie();
 const guestModeEl = document.querySelector('#guest-mode');
 // 회원 기본 배송지 설정하기
 const addressInfo = document.querySelector('#cart-form fieldset');
-let addAddressBtn = `<button type="button" id="add-address" class="order-btn" style="width:100%;padding:10px;">기본 배송지 설정</button>`;
+let addAddressBtn = `<button type="button" id="add-address" class="order-btn" style="
+bottom: -16px; width:100%; padding:10px;">
+Set Default Shipping Address</button>`;
 
 if (hasToken) {
 	console.log('JWT 토큰이 쿠키에 존재합니다.');

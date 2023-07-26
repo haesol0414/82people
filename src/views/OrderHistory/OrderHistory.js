@@ -103,7 +103,7 @@ function getOrders(orders) {
 			<a
 				href="/myPage/orders/history/?orderId=${orders._id}"
 				class="detail-btn"
-				>주문 상세보기 ></a
+				> Details ></a
 			>
 		</div>
 		<ul class="products-list">

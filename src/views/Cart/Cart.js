@@ -64,7 +64,7 @@ function emptyProducts() {
 	const cartControl = document.querySelector('.cart-control-btn').children;
 	[...cartControl].map(el => (el.style.display = 'none'));
 	emptyItems.innerHTML =
-		'<span class="empty-items"> THIS SHOPPING CART IS EMPTY 🌬️</span>';
+		'<span class="empty-items" style="text-align: center; font-size: 25px; color: #525151; padding: 30px;"> THIS SHOPPING CART IS EMPTY 💭</span>';
 	// 금액정보 안보이게
 	cartPriceBox.style.display = 'none';
 	// 주문 불가

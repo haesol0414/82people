@@ -1,5 +1,12 @@
 @import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Myeongjo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Myeongjo:wght@400;700&family=Yeon+Sung&display=swap');
 
+* {
+	font-family: 'Yeon Sung', cursive !important;
+	font-size: 18px;
+}
 html,
 body {
 	width: 100%;
@@ -36,20 +43,20 @@ main {
 }
 
 .main-container {
-	padding: 48px;
+	padding: 35px;
 	box-sizing: border-box;
-	width: 80%;
-	margin: 40px auto;
+	width: 93%;
+	margin: 70px auto;
 	background-color: #d4c7d4;
 	border-radius: 20px;
-	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 3px 0 #bdb0bd inset;
 }
 
 /* 헤더 */
 header {
 	min-height: 100px;
 	background-color: #d4c7d4;
-	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.07);
+	box-shadow: 0 0 4px 0 #bdb0bd inset;
 }
 
 .header-container {
@@ -68,17 +75,17 @@ header {
 .header-container .header-group .logo {
 	background-color: #d4c7d4;
 	border-radius: 0 20px 0 10px;
-	padding: 5px;
 }
 
 .header-container .header-group .logo a {
 	font-size: 30px;
-	font-weight: 300;
-	color: #fff;
+	font-weight: 200;
+	color: #715983;
 }
 
 .header-container .header-group .logo span {
-	font-weight: 900;
+	font-weight: 990;
+	color: #6c4e82;
 }
 
 .header-container .header-group ul {
@@ -86,7 +93,7 @@ header {
 }
 
 .header-container .header-group ul li {
-	padding: 0 40px;
+	padding: 0 34px;
 }
 
 .header-container .header-group ul li a {
@@ -102,15 +109,15 @@ header {
 .header-container .header-group .menu-group {
 	display: flex;
 	align-items: center;
-	color: #6C4E82;
+	color: #6c4e82;
 }
 
 .header-container .header-group .menu-group > div {
-	padding: 10px;
+	padding: 13px;
 }
 
 .header-container .header-group .menu-group a {
-	color: #6C4E82;
+	color: #6c4e82;
 }
 
 /* 뱃지 */
@@ -155,7 +162,7 @@ header > .badges .badge a div {
 	bottom: 0;
 	left: 50%;
 	transform: translate(-50%);
-	background-color: #6C4E82;
+	background-color: #6c4e82;
 	color: #fff;
 	text-align: center;
 }
@@ -167,7 +174,8 @@ header > .badges .badge a .new-title {
 /* 푸터 */
 footer {
 	padding: 20px 0 30px 0;
-	background-color: #d0ccd9;
+	background-color: #d4c7d4;
+	box-shadow: 0 0 3px 0 #bdb0bd inset;
 }
 
 .footer-container {
@@ -208,7 +216,7 @@ footer {
 }
 
 .signin h1 {
-	color: #6C4E82;
+	color: #6c4e82;
 	font-size: 30px;
 	font-weight: 700;
 	text-align: center;
@@ -220,7 +228,7 @@ footer {
 	margin: 0 auto;
 	border: 4mm ridge rgba(133, 80, 152, 0.6);
 	border-radius: 0 20px 0 10px;
-	color: #6C4E82;
+	color: #6c4e82;
 }
 
 .signin-card form {
@@ -242,7 +250,7 @@ footer {
 	width: 100%;
 	margin-bottom: 12px;
 	padding: 15px;
-	background-color: #6C4E82;
+	background-color: #6c4e82;
 	border: none;
 	border-radius: 4px;
 	color: #fff;
@@ -253,7 +261,7 @@ footer {
 .signin-card form .btn-link {
 	margin-bottom: 12px;
 	background-color: #fff;
-	border: 1px solid #6C4E82;
+	border: 1px solid #6c4e82;
 	border-radius: 4px;
 	color: #fff;
 	font-size: 20px;
@@ -262,7 +270,7 @@ footer {
 }
 
 .signin-card form .outline-btn {
-	color: #6C4E82;
+	color: #6c4e82;
 	display: block;
 	padding: 15px;
 }

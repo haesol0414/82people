@@ -5,14 +5,16 @@ ul.products {
 }
 
 ul.products > li {
-	width: 25%;
-	margin-top: 20px;
+	width: 30%;
+	margin: 0 auto;
 }
 
 h2 {
 	font-size: 20px;
 	font-weight: 700;
 	color: #6c4e82;
+	padding: 20px;
+	text-align: center;
 }
 
 a {

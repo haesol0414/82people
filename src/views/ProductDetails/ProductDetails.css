@@ -101,7 +101,7 @@
 	height: 100%;
 	text-decoration: none;
 	color: #000;
-	background: none;
+	background-color: #6c4e82;
 	cursor: pointer;
 	border: none;
 	padding: 20px;
@@ -117,6 +117,6 @@
 input {
 	outline: none;
 	padding: 10px;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	font-size: inherit;
 }
