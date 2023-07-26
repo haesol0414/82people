@@ -2,6 +2,7 @@ ul.products {
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 20px;
+	color: #525151;
 }
 
 ul.products > li {

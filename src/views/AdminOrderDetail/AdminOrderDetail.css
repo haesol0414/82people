@@ -12,13 +12,16 @@
 h2 {
 	font-size: 24px;
 	font-weight: 900;
+	color: #6c4e82;
 }
 h3 {
 	font-size: 24px;
+	color: #6c4e82;
 }
 h4 {
 	font-size: 18px;
 	font-weight: 700;
+	color: #6c4e82;
 }
 button {
 	border: none;
@@ -38,7 +41,7 @@ button {
 	margin-bottom: 30px;
 }
 .user-info {
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	padding: 16px;
 	font-size: 26px;
 	background-color: #fff;
@@ -51,7 +54,7 @@ button {
 }
 .user-info .profile {
 	font-size: 26px;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	width: 50px;
 	height: 50px;
 	line-height: 55px;
@@ -61,24 +64,24 @@ button {
 .user-info .user-role {
 	text-align: center;
 	display: block;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	font-size: 20px;
 	padding: 7px 0;
 	margin-top: 10px;
 }
 .myparty-menubar nav li.active a {
-	background-color: #000;
+	background-color: #6c4e82;
 	color: #fff;
 }
 .myparty-menubar nav a {
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	background-color: #fff;
 	font-size: 20px;
 	margin-top: 10px;
 	display: block;
 	padding: 20px;
 	text-decoration: none;
-	color: #000;
+	color: #6c4e82;
 }
 .order-history {
 	flex: 1;
@@ -91,7 +94,7 @@ button {
 	margin-bottom: 10px;
 }
 .order-number-status .status {
-	background-color: #000;
+	background-color: #6c4e82;
 	color: #fff;
 	padding: 3px 16px;
 	border-radius: 999px;
@@ -99,14 +102,14 @@ button {
 }
 .order-products {
 	font-size: 18px;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	background-color: #fff;
 	margin-bottom: 20px;
 }
 .products-info {
 	padding: 10px 20px;
 	font-weight: 700;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #6c4e82;
 }
 .products-list {
 	padding: 20px;
@@ -133,7 +136,7 @@ button {
 }
 .products-list .add-cart {
 	text-decoration: none;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	color: inherit;
 	display: block;
 	padding: 10px;
@@ -152,7 +155,7 @@ button {
 .order-info section,
 .purchase-info section {
 	background-color: #fff;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	padding: 20px;
 	font-size: 18px;
 }
@@ -170,7 +173,7 @@ button {
 }
 .order-info .order-modify {
 	background-color: #fff;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	padding: 3px 16px;
 	border-radius: 999px;
 }
@@ -195,7 +198,7 @@ button {
 	justify-content: space-between;
 }
 .btns > * {
-	background-color: #000;
+	background-color: #6c4e82;
 	color: #fff;
 	text-decoration: none;
 	line-height: 1;

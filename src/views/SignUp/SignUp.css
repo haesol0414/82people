@@ -1,16 +1,10 @@
 /* 회원가입 */
 #signup-wrap {
-	background-color: #fff;
+	background-color: #d4c7d4;
 	box-shadow: 0 0 0 0;
 }
-.hint {
-	height: 30px;
-	padding: 5px;
-	font-size: 13px;
-	color: #808080;
-}
 .signup h1 {
-	color: #000;
+	color: #6c4e82;
 	font-size: 30px;
 	font-weight: 700;
 	text-align: center;
@@ -20,9 +14,9 @@
 .signup-card {
 	width: 500px;
 	margin: 0 auto;
-	border: 4mm ridge rgba(0, 0, 0, 0.6);
+	border: 4mm ridge rgba(133, 80, 152, 0.6);
 	border-radius: 0 20px 0 10px;
-	color: #555;
+	color: #6c4e82;
 }
 
 .signup-card form {
@@ -44,7 +38,7 @@
 	width: 100%;
 	margin-bottom: 12px;
 	padding: 15px;
-	background-color: #000;
+	background-color: #6c4e82;
 	border: none;
 	border-radius: 4px;
 	color: #fff;
@@ -64,7 +58,7 @@
 .signup-card form .signup-email button {
 	width: 100px;
 	font-size: 16px;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	background-color: #fff;
-	color: #000;
+	color: #6c4e82;
 }

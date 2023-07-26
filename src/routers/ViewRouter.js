@@ -40,7 +40,7 @@ ViewRouter.use('/login', ViewService.serveStatic('Login')); //로그인 페이�
 ViewRouter.use('/common', ViewService.serveStatic('Common'));
 
 //admin
-ViewRouter.use('/admin', ViewService.serveStatic('Admin'));
+ViewRouter.use('/admin', ViewService.serveStatic('AdminInfo'));
 ViewRouter.use('/admin/:orderId', ViewService.serveStatic('AdminOrderDetail'));
 
 module.exports = ViewRouter;

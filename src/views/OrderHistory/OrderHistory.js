@@ -16,9 +16,6 @@ function checkJWTTokenInCookie() {
 	}
 }
 
-// 👉 개발 시작 코드
-
-// 쿠키에서 JWT 토큰 확인
 const hasToken = checkJWTTokenInCookie();
 
 const itemsList = document.querySelector('.history-list');
@@ -53,7 +50,6 @@ fetch('/api/orders/history', {
 	},
 })
 	.then(res => {
-		// console.log('res', res);
 		if (res.ok) {
 			return res.json();
 		} else {
@@ -65,14 +61,12 @@ fetch('/api/orders/history', {
 		console.log(err);
 	})
 	.then(json => {
-		// console.log(json);
 		if (json.userOrderHistory.length !== 0) {
-			json.userOrderHistory.map(getOrders);
+			json.userOrderHistory.reverse().map(getOrders);
 		} else {
 			itemsList.innerHTML =
 				'<li style="padding:20px">주문하신 내역이 없습니다.</li>';
 		}
-		console.log(json.userOrderHistory.length !== 0);
 	})
 	.catch(err => console.log(err));
 

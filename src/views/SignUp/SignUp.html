@@ -10,7 +10,7 @@
   <!-- 작업할 JS 연결 -->
   <script type="module" src="./SignUp.js" defer></script>
   <!-- 페이지에 맞는 타이틀 입력 -->
-  <title>회원가입</title>
+  <title>Sign Up</title>
 </head>
 
 <body>
@@ -21,35 +21,34 @@
         <!-- 클래스명 main-container까지 공통, id값은 페이지에 맞게 이름설정해서 사용 -->
         <!-- 해당 위치에 페이지 마크업 -->
         <section class="signup">
-          <h1>회원가입</h1>
+          <h1>Sign Up</h1>
           <div class="signup-card">
             <form>
               <div>
                 <div>
-                  <label for="form-email" />이메일</label>
+                  <label for="form-email" />Email</label>
                 </div>
                 <div class="signup-email">
-                  <input type="email" id="form-email" class="form-email" name="form-email" required />
+                  <input type="email" id="form-email" class="form-email" name="form-email" required placeholder="email 형식에 알맞게 입력해 주세요."/>
                   <button type="button">중복확인</button>
                 </div>
               </div>
               <div>
-                <label for="form-name" />이름</label>
-                <input type="text" id="form-name" class="form-name" name="form-name" required />
+                <label for="form-name" />Name</label>
+                <input type="text" id="form-name" class="form-name" name="form-name" required placeholder="name"/>
               </div>
               <div>
-                <label for="form-pw" />비밀번호</label>
+                <label for="form-pw" />Password</label>
                 <input type="password" id="form-pw" class="form-pw" name="form-pw" minlength="8"
                   pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$" required 
                   placeholder="영문 숫자 특수문자 조합 8글자를 입력해 주세요."/>
-                  <div class="hint">* 영문 숫자 특수문자 조합 8글자를 입력해 주세요.</div>
               </div>
               <div>
-                <label for="form-pwCheck" />비밀번호 확인</label>
+                <label for="form-pwCheck" />Password Check</label>
                 <input type="password" id="form-pwCheck" class="form-pwCheck" name="form-pwCheck" minlength="8"
                   required placeholder="비밀번호와 동일한 문자를 입력해 주세요." />
               </div>
-              <button type="submit" class="form-submit">가입하기</button>
+              <button type="submit" class="form-submit">Register Now 💟</button>
             </form>
           </div>
         </section>

@@ -93,6 +93,7 @@ button {
 	justify-content: space-between;
 	font-size: 18px;
 	margin-bottom: 10px;
+	color: #6c4e82;
 }
 .order-number-status .status {
 	background-color: #6c4e82;
@@ -106,6 +107,7 @@ button {
 	border: 1px solid #6c4e82;
 	background-color: #fff;
 	margin-bottom: 20px;
+	color: #525151;
 }
 .products-info {
 	padding: 10px 20px;
@@ -165,6 +167,7 @@ button {
 	align-items: center;
 	gap: 20px;
 	margin-bottom: 10px;
+	color: #525151;
 }
 .order-info section > div:last-child {
 	margin-bottom: 0;
@@ -186,6 +189,7 @@ button {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	color: #525151;
 }
 .purchase-info section > div:last-child {
 	margin-bottom: 0;
