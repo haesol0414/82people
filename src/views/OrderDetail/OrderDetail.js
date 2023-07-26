@@ -106,10 +106,7 @@ function getOrders(orders) {
 		<img src="${orders.imageURL}" />
 		<span class="title">${orders.title}</span>
 	</div>
-	<div><span>${
-		orders.orderAmount
-	}</span> 개 &#215; <span>${orders.price.toLocaleString()}</span>원</div>
-	<div>${(orders.price * orders.orderAmount).toLocaleString()}원</div>
+	<div>${orders.orderAmount} 개 / ${(orders.price * orders.orderAmount).toLocaleString()}원</div>
 </li>`;
 	items += newItem;
 	itemsList.innerHTML = items;

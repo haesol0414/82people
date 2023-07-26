@@ -112,6 +112,7 @@ h3 {
 }
 .order-history .history-list .products-list {
 	padding: 20px;
+	color: #525151;
 }
 .order-history .history-list .products-list li {
 	display: flex;
@@ -122,7 +123,6 @@ h3 {
 }
 .order-history .history-list .products-list li:last-child {
 	margin-bottom: 0;
-	color: #525151;
 }
 .order-history .history-list .products-list li .thumbnail {
 	display: flex;

@@ -2,6 +2,7 @@ ul.products {
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 20px;
+	color: #525151;
 }
 
 ul.products > li {
@@ -10,8 +11,11 @@ ul.products > li {
 }
 
 h2 {
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: 700;
+	color: #6c4e82;
+	padding: 20px;
+	text-align: center;
 }
 
 a {

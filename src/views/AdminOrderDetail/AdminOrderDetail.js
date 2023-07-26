@@ -44,7 +44,7 @@ if (hasToken) {
 }
 
 const orderNumber = document.querySelector('#order-number');
-const orderStatus = document.querySelector('#order-status');
+const orderuser = document.querySelector('#order-user');
 const orderDate = document.querySelector('.date');
 const orderAddress = document.querySelector('#address');
 const orderPhone = document.querySelector('#phone');
@@ -85,8 +85,7 @@ fetch(`/api/admin/${orderId}`, {
 			Number(orderDetails.totalPrice.shippingPrice)
 		).toLocaleString()} 원`;
 		orderDate.innerText = new Date(orderDetails.createdAt).toLocaleString();
-		orderStatus.innerText = orderDetails.shippingStatus;
-		// orderDetails.purchase
+		orderuser.innerText = orderDetails.email.toLocaleString();
 		products.innerHTML = orderDetails.purchase.map(getProducts).join('');
 
 		if (orderDetails.shippingStatus === '상품 준비 중') {
@@ -100,17 +99,14 @@ fetch(`/api/admin/${orderId}`, {
 		}
 	});
 
-const getProducts = newProducts => {
+const getProducts = orders => {
 	return `
 		<li>
 		<div class="thumbnail">
-		<img src="${newProducts.imageURL}" />
-		<span class="title">${newProducts.title}</span>
-	</div>
-	<div><span>${
-		newProducts.orderAmount
-	}</span> 개 &#215; <span>${newProducts.price.toLocaleString()}</span>원</div>
-	<div>${(newProducts.price * newProducts.orderAmount).toLocaleString()}원</div>
+			<img src="${orders.imageURL}" />
+			<span class="title">${orders.title}</span>
+		</div>
+		<div>${orders.orderAmount} 개 / ${(orders.price * orders.orderAmount).toLocaleString()}원</div>
 	</li>
 		`;
 };

@@ -94,13 +94,13 @@ function getOrders(orders) {
 <article>
 	<div class="info">
 		<div>
-			<span class="date">${new Date(orders.createdAt).toLocaleString()} / User: ${
+			<span class="date">${new Date(orders.createdAt).toLocaleString()} 🦋 ${
 		orders.email
 	}</span>
 			<span class="status">${orders.shippingStatus}</span>
 		</div>
 		<a
-			href="/myPage/orders/history/?orderId=${orders._id}"
+			href="/admin/orderId/?orderId=${orders._id}"
 			class="detail-btn"
 			> Details ></a
 		>

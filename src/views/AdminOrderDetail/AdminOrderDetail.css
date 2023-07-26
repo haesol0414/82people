@@ -1,4 +1,3 @@
-/* 여기서 부터 각자 레이아웃 스타일 작업 */
 .main-container {
 	padding: 0;
 }
@@ -8,7 +7,6 @@
 	height: 100%;
 	margin: 0 auto;
 }
-
 h2 {
 	font-size: 24px;
 	font-weight: 900;
@@ -33,7 +31,6 @@ button {
 	padding: 30px;
 }
 .myparty-menubar {
-	/* border-right: 1px solid #000; */
 	width: 200px;
 }
 .myparty-menubar h2,
@@ -46,6 +43,7 @@ button {
 	font-size: 26px;
 	background-color: #fff;
 	margin-bottom: 20px;
+	color: #6c4e82;
 }
 .user-info > div {
 	display: flex;
@@ -90,21 +88,19 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 18px;
+	font-size: 20px;
 	margin-bottom: 10px;
+	color: #525151;
 }
-.order-number-status .status {
-	background-color: #6c4e82;
-	color: #fff;
-	padding: 3px 16px;
-	border-radius: 999px;
-	margin-left: 20px;
+.order-number-status select {
+	color: #525151;
 }
 .order-products {
 	font-size: 18px;
 	border: 1px solid #6c4e82;
 	background-color: #fff;
 	margin-bottom: 20px;
+	color: #525151;
 }
 .products-info {
 	padding: 10px 20px;
@@ -145,6 +141,7 @@ button {
 .order-info,
 .purchase-info {
 	margin-bottom: 20px;
+	color: #525151;
 }
 .order-info .title-container {
 	display: flex;
@@ -158,6 +155,7 @@ button {
 	border: 1px solid #6c4e82;
 	padding: 20px;
 	font-size: 18px;
+	color: #525151;
 }
 .order-info section > div {
 	display: flex;

@@ -11,9 +11,19 @@ const AdminService = {
 		return await Order.findOne({ _id: orderId });
 	},
 
-    // [관리자] 주문 배송 상태 변경
+    // [관리자] 배송 상태 변경
 	updateShippingStatus: async (orderId, shippingStatus) => {
 		await Order.updateOne({ _id: orderId },{ shippingStatus: shippingStatus });
+	},
+
+    // [관리자] 주문 삭제
+	updateOrderStatus:async (orderId) => {
+		await Order.deleteOne({ _id: orderId });
+	},
+	
+    // [관리자] 주문 삭제
+	updateOrderStatus:async (orderId) => {
+		await Order.deleteOne({ _id: orderId });
 	},
 };
 

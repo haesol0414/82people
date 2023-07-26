@@ -91,9 +91,9 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 18px;
+	font-size: 20px;
 	margin-bottom: 10px;
-	color: #6c4e82;
+	color: #525151;
 }
 .order-number-status .status {
 	background-color: #6c4e82;

@@ -1,7 +1,6 @@
 const Order = require('../db/models/OrderModel');
 const User = require('../db/models/UserModel');
 const Product = require('../db/models/ProductModel');
-const { badRequestError } = require('../middleware/ErrorHandler');
 
 const OrderService = {
 	// [회원 비회원 공통] 장바구니 제품 주문 완료

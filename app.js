@@ -19,7 +19,7 @@ app.use(express.json()); // Content-Type: application/json 형태의 데이터�
 
 const port = process.env.PORT || 3000;
 
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB);
 const db = mongoose.connection;
 
