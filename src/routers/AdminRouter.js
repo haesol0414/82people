@@ -14,13 +14,20 @@ AdminRouter.get(
 	AdminController.adminCheckOrderDetail
 );
 
-// [관리자] 주문 변경
+// [관리자] 배송 상태 변경
 AdminRouter.post(
 	'/admin/:orderId',
 	VerifyToken,
 	AdminController.updateShippingStatus
 );
 
+// [관리자] 주문 취소
+AdminRouter.delete('/admin/:orderId', VerifyToken, AdminController.cancleOrder);
+
+// [관리자] 배송지 수정
+// AdminRouter.fetch('/admin/:orderId', VerifyToken, AdminController.updateOrderAddress);
+
 // [관리자] 회원 전체 조회
+AdminRouter.get('/admin', VerifyToken, AdminController.viewAllUsers);
 
 module.exports = AdminRouter;

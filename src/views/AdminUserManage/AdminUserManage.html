@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/Common/common.css" />
+		<!-- 작업할 css 연결 -->
+		<link rel="stylesheet" href="./AdminInfo.css" />
+		<script type="module" src="./AdminInfo.js"></script>
+		<title>배송 조회</title>
+	</head>
+	<body>
+		<div id="global-wrap">
+			<header></header>
+			<main>
+				<div class="main-container">
+					<div id="member-info-wrap">
+						<!-- 마이페이지 메뉴바 -->
+						<section class="myparty-menubar">
+							<h2>MyPage</h2>
+							<!-- 회원정보 -->
+							<article class="user-info">
+								<div>
+									<div class="profile" role="img">🦋</div>
+									<p class="user-name"><span id="user-name"></span>님</p>
+								</div>
+								<span class="user-role">Admin</span>
+							</article>
+							<!-- 마이페이지 메뉴 -->
+							<nav>
+								<ul>
+									<li class="active">
+										<a href="/admin">Order List</a>
+									</li>
+								</ul>
+							</nav>
+						</section>
+						<!-- 회원정보 수정 -->
+						<section class="order-history">
+							<h3>Order History</h3>
+							<ul class="history-list"></ul>
+						</section>
+					</div>
+				</div>
+			</main>
+			<footer></footer>
+		</div>
+	</body>
+</html>

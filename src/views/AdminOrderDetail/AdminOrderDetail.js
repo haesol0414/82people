@@ -55,6 +55,7 @@ const orderTotalPrice = document.querySelector('#totalPrice');
 const orderOrderPrice = document.querySelector('#orderPrice');
 const products = document.querySelector('.products-list');
 const shippingStatusOption = document.querySelector('#shippingStatus');
+const orderCancleBtn = document.querySelector('#orderCancle');
 
 // 확인된 토큰으로 서버에게 요청해서 현재 유저 정보받아오기
 fetch(`/api/admin/${orderId}`, {
@@ -93,9 +94,11 @@ fetch(`/api/admin/${orderId}`, {
 		}
 		if (orderDetails.shippingStatus === '배송 중') {
 			shippingStatusOption.options[1].setAttribute('selected', true);
+			orderCancleBtn.style.display = 'none';
 		}
 		if (orderDetails.shippingStatus === '배송 완료') {
 			shippingStatusOption.options[2].setAttribute('selected', true);
+			orderCancleBtn.style.display = 'none';
 		}
 	});
 
@@ -106,13 +109,14 @@ const getProducts = orders => {
 			<img src="${orders.imageURL}" />
 			<span class="title">${orders.title}</span>
 		</div>
-		<div>${orders.orderAmount} 개 / ${(orders.price * orders.orderAmount).toLocaleString()}원</div>
+		<div>${orders.orderAmount} 개 / ${(
+		orders.price * orders.orderAmount
+	).toLocaleString()}원</div>
 	</li>
 		`;
 };
 
-shippingStatusOption.addEventListener('change', e => {
-	console.log('shippingStatusOption', e.target.value);
+shippingStatusOption.addEventListener('change', event => {
 	fetch(`/api/admin/${orderId}`, {
 		method: 'POST',
 		headers: {
@@ -120,12 +124,49 @@ shippingStatusOption.addEventListener('change', e => {
 			Authorization: hasToken,
 		},
 		body: JSON.stringify({
-			shippingStatus: e.target.value,
+			shippingStatus: event.target.value,
 		}),
 	})
 		.then(res => {
 			console.log('shippingStatusOption', res);
 			window.location.reload();
+			return res.json();
+		})
+		.catch(err => console.log('err', err));
+});
+
+// 배송지 수정 요청 Q/A로 빼버릴지 고민즁
+// updateAddressBtn.addEventListener('click', event => {
+// 	fetch(`/api/admin/${orderId}`, {
+// 		method: 'FETCH',
+// 		headers: {
+// 			'Content-Type': 'application/json',
+// 			Authorization: hasToken,
+// 		},
+// 		body: JSON.stringify({
+// 			shippingStatus: event.target.value,
+// 		}),
+// 	})
+// 		.then(res => {
+// 			console.log('shippingStatusOption', res);
+// 			window.location.reload();
+// 			return res.json();
+// 		})
+// 		.catch(err => console.log('err', err));
+// });
+
+// 주문 취소 btn
+orderCancleBtn.addEventListener('click', () => {
+	fetch(`/api/admin/${orderId}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: hasToken,
+		},
+	})
+		.then(res => {
+			alert(`주문 내역이 삭제되었습니다`);
+			window.location.href = '/admin';
 			return res.json();
 		})
 		.catch(err => console.log('err', err));
