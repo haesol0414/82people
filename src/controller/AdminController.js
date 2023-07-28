@@ -112,7 +112,7 @@ const AdminController = {
 
 			res.status(200).json({
 				message: '[관리자] 회원 전체 조회 성공',
-				orders: users
+				users: users,
 			});
 		} catch (err) {
 			next(err);

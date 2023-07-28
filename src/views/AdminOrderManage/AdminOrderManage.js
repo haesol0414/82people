@@ -1,6 +1,48 @@
 import { main } from '/Common/index.js';
 await main();
 
+let items = '';
+// 주문상품 화면 그려주기
+function getOrders(orders) {
+	let orderItem = '';
+	orders.purchase.map(order => {
+		console.log(order);
+		const orderLi = `<li>
+	<div class="thumbnail">
+		<img src="${order.imageURL}" />
+		<span class="title">${order.title}</span>
+	</div>
+	<div><span>${
+		order.orderAmount
+	}</span> 개 &#215; <span>${order.price.toLocaleString()}</span>원</div>
+</li>`;
+		orderItem += orderLi;
+	});
+
+	const newItem = `<li>
+<article>
+	<div class="info">
+		<div>
+			<span class="date">${new Date(orders.createdAt).toLocaleString()} 🦋 ${
+		orders.email
+	}</span>
+			<span class="status">${orders.shippingStatus}</span>
+		</div>
+		<a
+			href="/admin/orders/orderId/?orderId=${orders._id}"
+			class="detail-btn"
+			> Details ></a
+		>
+	</div>
+	<ul class="products-list">
+		${orderItem}
+	</ul>
+</article>
+</li>`;
+	items += newItem;
+	itemsList.innerHTML = items;
+}
+
 // 브라우저 쿠키에 토큰이 있는지 확인
 function checkJWTTokenInCookie() {
 	const cookies = document.cookie.split(';'); // 모든 쿠키 가져오기
@@ -43,7 +85,7 @@ if (hasToken) {
 }
 
 // 확인된 토큰으로 서버에게 요청해서 현재 유저 정보받아오기
-fetch(`/api/admin`, {
+fetch(`/api/admin/orders`, {
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application/json',
@@ -71,45 +113,3 @@ fetch(`/api/admin`, {
 		}
 	})
 	.catch(err => console.log(err));
-
-let items = '';
-// 주문상품 화면 그려주기
-function getOrders(orders) {
-	let orderItem = '';
-	orders.purchase.map(order => {
-		console.log(order);
-		const orderLi = `<li>
-	<div class="thumbnail">
-		<img src="${order.imageURL}" />
-		<span class="title">${order.title}</span>
-	</div>
-	<div><span>${
-		order.orderAmount
-	}</span> 개 &#215; <span>${order.price.toLocaleString()}</span>원</div>
-</li>`;
-		orderItem += orderLi;
-	});
-
-	const newItem = `<li>
-<article>
-	<div class="info">
-		<div>
-			<span class="date">${new Date(orders.createdAt).toLocaleString()} 🦋 ${
-		orders.email
-	}</span>
-			<span class="status">${orders.shippingStatus}</span>
-		</div>
-		<a
-			href="/admin/orderId/?orderId=${orders._id}"
-			class="detail-btn"
-			> Details ></a
-		>
-	</div>
-	<ul class="products-list">
-		${orderItem}
-	</ul>
-</article>
-</li>`;
-	items += newItem;
-	itemsList.innerHTML = items;
-}

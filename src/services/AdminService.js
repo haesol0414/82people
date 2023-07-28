@@ -1,5 +1,5 @@
 const Order = require('../db/models/OrderModel');
-const User = reqiuire('../db/models/UserModel');
+const User = require('../db/models/UserModel');
 
 const AdminService = {
 	// [관리자] 전제 주문 목록 조회

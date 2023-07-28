@@ -58,7 +58,7 @@ const shippingStatusOption = document.querySelector('#shippingStatus');
 const orderCancleBtn = document.querySelector('#orderCancle');
 
 // 확인된 토큰으로 서버에게 요청해서 현재 유저 정보받아오기
-fetch(`/api/admin/${orderId}`, {
+fetch(`/api/admin/orders/${orderId}`, {
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ const getProducts = orders => {
 };
 
 shippingStatusOption.addEventListener('change', event => {
-	fetch(`/api/admin/${orderId}`, {
+	fetch(`/api/admin/orders/${orderId}`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ shippingStatusOption.addEventListener('change', event => {
 
 // 배송지 수정 요청 Q/A로 빼버릴지 고민즁
 // updateAddressBtn.addEventListener('click', event => {
-// 	fetch(`/api/admin/${orderId}`, {
+// 	fetch(`/api/admin/orders/${orderId}`, {
 // 		method: 'FETCH',
 // 		headers: {
 // 			'Content-Type': 'application/json',
@@ -155,9 +155,9 @@ shippingStatusOption.addEventListener('change', event => {
 // 		.catch(err => console.log('err', err));
 // });
 
-// 주문 취소 btn
+// 주문 취소
 orderCancleBtn.addEventListener('click', () => {
-	fetch(`/api/admin/${orderId}`, {
+	fetch(`/api/admin/orders/${orderId}`, {
 		method: 'DELETE',
 		headers: {
 			'Content-Type': 'application/json',

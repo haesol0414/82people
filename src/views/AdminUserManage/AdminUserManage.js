@@ -1,6 +1,47 @@
 import { main } from '/Common/index.js';
 await main();
 
+let alluser = '';
+// 화면 그려주기
+function getUsers(users) {
+	// let userInfo = '';
+	// users.map(user => {
+	// 	const userLi = `
+	// 	<li>
+	// 		<div class="thumbnail">
+	// 			<span class="title">이름 : ${user.name}</span>
+	// 			<span class="title">가입 날짜 : ${new Date(
+	// 				user.createdAt
+	// 			).toLocaleString()}</span>
+	// 			<span class="title">탈퇴 여부 : ${user.isDeleted}</span>
+	// 		</div>
+	// 	</li>`;
+	// 	userInfo += userLi;
+	// });
+
+	const newUser = `<li>
+		<article>
+			<div class="info">
+				<div>
+					<span class="date">🦋 ${users.email}</span>
+				</div>
+			</div>
+			<ul class="user-list">
+				<li>
+					<div class="thumbnail">
+						<span>이름 : ${users.name}</span>
+						<span>가입 날짜 : ${new Date(users.createdAt).toLocaleString()}</span>
+						<span>등급 : ${users.role}</span>
+						<span>탈퇴 여부 : ${users.isDeleted}</span>
+					</div>
+				</li>
+			</ul>
+		</article>
+		</li>`;
+	alluser += newUser;
+	userList.innerHTML = alluser;
+}
+
 // 브라우저 쿠키에 토큰이 있는지 확인
 function checkJWTTokenInCookie() {
 	const cookies = document.cookie.split(';'); // 모든 쿠키 가져오기
@@ -18,8 +59,7 @@ function checkJWTTokenInCookie() {
 }
 
 const hasToken = checkJWTTokenInCookie();
-
-const itemsList = document.querySelector('.history-list');
+const userList = document.querySelector('.history-list');
 
 if (hasToken) {
 	console.log('JWT 토큰이 쿠키에 존재합니다.');
@@ -42,8 +82,7 @@ if (hasToken) {
 	window.location.href = '/';
 }
 
-// 확인된 토큰으로 서버에게 요청해서 현재 유저 정보받아오기
-fetch(`/api/admin`, {
+fetch(`/api/admin/users`, {
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application/json',
@@ -63,53 +102,12 @@ fetch(`/api/admin`, {
 	})
 	.then(json => {
 		console.log(json);
-		if (json.orders.length !== 0) {
-			json.orders.reverse().map(getOrders);
+		console.log(json.users);
+		if (json.users) {
+			json.users.reverse().map(getUsers);
 		} else {
 			itemsList.innerHTML =
-				'<li style="padding:20px">주문 내역이 없습니다.</li>';
+				'<li style="padding:20px">회원 목록이 존재하지 않습니다.</li>';
 		}
 	})
 	.catch(err => console.log(err));
-
-let items = '';
-// 주문상품 화면 그려주기
-function getOrders(orders) {
-	let orderItem = '';
-	orders.purchase.map(order => {
-		console.log(order);
-		const orderLi = `<li>
-	<div class="thumbnail">
-		<img src="${order.imageURL}" />
-		<span class="title">${order.title}</span>
-	</div>
-	<div><span>${
-		order.orderAmount
-	}</span> 개 &#215; <span>${order.price.toLocaleString()}</span>원</div>
-</li>`;
-		orderItem += orderLi;
-	});
-
-	const newItem = `<li>
-<article>
-	<div class="info">
-		<div>
-			<span class="date">${new Date(orders.createdAt).toLocaleString()} 🦋 ${
-		orders.email
-	}</span>
-			<span class="status">${orders.shippingStatus}</span>
-		</div>
-		<a
-			href="/admin/orderId/?orderId=${orders._id}"
-			class="detail-btn"
-			> Details ></a
-		>
-	</div>
-	<ul class="products-list">
-		${orderItem}
-	</ul>
-</article>
-</li>`;
-	items += newItem;
-	itemsList.innerHTML = items;
-}

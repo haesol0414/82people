@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/Common/common.css" />
 		<!-- 작업할 css 연결 -->
-		<link rel="stylesheet" href="./AdminInfo.css" />
-		<script type="module" src="./AdminInfo.js"></script>
+		<link rel="stylesheet" href="./AdminUserManage.css" />
+		<script type="module" src="./AdminUserManage.js"></script>
 		<title>배송 조회</title>
 	</head>
 	<body>
@@ -29,15 +29,17 @@
 							<!-- 마이페이지 메뉴 -->
 							<nav>
 								<ul>
+									<li>
+										<a href="/admin/orders">Order List</a>
+									</li>
 									<li class="active">
-										<a href="/admin">Order List</a>
+										<a href="/admin/users">User List</a>
 									</li>
 								</ul>
 							</nav>
 						</section>
-						<!-- 회원정보 수정 -->
 						<section class="order-history">
-							<h3>Order History</h3>
+							<h3>User List</h3>
 							<ul class="history-list"></ul>
 						</section>
 					</div>

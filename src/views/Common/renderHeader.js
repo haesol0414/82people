@@ -69,7 +69,9 @@ function renderHeader() {
             </div>
             <!-- 로그인 상태일 경우 마이페이지 노출-->
             <div>
-              <a href="${role === 'customer' ? '/mypage' : '/admin'}">MyPage</a>
+              <a href="${
+								role === 'customer' ? '/mypage' : '/admin/orders'
+							}">MyPage</a>
             </div>
             <div>
               <a ${

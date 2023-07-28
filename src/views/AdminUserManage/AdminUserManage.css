@@ -110,33 +110,25 @@ h3 {
 .order-history .history-list .info .detail-btn:hover {
 	border-color: #6c4e82;
 }
-.order-history .history-list .products-list {
+.order-history .history-list .user-list {
 	padding: 20px;
 	color: #525151;
 }
-.order-history .history-list .products-list li {
+.order-history .history-list .user-list li {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	font-size: 20px;
 	margin-bottom: 10px;
 }
-.order-history .history-list .products-list li:last-child {
+.order-history .history-list .user-list li:last-child {
 	margin-bottom: 0;
 }
-.order-history .history-list .products-list li .thumbnail {
+.order-history .history-list .user-list li span {
+	color: #525151;
+	padding: 10px 0;
 	display: flex;
 	align-items: center;
-}
-.order-history .history-list .products-list li img {
-	width: 100px;
-	height: 80px;
-	background-color: #fff;
-	margin-right: 10px;
-}
-.order-history .history-list .products-list li .title {
-	font-weight: 700;
-	color: #525151;
 }
 .field {
 	display: flex;
