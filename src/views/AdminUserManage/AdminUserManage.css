@@ -130,6 +130,13 @@ h3 {
 	display: flex;
 	align-items: center;
 }
+.order-history .user-select-box {
+	text-align: right;
+	margin-bottom: 6px;
+}
+.order-history select {
+	color: #525151;
+}
 .field {
 	display: flex;
 	flex-direction: column;

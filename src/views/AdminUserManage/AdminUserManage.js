@@ -4,21 +4,6 @@ await main();
 let alluser = '';
 // 화면 그려주기
 function getUsers(users) {
-	// let userInfo = '';
-	// users.map(user => {
-	// 	const userLi = `
-	// 	<li>
-	// 		<div class="thumbnail">
-	// 			<span class="title">이름 : ${user.name}</span>
-	// 			<span class="title">가입 날짜 : ${new Date(
-	// 				user.createdAt
-	// 			).toLocaleString()}</span>
-	// 			<span class="title">탈퇴 여부 : ${user.isDeleted}</span>
-	// 		</div>
-	// 	</li>`;
-	// 	userInfo += userLi;
-	// });
-
 	const newUser = `<li>
 		<article>
 			<div class="info">
@@ -38,9 +23,15 @@ function getUsers(users) {
 			</ul>
 		</article>
 		</li>`;
+
 	alluser += newUser;
+	console.log(newUser);
 	userList.innerHTML = alluser;
 }
+
+// userSelectOption.addEventListener('change', event => {
+
+// });
 
 // 브라우저 쿠키에 토큰이 있는지 확인
 function checkJWTTokenInCookie() {
@@ -60,6 +51,7 @@ function checkJWTTokenInCookie() {
 
 const hasToken = checkJWTTokenInCookie();
 const userList = document.querySelector('.history-list');
+const userSelectOption = document.querySelector('#user-select');
 
 if (hasToken) {
 	console.log('JWT 토큰이 쿠키에 존재합니다.');
@@ -101,13 +93,11 @@ fetch(`/api/admin/users`, {
 		console.log(err);
 	})
 	.then(json => {
-		console.log(json);
-		console.log(json.users);
 		if (json.users) {
 			json.users.reverse().map(getUsers);
 		} else {
-			itemsList.innerHTML =
-				'<li style="padding:20px">회원 목록이 존재하지 않습니다.</li>';
+			userList.innerHTML =
+				'<li style="padding:20px color: #000">회원 목록이 존재하지 않습니다.</li>';
 		}
 	})
 	.catch(err => console.log(err));

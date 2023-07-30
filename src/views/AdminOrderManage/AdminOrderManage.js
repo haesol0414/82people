@@ -8,14 +8,15 @@ function getOrders(orders) {
 	orders.purchase.map(order => {
 		console.log(order);
 		const orderLi = `<li>
-	<div class="thumbnail">
-		<img src="${order.imageURL}" />
-		<span class="title">${order.title}</span>
-	</div>
-	<div><span>${
-		order.orderAmount
-	}</span> 개 &#215; <span>${order.price.toLocaleString()}</span>원</div>
-</li>`;
+			<div class="thumbnail">	
+				<img src="${order.imageURL}" />
+				<span class="title">${order.title}</span>
+				</div>
+			<div>
+			<span>${
+				order.orderAmount
+			}개 &#215; ${order.price.toLocaleString()}</span>원</div>
+		</li>`;
 		orderItem += orderLi;
 	});
 

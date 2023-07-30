@@ -22,7 +22,11 @@ AdminRouter.post(
 );
 
 // [관리자] 주문 취소
-AdminRouter.delete('/admin/orders/:orderId', VerifyToken, AdminController.cancleOrder);
+AdminRouter.delete(
+	'/admin/orders/:orderId',
+	VerifyToken,
+	AdminController.cancleOrder
+);
 
 // [관리자] 배송지 수정
 // AdminRouter.fetch('/admin/:orderId', VerifyToken, AdminController.updateOrderAddress);
