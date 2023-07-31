@@ -1,7 +1,9 @@
 import { main } from '/Common/index.js';
 await main();
 
-let alluser = '';
+let customer = '';
+let admin = '';
+let withdrawn = '';
 // 화면 그려주기
 function getUsers(users) {
 	const newUser = `<li>
@@ -23,41 +25,16 @@ function getUsers(users) {
 		</article>
 		</li>`;
 
-	alluser += newUser;
-	console.log(newUser);
-	userList.innerHTML = alluser;
+	if (users.role === 'customer' && users.isDeleted === false) {
+		customer += newUser;
+	}
+	if (users.isDeleted === true) {
+		withdrawn += newUser;
+	}
+	if (users.role === 'admin') {
+		admin += newUser;
+	}
 }
-
-// userSelectOption.addEventListener('change', () => {
-// 	userSelectOption.options[1].setAttribute('selected', true);
-// 	fetch(`/api/admin/users`, {
-// 		method: 'GET',
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 			Authorization: hasToken,
-// 		},
-// 	})
-// 		.then(res => {
-// 			if (res.ok) {
-// 				return res.json();
-// 			} else {
-// 				throw new Error('관리자만 사용 가능합니다.');
-// 			}
-// 		})
-// 		.catch(err => {
-// 			window.location.href = '/';
-// 			console.log(err);
-// 		})
-// 		.then(({ users }) => {
-// 			if (users) {
-// 				users.reverse().map(getUsers);
-// 			} else {
-// 				userList.innerHTML =
-// 					'<li style="padding:20px color: #000">회원 목록이 존재하지 않습니다.</li>';
-// 			}
-// 		})
-// 		.catch(err => console.log(err));	
-// });
 
 // 브라우저 쿠키에 토큰이 있는지 확인
 function checkJWTTokenInCookie() {
@@ -119,13 +96,27 @@ fetch(`/api/admin/users`, {
 		console.log(err);
 	})
 	.then(({ users }) => {
-		console.log(users.email);
 		if (users) {
-			userSelectOption.options[0].setAttribute('selected', true);
 			users.reverse().map(getUsers);
+			userList.innerHTML = customer;
 		} else {
 			userList.innerHTML =
 				'<li style="padding:20px color: #000">회원 목록이 존재하지 않습니다.</li>';
 		}
 	})
 	.catch(err => console.log(err));
+
+userSelectOption.addEventListener('change', event => {
+	if (event.target.value === 'customer') {
+		userSelectOption.options[0].setAttribute('selected', true);
+		userList.innerHTML = customer;
+	}
+	if (event.target.value === 'withdrawn') {
+		userSelectOption.options[1].setAttribute('selected', true);
+		userList.innerHTML = withdrawn;
+	}
+	if (event.target.value === 'admin') {
+		userSelectOption.options[2].setAttribute('selected', true);
+		userList.innerHTML = admin;
+	}
+});

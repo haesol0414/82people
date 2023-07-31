@@ -47,7 +47,7 @@ checkButton.addEventListener('click', () => {
 	console.log('clickCheck');
 	const withdrawalStatement = inputElement.value.trim();
 
-	if (withdrawalStatement === '파티피플에서 탈퇴하겠습니다.') {
+	if (withdrawalStatement === '탈퇴하겠습니다.') {
 		// 탈퇴 신청 처리
 		processWithdrawal();
 	} else {
