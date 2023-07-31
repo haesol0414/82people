@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/Common/common.css" />
+		<!-- 작업할 css 연결 -->
+		<link rel="stylesheet" href="./AdminItemManage.css" />
+		<script type="module" src="./AdminItemManage.js"></script>
+		<title>배송 조회</title>
+	</head>
+	<body>
+		<div id="global-wrap">
+			<header></header>
+			<main>
+				<div class="main-container">
+					<div id="member-info-wrap">
+						<!-- 마이페이지 메뉴바 -->
+						<section class="myparty-menubar">
+							<h2>MyPage</h2>
+							<!-- 회원정보 -->
+							<article class="user-info">
+								<div>
+									<div class="profile" role="img">🦋</div>
+									<p class="user-name"><span id="user-name"></span>님</p>
+								</div>
+								<span class="user-role">Admin</span>
+							</article>
+							<!-- 마이페이지 메뉴 -->
+							<nav>
+								<ul>
+									<li>
+										<a href="/admin/orders">Order List</a>
+									</li>
+									<li>
+										<a href="/admin/users">User List</a>
+									</li>
+									<li class="active">
+										<a href="/admin/items">Item List</a>
+									</li>
+								</ul>
+							</nav>
+						</section>
+						<section class="items-section">
+							<h3>Item List</h3>
+
+							<div class="btn_btw">
+								<button type="button" class="button" id="deleteRows">
+									- CHECKED ITEMS DELETE
+								</button>
+								<button type="button" class="button is-light" id="createBtn">
+									+ ADD ITEM
+								</button>
+							</div>
+
+							<table class="product">
+								<thead>
+									<tr>
+										<td
+											style="
+												font-size: 18px;
+												width: 50px;
+												background-color: #fff;
+												color: #6c4e82;
+											"
+										>
+											CHECKE
+										</td>
+										<td
+											style="
+												font-size: 18px;
+												width: 120px;
+												background-color: #fff;
+												color: #6c4e82;
+											"
+										>
+											IMG
+										</td>
+										<td
+											style="
+												font-size: 18px;
+												width: 400px;
+												background-color: #fff;
+												color: #6c4e82;
+											"
+										>
+											NAME
+										</td>
+										<td
+											style="
+												font-size: 18px;
+												width: 300px;
+												background-color: #fff;
+												color: #6c4e82;
+											"
+										>
+											CATEGORY
+										</td>
+										<td
+											style="
+												font-size: 18px;
+												width: 200px;
+												background-color: #fff;
+												color: #6c4e82;
+											"
+										>
+											PRICE
+										</td>
+										<td
+											style="
+												font-size: 18px;
+												width: 200px;
+												background-color: #fff;
+												color: #6c4e82;
+											"
+										>
+											QTY
+										</td>
+										<td
+											style="
+												font-size: 18px;
+												width: 150px;
+												background-color: #fff;
+												color: #6c4e82;
+											"
+										>
+											UPDATE
+										</td>
+									</tr>
+								</thead>
+								<tbody id="table-body">
+									<!-- 상품 정보 반복 -->
+								</tbody>
+							</table>
+						</section>
+					</div>
+				</div>
+			</main>
+			<footer></footer>
+		</div>
+	</body>
+</html>

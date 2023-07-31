@@ -21,25 +21,25 @@ function getOrders(orders) {
 	});
 
 	const newItem = `<li>
-<article>
-	<div class="info">
-		<div>
-			<span class="date">${new Date(orders.createdAt).toLocaleString()} 🦋 ${
+	<article>
+		<div class="info">
+			<div>
+				<span class="date">${new Date(orders.createdAt).toLocaleString()} 🦋 ${
 		orders.email
 	}</span>
-			<span class="status">${orders.shippingStatus}</span>
+				<span class="status">${orders.shippingStatus}</span>
+			</div>
+			<a
+				href="/admin/orders/orderId/?orderId=${orders._id}"
+				class="detail-btn"
+				> Details ></a
+			>
 		</div>
-		<a
-			href="/admin/orders/orderId/?orderId=${orders._id}"
-			class="detail-btn"
-			> Details ></a
-		>
-	</div>
-	<ul class="products-list">
-		${orderItem}
-	</ul>
-</article>
-</li>`;
+		<ul class="products-list">
+			${orderItem}
+		</ul>
+	</article>
+	</li>`;
 	items += newItem;
 	itemsList.innerHTML = items;
 }
@@ -85,7 +85,6 @@ if (hasToken) {
 	window.location.href = '/';
 }
 
-// 확인된 토큰으로 서버에게 요청해서 현재 유저 정보받아오기
 fetch(`/api/admin/orders`, {
 	method: 'GET',
 	headers: {
@@ -113,4 +112,31 @@ fetch(`/api/admin/orders`, {
 				'<li style="padding:20px">주문 내역이 없습니다.</li>';
 		}
 	})
-	.catch(err => console.log(err));
+// 	.catch(err => console.log(err));
+
+// function deleteSelectedRows() {
+// 	const userConfirm = confirm('선택된 상품을 정말 삭제하시겠습니까?');
+// 	if (userConfirm) {
+// 		let radioes = document.querySelectorAll(
+// 			".product tbody input[type='radio']"
+// 		);
+// 		let rowsToDelete = [];
+
+// 		radioes.forEach(function (radio) {
+// 			if (radio.checked) {
+// 				rowsToDelete.push(radio.parentNode.parentNode);
+// 			}
+// 		});
+
+// 		rowsToDelete.forEach(function (row) {
+// 			row.parentNode.removeChild(row); // 화면에서 삭제
+// 			count.innerHTML = Number(count.innerText) - 1;
+// 			const id = row.getAttribute('product_id');
+// 			API.delete('/api/admin/product/', id); // API에서 삭제
+// 		});
+// 		getProductList();
+// 		alert('삭제되었습니다.');
+// 	}
+// }
+// const deleteBtn = document.getElementById('deleteRows');
+// deleteBtn.addEventListener('click', deleteSelectedRows);

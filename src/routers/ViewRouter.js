@@ -46,5 +46,6 @@ ViewRouter.use(
 	ViewService.serveStatic('AdminOrderDetail')
 );
 ViewRouter.use('/admin/users', ViewService.serveStatic('AdminUserManage'));
+ViewRouter.use('/admin/items', ViewService.serveStatic('AdminItemManage'));
 
 module.exports = ViewRouter;

@@ -11,9 +11,11 @@
 h2 {
 	font-size: 24px;
 	font-weight: 900;
+	color: #6c4e82;
 }
 h3 {
 	font-size: 24px;
+	color: #6c4e82;
 }
 #member-info-wrap > section {
 	padding: 30px;
@@ -27,11 +29,12 @@ h3 {
 	margin-bottom: 30px;
 }
 .user-info {
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	padding: 16px;
 	font-size: 26px;
 	background-color: #fff;
 	margin-bottom: 20px;
+	color: #6c4e82;
 }
 .user-info > div {
 	display: flex;
@@ -40,7 +43,7 @@ h3 {
 }
 .user-info .profile {
 	font-size: 26px;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	width: 50px;
 	height: 50px;
 	line-height: 55px;
@@ -50,89 +53,27 @@ h3 {
 .user-info .user-role {
 	text-align: center;
 	display: block;
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	font-size: 20px;
 	padding: 7px 0;
 	margin-top: 10px;
 }
 .myparty-menubar nav li.active a {
-	background-color: #000;
+	background-color: #6c4e82;
 	color: #fff;
 }
 .myparty-menubar nav a {
-	border: 1px solid #000;
+	border: 1px solid #6c4e82;
 	background-color: #fff;
 	font-size: 20px;
 	margin-top: 10px;
 	display: block;
 	padding: 20px;
 	text-decoration: none;
-	color: #000;
+	color: #6c4e82;
 }
 .order-history {
 	flex: 1;
-}
-.order-history .history-list > li {
-	border: 1px solid #000;
-	margin-bottom: 20px;
-	background-color: #fff;
-}
-.order-history .history-list .info {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	border-bottom: 1px solid #000;
-	padding: 10px 20px;
-	font-size: 18px;
-}
-.order-history .history-list .info .status {
-	background-color: #000;
-	color: #fff;
-	padding: 3px 16px;
-	border-radius: 999px;
-	margin-left: 20px;
-}
-.order-history .history-list .info .date {
-	font-weight: 700;
-}
-.order-history .history-list .info .detail-btn {
-	text-decoration: none;
-	color: inherit;
-	margin-right: 10px;
-	border-bottom: 1px solid transparent;
-}
-.order-history .history-list .info .detail-btn:hover {
-	border-color: #000;
-}
-.order-history .history-list .products-list {
-	padding: 20px;
-}
-.order-history .history-list .products-list li {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	font-size: 20px;
-	margin-bottom: 10px;
-}
-.order-history .history-list .products-list li:last-child {
-	margin-bottom: 0;
-}
-.order-history .history-list .products-list li .thumbnail {
-	display: flex;
-	align-items: center;
-}
-.order-history .history-list .products-list li img {
-	width: 100px;
-	height: 80px;
-	background-color: #fff;
-	margin-right: 10px;
-}
-.order-history .history-list .products-list li .title {
-	font-weight: 700;
-}
-.order-history > h3 {
-	border-bottom: solid;
-	padding-bottom: 30px;
 }
 /* 여기부터 내용 스타일 */
 .member-delete-notice-container {
@@ -141,27 +82,27 @@ h3 {
 
 .member-delete-notice-container .member-delete-notice {
 	display: flex;
-	font-size: 17px;
+	font-size: 24px;
 	background-color: #d4c7d4;
 	margin-bottom: 30px;
+	color: #525151;
 }
-.member-email-container .member-delete-notice2 {
-	display: inline-block;
+
+.member-delete-notice-container .member-delete-notice2 {
 	font-size: 20px;
-	color: black;
-	background-color: #d4c7d4;
+	color: #525151;
 }
 .member-email-container .member-email {
 	display: inline-block;
-	font-size: 17px;
 	background-color: #d4c7d4;
-	padding: 40px 130px 0 0;
-	margin-right: 7px;
+	padding: 40px 125px 0 0;
+	color: #6c4e82;
+	font-size: 20px;
 }
 .member-email-container .member-email2 {
 	display: inline-block;
 	font-size: 20px;
-	color: black;
+	color: #525151;
 	background-color: #d4c7d4;
 }
 .member-withdrawal-statement-container {
@@ -169,15 +110,16 @@ h3 {
 }
 .member-withdrawal-statement-container .member-withdrawal-statement {
 	display: inline-block;
-	font-size: 17px;
+	font-size: 20px;
 	background-color: #d4c7d4;
 	padding: 40px 77px 0 0;
 	margin-right: 7px;
+	color: #6c4e82;
 }
 .member-withdrawal-statement-container .member-withdrawal-statement2 {
 	display: inline-block;
 	font-size: 20px;
-	color: black;
+	color: #525151;
 	background-color: #d4c7d4;
 	margin-top: 39px;
 }
@@ -188,13 +130,15 @@ h3 {
 .member-withdrawal-statement-enter-container
 	.member-withdrawal-statement-enter {
 	display: inline-block;
-	font-size: 17px;
+	font-size: 20px;
 	background-color: #d4c7d4;
 	padding-top: 4px;
 	margin-right: 40px;
+	color: #6c4e82;
 }
 .member-withdrawal-statement-enter-container .input {
 	font-size: 20px;
+	color: #525151;
 }
 .check-button {
 	width: 100px;
@@ -202,6 +146,6 @@ h3 {
 	text-align: center;
 	color: white;
 	font-size: 20px;
-	background-color: black;
+	background-color: #6c4e82;
 	margin: 50px 0 0 140px;
 }

@@ -1,8 +1,8 @@
 import { main } from '/Common/index.js';
 await main();
 
-const total = document.querySelector('.products.total');
-const best = document.querySelector('.products.best');
+const total = document.querySelector('.products-total');
+const best = document.querySelector('.products-best');
 
 fetch('/api/products', {
 	method: 'GET',
@@ -25,22 +25,38 @@ fetch('/api/products', {
 	.then(({ bestProducts, totalProducts }) => {
 		console.log('bestProducts', bestProducts);
 		console.log('totalProducts', totalProducts);
-		best.innerHTML = bestProducts.map(getProducts).join('');
-		total.innerHTML = totalProducts.map(getProducts).join('');
+		bestProducts.map(getBestProducts);
+		totalProducts.map(getTotalProducts);
 	})
 	.catch(err => console.log(err));
 
-//상품상세 불러오기
-const getProducts = newProduct => {
-	// ${newProduct.imageURL}
-	return `<li>
-    <a class='product-link'
-    href='/products?productId=${newProduct._id}' target='_self'>
-    <img class="product-img"
-    src='${newProduct.imageURL}' alt="product-item"/>
-    <div class="product-title">${newProduct.title}</div>
-    <div class='product-price'>KRW ${newProduct.price.toLocaleString()}</div>
-    </div>
-    </a>
+let bestItems = '';
+const getBestProducts = bestProduct => {
+	const newBestItem = `<li>
+		<a class='product-link'
+		href='/products?productId=${bestProduct._id}' target='_self'>
+		<img class="product-img"
+		src='${bestProduct.imageURL}' alt="product-item"/>
+		</div>
+		</a>
     </li>`;
+
+	bestItems += newBestItem;
+	best.innerHTML = bestItems;
+};
+
+let items = '';
+const getTotalProducts = newProduct => {
+	const newItem = `<li>
+		<a class='product-link'
+		href='/products?productId=${newProduct._id}' target='_self'>
+		<img class="product-img"
+		src='${newProduct.imageURL}' alt="product-item"/>
+		<div class="product-title">${newProduct.title}</div>
+		<div class='product-price'>KRW ${newProduct.price.toLocaleString()}</div>
+		</div>
+		</a>
+    </li>`;
+	items += newItem;
+	total.innerHTML = items;
 };

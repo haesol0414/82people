@@ -1,3 +1,4 @@
+/* 여기서 부터 각자 레이아웃 스타일 작업 */
 .main-container {
 	padding: 0;
 }
@@ -15,18 +16,19 @@ h2 {
 h3 {
 	font-size: 24px;
 	color: #6c4e82;
+	margin-bottom: 29px;
 }
 #member-info-wrap > section {
 	padding: 30px;
-	color: #6c4e82;
 }
 .myparty-menubar {
 	/* border-right: 1px solid #000; */
 	width: 200px;
 }
 .myparty-menubar h2,
-.member-info h3 {
+.order-history h3 {
 	margin-bottom: 30px;
+	color: #6c4e82;
 }
 .user-info {
 	border: 1px solid #6c4e82;
@@ -61,95 +63,85 @@ h3 {
 }
 .myparty-menubar nav li.active a {
 	background-color: #6c4e82;
-	font-size: 20px;
-	font-weight: 400;
 	color: #fff;
 }
 .myparty-menubar nav a {
 	border: 1px solid #6c4e82;
 	background-color: #fff;
 	font-size: 20px;
-	font-weight: 400;
 	margin-top: 10px;
 	display: block;
 	padding: 20px;
 	text-decoration: none;
 	color: #6c4e82;
 }
-.member-info {
+.items-section {
 	flex: 1;
 }
-#default-address {
-	margin-top: 20px;
-}
-h4 {
-	font-size: 24px;
-	margin-top: 20px;
-	border-top: 1px solid;
-	padding-top: 20px;
-	color: #6c4e82;
-}
-.member-info #info > *,
-.member-info #default-address > * {
+.field {
 	display: flex;
-	margin-top: 10px;
-	align-items: center;
+	flex-direction: column;
+	gap: 10px;
 }
-.member-info #info > * > :first-child,
-.member-info #default-address > * > :first-child {
-	/* flex: 1; */
-	flex-basis: 100px;
+.field > * {
+	display: flex;
 }
-.member-info #info > * > :last-child,
-.member-info #default-address > * > :last-child {
+.field span {
+	flex: 1;
+}
+.field > * input {
 	flex: 3;
+}
+.field2 {
+	justify-content: center;
+}
+.member-withdrawal-link {
+	justify-content: flex-end;
+}
+.field > * > *:last-child {
+	flex: 3;
+}
+
+.btn_wrap {
 	display: flex;
-}
-.member-info #info > * > :last-child > :first-child,
-.member-info #default-address > * > :last-child > :first-child {
-	flex: 1;
-}
-input,
-button {
-	outline: none;
-	background-color: #fff;
-	border: 1px solid #6c4e82;
-	padding: 10px;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 20px;
 	color: #525151;
 }
-#address-input {
-	display: block !important;
-}
-#address-input > * {
+.btn_btw {
 	display: flex;
-}
-#address-input > * > :first-child {
-	flex: 1;
-}
-.api-btn {
-	margin-bottom: 10px;
-}
-#updateAddress {
-	display: block !important;
+	justify-content: space-between;
 }
 button {
-	cursor: pointer;
-	color: #6c4e82;
+	color: #fff;
+	background-color: #6c4e82;
 }
-.btn {
-	border-left: none;
-	color: #6c4e82;
-}
-.member-out {
-	text-align: right;
+table.product {
+	text-align: center;
+	width: 100%;
 	margin-top: 20px;
+	border: 1px solid #6c4e82;
 }
-.member-out a {
-	color: #9c9c9c;
+table.product td {
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #6c4e82;
+	vertical-align: middle;
+	color: #525151;
 }
-.member-out a:hover {
-	text-decoration: underline;
+
+table.product thead tr {
+	background: aliceblue;
 }
-input:disabled {
-	background-color: #eee;
+
+table.product .img-box {
+	width: 100px;
+	height: 100px;
+	background-size: cover;
+}
+
+table.product .img-box img {
+	width: 100%;
+	height: 100%;
 }

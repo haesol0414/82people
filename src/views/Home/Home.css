@@ -1,11 +1,23 @@
-ul.products {
+ul.products-best {
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 20px;
 	color: #525151;
 }
 
-ul.products > li {
+ul.products-best > li {
+	width: 30%;
+	margin: 0 auto;
+}
+
+ul.products-total {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+	color: #525151;
+}
+
+ul.products-total > li {
 	width: 30%;
 	margin: 0 auto;
 }
