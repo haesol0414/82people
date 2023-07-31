@@ -1,3 +1,75 @@
+/* 보여줄 구간의 높이와 넓이 설정 */
+#slideShow {
+	width: 700px;
+	height: 500px;
+	position: relative;
+	margin: 50px auto;
+	overflow: hidden;
+}
+.slides {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 2500px;
+	transition: left 0.5s ease-out;
+}
+.slides li img {
+	width: 500px;
+	height: 500px;
+}
+/* 첫 번째 슬라이드 가운데에 정렬하기위해
+  첫번째 슬라이드만 margin-left조정 */
+.slides li:first-child {
+	margin-left: 100px;
+}
+
+/* 슬라이드들 옆으로 정렬 */
+.slides li:not(:last-child) {
+	float: left;
+	margin-right: 100px;
+}
+.slides li {
+	float: left;
+}
+
+.controller span {
+	position: absolute;
+	background-color: transparent;
+	color: #6c4e82;
+	text-align: center;
+	border-radius: 50%;
+	padding: 10px 20px;
+	top: 50%;
+	font-size: 1.3em;
+	cursor: pointer;
+}
+
+/* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+.controller span:hover {
+	background-color: rgba(128, 128, 128, 0.11);
+	color: #6c4e82;
+}
+
+.prev {
+	left: 10px;
+}
+
+/* 이전 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+.prev:hover {
+	transform: translateX(-10px);
+}
+
+.next {
+	right: 10px;
+}
+
+/* 다음 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+.next:hover {
+	transform: translateX(10px);
+}
+/* 
 ul.products-best {
 	display: flex;
 	flex-wrap: wrap;
@@ -8,7 +80,7 @@ ul.products-best {
 ul.products-best > li {
 	width: 30%;
 	margin: 0 auto;
-}
+} */
 
 ul.products-total {
 	display: flex;
