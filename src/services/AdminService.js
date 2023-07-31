@@ -34,6 +34,10 @@ const AdminService = {
 			{ password: 0, addressInformation: 0 }
 		);
 	},
+
+	deleteUser: async userId => {
+		await User.deleteOne({ _id: userId });
+	},
 };
 
 module.exports = AdminService;

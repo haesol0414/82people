@@ -39,14 +39,14 @@ const UserController = {
 		}
 	},
 
-	deleteUser: async (req, res, next) => {
+	withdrawn: async (req, res, next) => {
 		const email = req.currentUserEmail;
 
 		try {
 			if (req.currentUserEmail !== email) {
 				throw new conflictError('토큰의 정보와 값이 다릅니다.');
 			}
-			await UserService.deleteUser(email);
+			await UserService.withdrawn(email);
 
 			return res.status(200).json({
 				message: '회원 탈퇴 성공',

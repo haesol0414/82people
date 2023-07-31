@@ -118,6 +118,26 @@ const AdminController = {
 			next(err);
 		}
 	},
+
+	// [관리자] 회원 삭제
+	deleteUser: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { userId } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			 await AdminService.deleteUser(userId);
+
+			res.status(200).json({
+				message: '[관리자] 회원 삭제 성공'
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
 };
 
 module.exports = AdminController;

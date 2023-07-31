@@ -78,9 +78,22 @@ const getItems = item => {
 		<td name="category">${item.category}</td>
 		<td name="price">${item.price.toLocaleString()}원</td>
 		<td name="number">${item.currentAmount}</td>
-		<td><button class="modify button is-light" name="modify" type="button">UPDATE</button></td>
+		<td><button id="modify-btn" value=${item._id}>UPDATE</button></td>
 	</tr>`;
 
 	items += newItem;
 	itemsList.innerHTML = items;
 };
+
+window.addEventListener('load', () => {
+	const modifyBtns = document.querySelectorAll('#modify-btn');
+
+	for (let i = 0; i < modifyBtns.length; i++) {
+		console.log(modifyBtns);
+
+		modifyBtns[i].addEventListener('click', event => {
+			const itemId = event.target.value;
+			location.href = `/admin/items/itemId/?itemId=${itemId}`;
+		});
+	}
+});

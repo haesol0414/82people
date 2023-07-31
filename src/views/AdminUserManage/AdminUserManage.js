@@ -1,40 +1,12 @@
 import { main } from '/Common/index.js';
 await main();
 
+const hasToken = checkJWTTokenInCookie();
+const userList = document.querySelector('.history-list');
+const userSelectOption = document.querySelector('#user-select');
 let customer = '';
 let admin = '';
 let withdrawn = '';
-// 화면 그려주기
-function getUsers(users) {
-	const newUser = `<li>
-		<article>
-			<div class="info">
-				<div>
-					<span class="date">🦋 ${users.email}</span>
-				</div>
-			</div>
-			<ul class="user-list">
-				<li>
-					<div class="thumbnail">
-						<span>이름 : ${users.name}</span>
-						<span>가입 날짜 : ${new Date(users.createdAt).toLocaleString()}</span>
-						<span>등급 : ${users.role}</span>
-					</div>
-				</li>
-			</ul>
-		</article>
-		</li>`;
-
-	if (users.role === 'customer' && users.isDeleted === false) {
-		customer += newUser;
-	}
-	if (users.isDeleted === true) {
-		withdrawn += newUser;
-	}
-	if (users.role === 'admin') {
-		admin += newUser;
-	}
-}
 
 // 브라우저 쿠키에 토큰이 있는지 확인
 function checkJWTTokenInCookie() {
@@ -51,10 +23,6 @@ function checkJWTTokenInCookie() {
 		}
 	}
 }
-
-const hasToken = checkJWTTokenInCookie();
-const userList = document.querySelector('.history-list');
-const userSelectOption = document.querySelector('#user-select');
 
 if (hasToken) {
 	console.log('JWT 토큰이 쿠키에 존재합니다.');
@@ -75,6 +43,35 @@ if (hasToken) {
 } else {
 	console.log('JWT 토큰이 쿠키에 존재하지 않습니다.');
 	window.location.href = '/';
+}
+
+function getUsers(users) {
+	const newUser = `<li>
+		<article>
+			<div class="info">
+					<span class="email">🦋 ${users.email}</span>
+			</div>
+			<ul class="user-list">
+				<li>
+					<div class="thumbnail">
+						<span>이름 : ${users.name}</span>
+						<span>가입 일자 : ${new Date(users.createdAt).toLocaleString()}</span>
+						<span>등급 : ${users.role}</span>
+					</div>
+				</li>
+			</ul>
+		</article>
+		</li>`;
+
+	if (users.role === 'customer' && users.isDeleted === false) {
+		customer += newUser;
+	}
+	if (users.isDeleted === true) {
+		withdrawn += newUser;
+	}
+	if (users.role === 'admin') {
+		admin += newUser;
+	}
 }
 
 fetch(`/api/admin/users`, {
@@ -101,7 +98,7 @@ fetch(`/api/admin/users`, {
 			userList.innerHTML = customer;
 		} else {
 			userList.innerHTML =
-				'<li style="padding:20px color: #000">회원 목록이 존재하지 않습니다.</li>';
+				'<li style="padding:20px color: #525151">회원 목록이 존재하지 않습니다.</li>';
 		}
 	})
 	.catch(err => console.log(err));
@@ -120,3 +117,32 @@ userSelectOption.addEventListener('change', event => {
 		userList.innerHTML = admin;
 	}
 });
+
+// 회원 삭제 버튼 & API
+// <button type="button" id="user-delete" value=${users._id}>DELETE</button>
+// window.addEventListener('load', () => {
+// 	const userDeleteBtn = document.querySelectorAll('#user-delete');
+// 	console.log(userDeleteBtn);
+
+// 	for (let i = 0; i < userDeleteBtn.length; i++) {
+// 		console.log(userDeleteBtn[i]);
+// 		userDeleteBtn[i].addEventListener('click', event => {
+// 			fetch(`/api/admin/users`, {
+// 				method: 'DELETE',
+// 				headers: {
+// 					'Content-Type': 'application/json',
+// 					Authorization: hasToken,
+// 				},
+// 				body: JSON.stringify({
+// 					userId: event.target.value,
+// 				}),
+// 			})
+// 				.then(res => {
+// 					alert(`회원 삭제`);
+// 					window.location.href = '/admin/users';
+// 					return res.json();
+// 				})
+// 				.catch(err => console.log('err', err));
+// 		});
+// 	}
+// });

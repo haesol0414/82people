@@ -34,4 +34,8 @@ AdminRouter.delete(
 // [관리자] 회원 전체 조회
 AdminRouter.get('/admin/users', VerifyToken, AdminController.viewAllUsers);
 
+
+// // [관리자] 회원 삭제
+AdminRouter.delete('/admin/users', VerifyToken, AdminController.deleteUser);
+
 module.exports = AdminRouter;

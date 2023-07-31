@@ -9,7 +9,7 @@ const UserService = {
 		await User.updateOne({ email }, { password });
 	},
 
-	deleteUser: async email => {
+	withdrawn: async email => {
 		await User.updateOne({ email }, { isDeleted: true });
 	},
 };

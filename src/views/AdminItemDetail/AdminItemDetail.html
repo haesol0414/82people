@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/Common/common.css" />
+		<!-- 작업할 css 연결 -->
+		<link rel="stylesheet" href="./AdminItemDetail.css" />
+		<!-- 우편번호 서비스 -->
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script type="module" src="./AdminItemDetail.js"></script>
+		<title>회원 정보 수정</title>
+	</head>
+	<body>
+		<div id="global-wrap">
+			<header></header>
+			<main>
+				<div class="main-container">
+					<div id="member-info-wrap">
+						<!-- 마이페이지 메뉴바 -->
+						<section class="myparty-menubar">
+							<h2>MyPage</h2>
+							<!-- 회원정보 -->
+							<article class="user-info">
+								<div>
+									<div class="profile" role="img">🦋</div>
+									<p class="user-name"><span id="user-name"></span>님</p>
+								</div>
+								<span class="user-role">Admin</span>
+							</article>
+							<!-- 마이페이지 메뉴 -->
+							<nav>
+								<ul>
+									<li>
+										<a href="/admin/orders">Order List</a>
+									</li>
+									<li>
+										<a href="/admin/users">User List</a>
+									</li>
+									<li class="active">
+										<a href="/admin/items">Item List</a>
+									</li>
+								</ul>
+							</nav>
+						</section>
+						<!-- 회원정보 수정 -->
+						<section class="item-info">
+							<h3>Product Detail</h3>
+							<div id="info">
+								<section>
+									<span>상품명</span>
+									<input class="input" id="ittem-title" />
+								</section>
+								<section>
+									<span>가격</span>
+									<input class="input" id="item-price" />
+								</section>
+								<section>
+									<span>제조사</span>
+									<input class="input" id="item-manufacturer" />
+								</section>
+								<section>
+									<span>상세 설명</span>
+									<input class="input" id="item-description" />
+								</section>
+								<section>
+									<span>수량</span>
+									<input class="input" id="item-current-amount" />
+								</section>
+								<section>
+									<span>판매량</span>
+									<input class="input" id="item-sales-amount" />
+								</section>
+								<!-- <section>
+									<span for="shippingRequest">카테고리</span>
+									<input type="text" id="shippingRequest" name="orderForm" />
+								</section>
+								<section>
+									<span for="shippingRequest">이미지</span>
+									<input type="text" id="shippingRequest" name="orderForm" />
+								</section> -->
+							</div>
+							<!-- <div class="member-out">
+								<a href="/myPage/delete-membership" id="member-out">
+									Delete Account
+								</a>
+							</div> -->
+						</section>
+					</div>
+				</div>
+			</main>
+			<footer></footer>
+		</div>
+	</body>
+</html>
