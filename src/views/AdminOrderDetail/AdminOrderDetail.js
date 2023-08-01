@@ -166,7 +166,7 @@ orderCancleBtn.addEventListener('click', () => {
 	})
 		.then(res => {
 			alert(`주문 내역이 삭제되었습니다`);
-			window.location.href = '/admin';
+			window.location.href = '/admin/orders';
 			return res.json();
 		})
 		.catch(err => console.log('err', err));

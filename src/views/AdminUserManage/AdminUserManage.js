@@ -50,7 +50,9 @@ function getUsers(users) {
 		<article>
 			<div class="info">
 					<span class="email">🦋 ${users.email}</span>
-					<button type="button" id="user-delete" value=${users._id}>DELETE</button>
+					<button type="button" id="user-delete" value=${users._id} name=${
+		users.name
+	}>DELETE</button>
 			</div>
 			<ul class="user-list">
 				<li>
@@ -108,6 +110,7 @@ userSelectOption.addEventListener('change', event => {
 	if (event.target.value === 'customer') {
 		userSelectOption.options[0].setAttribute('selected', true);
 		userList.innerHTML = customer;
+		getDeleteUserBtn();
 	}
 	if (event.target.value === 'withdrawn') {
 		userSelectOption.options[1].setAttribute('selected', true);
@@ -123,27 +126,29 @@ userSelectOption.addEventListener('change', event => {
 
 const getDeleteUserBtn = (window.onload = function () {
 	const userDeleteBtn = document.querySelectorAll('#user-delete');
-	console.log(userDeleteBtn);
 
 	for (let i = 0; i < userDeleteBtn.length; i++) {
-		console.log(userDeleteBtn[i].value);
 		userDeleteBtn[i].onclick = function () {
-			fetch(`/api/admin/users`, {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: hasToken,
-				},
-				body: JSON.stringify({
-					userId: userDeleteBtn[i].value,
-				}),
-			})
-				.then(res => {
-					alert(`회원 삭제`);
-					window.location.href = '/admin/users';
-					return res.json();
+			if (confirm(`${userDeleteBtn[i].name}님을 삭제 하시겠습니까?`)) {
+				fetch(`/api/admin/users`, {
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: hasToken,
+					},
+					body: JSON.stringify({
+						userId: userDeleteBtn[i].value,
+					}),
 				})
-				.catch(err => console.log('err', err));
+					.then(res => {
+						alert('삭제되었습니다.');
+						window.location.href = '/admin/users';
+						return res.json();
+					})
+					.catch(err => console.log('err', err));
+			} else {
+				alert('삭제 취소');
+			}
 		};
 	}
 });
