@@ -50,6 +50,7 @@ function getUsers(users) {
 		<article>
 			<div class="info">
 					<span class="email">🦋 ${users.email}</span>
+					<button type="button" id="user-delete" value=${users._id}>DELETE</button>
 			</div>
 			<ul class="user-list">
 				<li>
@@ -111,38 +112,38 @@ userSelectOption.addEventListener('change', event => {
 	if (event.target.value === 'withdrawn') {
 		userSelectOption.options[1].setAttribute('selected', true);
 		userList.innerHTML = withdrawn;
+		getDeleteUserBtn();
 	}
 	if (event.target.value === 'admin') {
 		userSelectOption.options[2].setAttribute('selected', true);
 		userList.innerHTML = admin;
+		getDeleteUserBtn();
 	}
 });
 
-// 회원 삭제 버튼 & API
-// <button type="button" id="user-delete" value=${users._id}>DELETE</button>
-// window.addEventListener('load', () => {
-// 	const userDeleteBtn = document.querySelectorAll('#user-delete');
-// 	console.log(userDeleteBtn);
+const getDeleteUserBtn = (window.onload = function () {
+	const userDeleteBtn = document.querySelectorAll('#user-delete');
+	console.log(userDeleteBtn);
 
-// 	for (let i = 0; i < userDeleteBtn.length; i++) {
-// 		console.log(userDeleteBtn[i]);
-// 		userDeleteBtn[i].addEventListener('click', event => {
-// 			fetch(`/api/admin/users`, {
-// 				method: 'DELETE',
-// 				headers: {
-// 					'Content-Type': 'application/json',
-// 					Authorization: hasToken,
-// 				},
-// 				body: JSON.stringify({
-// 					userId: event.target.value,
-// 				}),
-// 			})
-// 				.then(res => {
-// 					alert(`회원 삭제`);
-// 					window.location.href = '/admin/users';
-// 					return res.json();
-// 				})
-// 				.catch(err => console.log('err', err));
-// 		});
-// 	}
-// });
+	for (let i = 0; i < userDeleteBtn.length; i++) {
+		console.log(userDeleteBtn[i].value);
+		userDeleteBtn[i].onclick = function () {
+			fetch(`/api/admin/users`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: hasToken,
+				},
+				body: JSON.stringify({
+					userId: userDeleteBtn[i].value,
+				}),
+			})
+				.then(res => {
+					alert(`회원 삭제`);
+					window.location.href = '/admin/users';
+					return res.json();
+				})
+				.catch(err => console.log('err', err));
+		};
+	}
+});
