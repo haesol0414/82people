@@ -61,21 +61,6 @@ const login = e => {
 		.catch(err => {
 			alert(err);
 		});
-
-	// axios
-	// 	.post('/api/login', {
-	// 		email: id.value.trim(),
-	// 		password: pw.value.trim(),
-	// 	})
-	// 	.then(res => {
-	// 		if (res.status === 200) {
-	// 			localStorage.setItem('userToken', res.data.token);
-	// 		}
-	// 		window.location.href = '/';
-	// 	})
-	// 	.catch(err => {
-	// 		alert(err.response.data.message);
-	// 	});
 };
 
 submitBtn.addEventListener('click', login);

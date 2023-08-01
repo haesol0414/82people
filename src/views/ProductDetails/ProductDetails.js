@@ -6,20 +6,18 @@ const productId = new URL(urlStr).searchParams.get('productId');
 
 console.log(productId);
 
-// 장바구니 작업
+// 장바구니 작업용
 const productMaker = document.querySelector('.maker');
 const productTitle = document.querySelector('.product-title');
 const productPrice = document.querySelector('.product-price');
 const productDescription = document.querySelector('.product-detail');
 const productImage = document.querySelector('.product-icon-image>img');
-
 const addToCart = document.querySelector('#add-to-cart');
 const productAmount = document.querySelector('#amount');
 const totalCash = document.querySelector('.product-total-cash');
 
 let imageURL;
 let price;
-let totalPrice;
 
 fetch(`/api/products/${productId}`, {
 	method: 'GET',
@@ -40,13 +38,12 @@ fetch(`/api/products/${productId}`, {
 		alert(err);
 	})
 	.then(({ productInfo }) => {
-		//{ manufacturer, title, price, description }
-
 		productMaker.innerText = productInfo.manufacturer;
 		productTitle.innerText = productInfo.title;
-		productPrice.innerText = `KRW ${Number(productInfo.price).toLocaleString()}`;
+		productPrice.innerText = `KRW ${Number(
+			productInfo.price
+		).toLocaleString()}`;
 		productDescription.innerText = productInfo.description;
-		//  productInfo._id;
 
 		imageURL = productInfo.imageURL[0];
 		productImage.setAttribute('src', imageURL);
@@ -89,5 +86,4 @@ addToCart.addEventListener('click', () => {
 	}
 	localStorage.setItem(PRODUCT_KEY, JSON.stringify(products));
 	alert('장바구니에 추가되었습니다!');
-	// window.location.href = '/cart';
 });

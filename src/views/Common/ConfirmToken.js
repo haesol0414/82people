@@ -32,7 +32,10 @@ function ConfirmToken() {
 				.join('')
 		);
 		const tokenData = JSON.parse(jsonPayload);
-		document.querySelector('#user-name').innerText = tokenData.name;
+
+		if (document.querySelector('#user-name')) {
+			document.querySelector('#user-name').innerText = tokenData.name;
+		}
 
 		return hasToken;
 	} else {
