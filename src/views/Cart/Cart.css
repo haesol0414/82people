@@ -21,6 +21,7 @@ button {
 	cursor: pointer;
 	padding: 7px;
 	color: #6c4e82;
+	font-size: 20px;
 }
 #cart-wrap {
 	width: 80%;
@@ -85,6 +86,8 @@ button {
 }
 .cart-items article {
 	flex: 1;
+	color: #525151;
+	font-size: 20px;
 }
 .cart-items article > * {
 	flex: 1;
@@ -161,6 +164,9 @@ button {
 	font-size: 20px;
 	width: 30px;
 	height: 30px;
+}
+.amount {
+	color: #525151;
 }
 .delete-btn {
 	background-color: #6c4e82;

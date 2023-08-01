@@ -47,7 +47,7 @@ const getItems = item => {
 	itemsList.innerHTML = items;
 };
 
-window.addEventListener('load', () => {
+window.onload = function () {
 	const modifyBtns = document.querySelectorAll('#modify-btn');
 
 	for (let i = 0; i < modifyBtns.length; i++) {
@@ -56,4 +56,4 @@ window.addEventListener('load', () => {
 			location.href = `/admin/items/itemId/?itemId=${itemId}`;
 		});
 	}
-});
+};

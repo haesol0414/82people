@@ -37,7 +37,7 @@ if (hasToken) {
 	addressInfo.innerHTML += addAddressBtn;
 } else {
 	console.log('JWT 토큰이 쿠키에 존재하지 않습니다.');
-	guestModeEl.innerHTML = `<p>비회원 주문 시 주문내역 조회용 비밀번호를 설정해야합니다.</p>
+	guestModeEl.innerHTML = `<p style="color: #525151;">비회원 주문 시 주문내역 조회용 비밀번호를 설정해야합니다.</p>
     <section>
         <label class="require" for="guestPwd">비밀번호</label>
         <input

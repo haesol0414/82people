@@ -13,7 +13,14 @@ h3 {
 	font-weight: 700;
 	margin-bottom: 10px;
 }
-
+h2 {
+	color: #6c4e82;
+}
+p {
+	color: #525151;
+	font-size: 24px;
+	margin-bottom: 50px;
+}
 .cart-step {
 	display: flex;
 	align-items: center;

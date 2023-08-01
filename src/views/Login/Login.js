@@ -49,7 +49,6 @@ const login = e => {
 				window.location.href = '/';
 
 				return res.json();
-				// 로그인 페이지 이동
 			} else {
 				throw new Error('로그인 실패');
 			}
