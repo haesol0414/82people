@@ -48,12 +48,18 @@ const getItems = item => {
 };
 
 window.onload = function () {
-	const modifyBtns = document.querySelectorAll('#modify-btn');
+	const modifyBtn = document.querySelectorAll('#modify-btn');
 
-	for (let i = 0; i < modifyBtns.length; i++) {
-		modifyBtns[i].addEventListener('click', event => {
+	for (let i = 0; i < modifyBtn.length; i++) {
+		modifyBtn[i].addEventListener('click', event => {
 			const itemId = event.target.value;
 			location.href = `/admin/items/itemId/?itemId=${itemId}`;
 		});
 	}
 };
+
+const createBtn = document.querySelector('#createBtn');
+console.log(createBtn);
+createBtn.addEventListener('click', () => {
+	location.href = `/admin/items/addItem`;
+});

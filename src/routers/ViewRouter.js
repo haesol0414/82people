@@ -51,5 +51,9 @@ ViewRouter.use(
 	'/admin/items/:itemId',
 	ViewService.serveStatic('AdminItemDetail')
 );
+ViewRouter.use(
+	'/admin/items/addItem',
+	ViewService.serveStatic('AdminItemDetail')
+);
 
 module.exports = ViewRouter;

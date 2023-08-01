@@ -23,7 +23,18 @@ ProductRouter.patch(
 	ProductController.updateProducts
 );
 
-// [관리자] 상품 삭제
 // [관리자] 상품 추가
+ProductRouter.post(
+	'/admin/items/addItem',
+	VerifyToken,
+	ProductController.addProducts
+);
+
+// [관리자] 상품 삭제
+ProductRouter.delete(
+	'/admin/items',
+	VerifyToken,
+	ProductController.deleteProducts
+);
 
 module.exports = ProductRouter;

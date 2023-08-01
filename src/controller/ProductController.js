@@ -63,6 +63,7 @@ const ProductController = {
 		}
 	},
 
+	// [관리자] 상품 수정
 	updateProducts: async (req, res, next) => {
 		const role = req.currentUserRole;
 		const { itemId } = req.params;
@@ -91,6 +92,46 @@ const ProductController = {
 
 			res.status(200).json({
 				message: '[관리자] 상품 수정 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// [관리자] 상품 추가
+	addProducts: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { productInfo } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await ProductService.addProducts({ productInfo });
+
+			res.status(200).json({
+				message: '[관리자] 상품 추가 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// [관리자] 상품 삭제
+	deleteProducts: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { productId } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await ProductService.deleteProducts(productId);
+
+			res.status(200).json({
+				message: '[관리자] 상품 삭제 성공',
 			});
 		} catch (err) {
 			next(err);

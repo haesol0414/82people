@@ -79,9 +79,6 @@ h3 {
 .item-info {
 	flex: 1;
 }
-#default-address {
-	margin-top: 20px;
-}
 h4 {
 	font-size: 24px;
 	margin-top: 20px;
@@ -89,24 +86,23 @@ h4 {
 	padding-top: 20px;
 	color: #6c4e82;
 }
-.item-info #info > *,
-.item-info #default-address > * {
+.item-info #info span {
+	font-size: 20px;
+}
+.item-info #info > * {
 	display: flex;
 	margin-top: 10px;
 	align-items: center;
 }
-.item-info #info > * > :first-child,
-.item-info #default-address > * > :first-child {
+.item-info #info > * > :first-child {
 	/* flex: 1; */
 	flex-basis: 100px;
 }
-.item-info #info > * > :last-child,
-.item-info #default-address > * > :last-child {
+.item-info #info > * > :last-child {
 	flex: 3;
 	display: flex;
 }
-.item-info #info > * > :last-child > :first-child,
-.item-info #default-address > * > :last-child > :first-child {
+.item-info #info > * > :last-child > :first-child {
 	flex: 1;
 }
 .input {
@@ -116,21 +112,12 @@ h4 {
 	padding: 10px;
 	color: #525151;
 }
-.description-input {
+.long-input {
 	outline: none;
 	background-color: #fff;
 	border: 1px solid #6c4e82;
 	padding: 10px;
 	color: #525151;
-}
-#address-input {
-	display: block !important;
-}
-#address-input > * {
-	display: flex;
-}
-#address-input > * > :first-child {
-	flex: 1;
 }
 .api-btn {
 	margin-bottom: 10px;
@@ -138,11 +125,11 @@ h4 {
 #updateAddress {
 	display: block !important;
 }
-.modify-btn-box {
+.btn-box {
 	float: right;
 	padding: 10px 0;
 }
-#modify-btn {
+button {
 	cursor: pointer;
 	background-color: #6c4e82;
 	color: #fff;

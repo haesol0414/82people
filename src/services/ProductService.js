@@ -41,17 +41,15 @@ const ProductService = {
 		);
 	},
 
-	/*
 	// [관리자] 상품 추가
 	addProducts: async ({ productInfo }) => {
-		await Product.create({ productInfo });
+		await Product.create(productInfo);
 	},
 
 	// [관리자] 상품 삭제
 	deleteProducts: async productId => {
 		await Product.deleteOne({ _id: productId });
 	},
-	*/
 };
 
 module.exports = ProductService;
