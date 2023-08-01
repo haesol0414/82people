@@ -23,15 +23,28 @@ const ProductService = {
 		return product;
 	},
 
+	// [관리자] 상품 수정
+	updateProducts: async (
+		itemId,
+		{ title, price, manufacturer, description, currentAmount, salesAmount }
+	) => {
+		await Product.updateOne(
+			{ _id: itemId },
+			{
+				title: title,
+				price: price,
+				manufacturer: manufacturer,
+				description: description,
+				currentAmount: currentAmount,
+				salesAmount: salesAmount,
+			}
+		);
+	},
+
 	/*
 	// [관리자] 상품 추가
 	addProducts: async ({ productInfo }) => {
 		await Product.create({ productInfo });
-	},
-
-	// [관리자] 상품 수정
-	updateProducts: async productId => {
-		await Product.updateOne({ _id: productId }, {});
 	},
 
 	// [관리자] 상품 삭제

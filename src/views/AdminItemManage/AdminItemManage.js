@@ -89,8 +89,6 @@ window.addEventListener('load', () => {
 	const modifyBtns = document.querySelectorAll('#modify-btn');
 
 	for (let i = 0; i < modifyBtns.length; i++) {
-		console.log(modifyBtns);
-
 		modifyBtns[i].addEventListener('click', event => {
 			const itemId = event.target.value;
 			location.href = `/admin/items/itemId/?itemId=${itemId}`;

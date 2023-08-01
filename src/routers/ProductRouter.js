@@ -1,5 +1,6 @@
 const express = require('express');
 const ProductController = require('../controller/ProductController');
+const VerifyToken = require('../middleware/VerifyToken');
 
 const ProductRouter = express.Router();
 
@@ -16,7 +17,11 @@ ProductRouter.get(
 ProductRouter.get('/products/:productId', ProductController.getProductById);
 
 // [관리자] 상품 수정
-// ProductRouter.put('/admin/items', VerifyToken, ProductController.updateProduct);
+ProductRouter.patch(
+	'/admin/items/:itemId',
+	VerifyToken,
+	ProductController.updateProducts
+);
 
 // [관리자] 상품 삭제
 // [관리자] 상품 추가

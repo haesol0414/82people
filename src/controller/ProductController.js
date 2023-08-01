@@ -62,6 +62,40 @@ const ProductController = {
 			next(err);
 		}
 	},
+
+	updateProducts: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { itemId } = req.params;
+		const {
+			title,
+			price,
+			manufacturer,
+			description,
+			currentAmount,
+			salesAmount,
+		} = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await ProductService.updateProducts(itemId, {
+				title,
+				price,
+				manufacturer,
+				description,
+				currentAmount,
+				salesAmount,
+			});
+
+			res.status(200).json({
+				message: '[관리자] 상품 수정 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
 };
 
 module.exports = ProductController;

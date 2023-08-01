@@ -109,8 +109,14 @@ h4 {
 .item-info #default-address > * > :last-child > :first-child {
 	flex: 1;
 }
-input,
-button {
+.input {
+	outline: none;
+	background-color: #fff;
+	border: 1px solid #6c4e82;
+	padding: 10px;
+	color: #525151;
+}
+.description-input {
 	outline: none;
 	background-color: #fff;
 	border: 1px solid #6c4e82;
@@ -132,9 +138,14 @@ button {
 #updateAddress {
 	display: block !important;
 }
-button {
+.modify-btn-box {
+	float: right;
+	padding: 10px 0;
+}
+#modify-btn {
 	cursor: pointer;
-	color: #6c4e82;
+	background-color: #6c4e82;
+	color: #fff;
 }
 .btn {
 	border-left: none;

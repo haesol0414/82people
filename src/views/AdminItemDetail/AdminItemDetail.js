@@ -48,8 +48,6 @@ const manufacturerInput = document.querySelector('#item-manufacturer');
 const descriptionInput = document.querySelector('#item-description');
 const currentAmountInput = document.querySelector('#item-current-amount');
 const salesAmountInput = document.querySelector('#item-sales-amount');
-// 회원정보수정하는 버튼
-const modifyBotton = document.querySelector('.modify-botton');
 
 const urlStr = window.location.href;
 const itemId = new URL(urlStr).searchParams.get('itemId');
@@ -88,26 +86,31 @@ fetch(`/api/products/${itemId}`, {
 		salesAmountInput.value = salesAmount;
 	});
 
-// 회원정보수정 버튼을 클릭했을 떄
-// modifyBotton.addEventListener('click', () => {
-// 	// 확인된 토큰으로 서버에게 수정 요청보내기
-// 	fetch('/api/users', {
-// 		method: 'PATCH',
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 			Authorization: hasToken,
-// 		},
-// 		body: JSON.stringify({
-// 			email: receiverEmailInput.value,
-// 			password: receiverPasswordInput.value,
-// 			address: '',
-// 		}),
-// 	})
-// 		.then(res => res.json())
-// 		.catch(err => alert(err))
-// 		.then(json => {
-// 			// console.log(json);
-// 			alert(json.message);
-// 		})
-// 		.catch(err => alert(err));
-// });
+// 상품 수정
+const modifyBtn = document.querySelector('#modify-btn');
+console.log(modifyBtn)
+modifyBtn.addEventListener('click', () => {
+	console.log(currentAmountInput.value);
+	console.log(itemId);
+	fetch(`/api/admin/items/${itemId}`, {
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: hasToken,
+		},
+		body: JSON.stringify({
+			title: titleInput.value,
+			price: priceInput.value,
+			manufacturer: manufacturerInput.value,
+			description: descriptionInput.value,
+			currentAmount: currentAmountInput.value,
+			salesAmount: salesAmountInput.value,
+		}),
+	})
+		.then(res => res.json())
+		.catch(err => alert(err))
+		.then(json => {
+			alert(json.message);
+		})
+		.catch(err => alert(err));
+});
