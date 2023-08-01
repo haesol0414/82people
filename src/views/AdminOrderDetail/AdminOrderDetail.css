@@ -27,6 +27,9 @@ button {
 	font-size: inherit;
 	cursor: pointer;
 }
+p {
+	color: #6c4e82;
+}
 #member-info-wrap > section {
 	padding: 30px;
 }

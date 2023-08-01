@@ -8,6 +8,7 @@ const orderNumber = document.querySelector('#order-number');
 const orderuser = document.querySelector('#order-user');
 const orderDate = document.querySelector('.date');
 const orderAddress = document.querySelector('#address');
+const orderDetailAddress = document.querySelector('#address-detail');
 const orderPhone = document.querySelector('#phone');
 const orderRecipient = document.querySelector('#recipient');
 const orderShippingRequest = document.querySelector('#shippingRequest');
@@ -36,6 +37,8 @@ fetch(`/api/admin/orders/${orderId}`, {
 			orderDetails.addressInformation.shippingRequest;
 		orderPhone.innerHTML = orderDetails.addressInformation.phone;
 		orderAddress.innerHTML = orderDetails.addressInformation.address;
+		orderDetailAddress.innerHTML =
+			orderDetails.addressInformation.detailAddress;
 		orderShippingPrice.innerHTML = `${Number(
 			orderDetails.totalPrice.shippingPrice
 		).toLocaleString()} 원`;
