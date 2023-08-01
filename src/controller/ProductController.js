@@ -26,11 +26,11 @@ const ProductController = {
 
 	// 카테고리별 상품 요청 및 응답
 	getProductsByCategory: async (req, res, next) => {
-		const { category } = req.params;
+		const { categoryId } = req.params;
 
 		try {
 			const categoryProducts = await ProductService.getProductsByCategory(
-				category
+				categoryId
 			);
 
 			res.status(200).json({

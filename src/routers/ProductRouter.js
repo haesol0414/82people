@@ -38,6 +38,6 @@ ProductRouter.delete(
 );
 
 // 카테고리 조회
-ProductRouter.get('/admin/category', ProductController.getCategory);
+ProductRouter.get('/category', ProductController.getCategory);
 
 module.exports = ProductRouter;

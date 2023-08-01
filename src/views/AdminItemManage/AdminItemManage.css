@@ -18,6 +18,18 @@ h3 {
 	color: #6c4e82;
 	margin-bottom: 29px;
 }
+.title-box {
+	display: flex;
+	justify-content: space-between;
+}
+.title-box .category-link {
+	font-size: 24px;
+	color: #6c4e82;
+	margin-bottom: 29px;
+}
+.title-box .category-link:hover {
+	color: #cbb5e5;
+}
 #member-info-wrap > section {
 	padding: 30px;
 }

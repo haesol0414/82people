@@ -2,33 +2,11 @@ import { main } from '/Common/index.js';
 await main();
 
 const products = document.querySelector('.icons');
-const categoryTag = document.querySelector('.category');
+// const categoryTag = document.querySelector('.category');
 const urlStr = window.location.href;
-const category = new URL(urlStr).searchParams.get('category');
-let categoryTitle;
+const categoryId = new URL(urlStr).searchParams.get('category');
 
-switch (category) {
-	case 'Christmas':
-		categoryTitle = 'Ring';
-		break;
-	case 'newYear':
-		categoryTitle = 'Necklace';
-		break;
-	case 'birthDay':
-		categoryTitle = 'Earring';
-		break;
-	case 'Halloween':
-		categoryTitle = 'Bracelet';
-		break;
-	case 'partySet':
-		categoryTitle = 'Jewelry set';
-		break;
-	default:
-		categoryTitle = '잘못된 접근입니다.';
-}
-categoryTag.innerHTML = categoryTitle;
-
-fetch(`/api/products/category/${category}`, {
+fetch(`/api/products/category/${categoryId}`, {
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application/json',

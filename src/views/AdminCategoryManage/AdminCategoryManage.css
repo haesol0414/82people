@@ -15,6 +15,14 @@ h2 {
 h3 {
 	font-size: 24px;
 	color: #6c4e82;
+	margin-bottom: 29px;
+}
+h4 {
+	font-size: 24px;
+	margin-top: 20px;
+	border-top: 1px solid;
+	padding-top: 20px;
+	color: #6c4e82;
 }
 #member-info-wrap > section {
 	padding: 30px;
@@ -76,34 +84,15 @@ h3 {
 	text-decoration: none;
 	color: #6c4e82;
 }
-.item-info {
+.category-info {
 	flex: 1;
 }
-h4 {
+#info .category-list {
 	font-size: 24px;
-	margin-top: 20px;
-	border-top: 1px solid;
-	padding-top: 20px;
 	color: #6c4e82;
-}
-.item-info #info span {
-	font-size: 20px;
-}
-.item-info #info > * {
+	margin-bottom: 20px;
 	display: flex;
-	margin-top: 10px;
-	align-items: center;
-}
-.item-info #info > * > :first-child {
-	/* flex: 1; */
-	flex-basis: 100px;
-}
-.item-info #info > * > :last-child {
-	flex: 3;
-	display: flex;
-}
-.item-info #info > * > :last-child > :first-child {
-	flex: 1;
+	justify-content: space-between;
 }
 .input {
 	outline: none;
@@ -112,28 +101,10 @@ h4 {
 	padding: 10px;
 	color: #525151;
 }
-.long-input {
-	outline: none;
-	background-color: #fff;
-	border: 1px solid #6c4e82;
-	padding: 10px;
-	color: #525151;
-}
-.api-btn {
-	margin-bottom: 10px;
-}
-.btn-box {
-	float: right;
-	padding: 10px 0;
-}
 button {
 	cursor: pointer;
 	background-color: #6c4e82;
 	color: #fff;
-}
-.btn {
-	border-left: none;
-	color: #6c4e82;
 }
 input:disabled {
 	background-color: #eee;

@@ -1,3 +1,4 @@
+const Category = require('../db/models/CategoryModel');
 const Product = require('../db/models/ProductModel');
 
 const ProductService = {
@@ -12,8 +13,8 @@ const ProductService = {
 	},
 
 	// 카테고리별 제품 조회
-	getProductsByCategory: async category => {
-		return await Product.find({ category: category });
+	getProductsByCategory: async categoryId => {
+		return await Product.find({ category: categoryId }).populate('name');
 	},
 
 	// 상품 상세 조회
@@ -49,6 +50,11 @@ const ProductService = {
 	// [관리자] 상품 삭제
 	deleteProducts: async productId => {
 		await Product.deleteOne({ _id: productId });
+	},
+
+	// 카테고리 조회
+	getCategory: async () => {
+		return await Category.find({});
 	},
 };
 

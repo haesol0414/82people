@@ -17,7 +17,6 @@ const createBtn = document.querySelector('#create-btn');
 const urlStr = window.location.href;
 const itemId = new URL(urlStr).searchParams.get('itemId');
 
-// 처음 페이지 접속 시
 if (itemId) {
 	createBtn.style.display = 'none';
 
