@@ -37,4 +37,7 @@ ProductRouter.delete(
 	ProductController.deleteProducts
 );
 
+// 카테고리 조회
+ProductRouter.get('/admin/category', ProductController.getCategory);
+
 module.exports = ProductRouter;

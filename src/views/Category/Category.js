@@ -6,7 +6,6 @@ const categoryTag = document.querySelector('.category');
 const urlStr = window.location.href;
 const category = new URL(urlStr).searchParams.get('category');
 let categoryTitle;
-// console.log(category);
 
 switch (category) {
 	case 'Christmas':

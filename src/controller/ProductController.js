@@ -137,6 +137,20 @@ const ProductController = {
 			next(err);
 		}
 	},
+
+	// 카테고리 조회
+	getCategory: async (req, res, next) => {
+		try {
+			const allCategory = await ProductService.getCategory();
+
+			res.status(200).json({
+				message: '[관리자] 상품 삭제 성공',
+				allCategory: allCategory,
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
 };
 
 module.exports = ProductController;
