@@ -104,7 +104,6 @@ input {
 .create-box {
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 20px;
 }
 button {
 	cursor: pointer;
@@ -113,4 +112,9 @@ button {
 }
 input:disabled {
 	background-color: #eee;
+}
+.delete-modify-box {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
 }

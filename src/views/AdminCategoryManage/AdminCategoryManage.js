@@ -14,8 +14,7 @@ function getCategory(category) {
 	<li class="category-list">
 		<span>${category.name}</span>
 		<div>
-			<button id="modify-btn" value="${category.name}">수정</button>
-			<button id="delete-btn" value="${category.name}">삭제</button>
+			<input type="radio" name="category" value="${category.name}">
 		</div>
 	</li>`;
 
@@ -70,29 +69,65 @@ createBtn.addEventListener('click', () => {
 		.catch(err => alert(err));
 });
 
-window.onload = function () {
-	// 카테고리 삭제 버튼
-	const deleteBtn = document.querySelectorAll('#delete-btn');
+// 카테고리 삭제 버튼
+const deleteBtn = document.querySelector('#delete-btn');
 
-	for (let i = 0; i < deleteBtn.length; i++) {
-		deleteBtn[i].addEventListener('click', event => {
-			fetch(`/api/admin/category`, {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: hasToken,
-				},
-				body: JSON.stringify({
-					categoryName: event.target.value,
-				}),
+function deleteCategory() {
+	const radios = document.querySelectorAll("input[type='radio']");
+	let categoryName = '';
+
+	radios.forEach(function (radio) {
+		if (radio.checked) {
+			categoryName = radio.value;
+		}
+	});
+
+	if (confirm(`${categoryName} 카테고리를 삭제 하시겠습니까?`)) {
+		fetch(`/api/admin/category`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: hasToken,
+			},
+			body: JSON.stringify({
+				categoryName: categoryName,
+			}),
+		})
+			.then(res => res.json())
+			.catch(err => alert(err))
+			.then(json => {
+				alert(json.message);
+				window.location.reload();
 			})
-				.then(res => res.json())
-				.catch(err => alert(err))
-				.then(json => {
-					alert(json.message);
-					window.location.reload();
-				})
-				.catch(err => alert(err));
-		});
+			.catch(err => alert(err));
 	}
-};
+}
+
+deleteBtn.addEventListener('click', deleteCategory);
+
+// window.onload = function () {
+// 	// 카테고리 삭제 버튼
+// 	const deleteBtn = document.querySelectorAll('#delete-btn');
+
+// 	for (let i = 0; i < deleteBtn.length; i++) {
+// 		deleteBtn[i].addEventListener('click', event => {
+// fetch(`/api/admin/category`, {
+// 	method: 'DELETE',
+// 	headers: {
+// 		'Content-Type': 'application/json',
+// 		Authorization: hasToken,
+// 	},
+// 	body: JSON.stringify({
+// 		categoryName: event.target.value,
+// 	}),
+// })
+// 	.then(res => res.json())
+// 	.catch(err => alert(err))
+// 	.then(json => {
+// 		alert(json.message);
+// 		window.location.reload();
+// 	})
+// 	.catch(err => alert(err));
+// 		});
+// 	}
+// };

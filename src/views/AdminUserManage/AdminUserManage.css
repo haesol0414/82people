@@ -139,19 +139,13 @@ h3 {
 .field > * > *:last-child {
 	flex: 3;
 }
-
 .user-select-box {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 10px;
 }
-
 #user-delete {
 	color: #fff;
 	background-color: #6c4e82;
 	cursor: pointer;
-	margin-bottom: 6px;
-}
-
-#user-select {
-	margin-bottom: 6px;
 }
