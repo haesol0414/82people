@@ -26,15 +26,15 @@ const ProductController = {
 
 	// 카테고리별 상품 요청 및 응답
 	getProductsByCategory: async (req, res, next) => {
-		const { categoryId } = req.params;
+		const { category } = req.params;
 
 		try {
 			const categoryProducts = await ProductService.getProductsByCategory(
-				categoryId
+				category
 			);
 
 			res.status(200).json({
-				message: `${category} 카테고리 제품 조회 성공`,
+				message: '카테고리 제품 조회 성공',
 				categoryProducts: categoryProducts,
 			});
 		} catch (err) {

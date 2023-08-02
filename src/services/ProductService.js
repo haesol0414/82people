@@ -13,8 +13,10 @@ const ProductService = {
 	},
 
 	// 카테고리별 제품 조회
-	getProductsByCategory: async categoryId => {
-		return await Product.find({ category: categoryId }).populate('name');
+	getProductsByCategory: async category => {
+		const categoryId = await Category.findOne({ name: category });
+
+		return await Product.find({ category: categoryId });
 	},
 
 	// 상품 상세 조회

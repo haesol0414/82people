@@ -40,20 +40,20 @@ function renderHeader() {
           <nav>
           <ul>
               <li>
-              <a href="/products/category/?category=birthDay">Earring</a>
+              <a href="/products/category/?category=Earring">Earring</a>
               </li>
               <li>
-                <a href="/products/category/?category=newYear">Necklace</a>
+                <a href="/products/category/?category=Necklace">Necklace</a>
               </li>
               <li>
-                <a href="/products/category/?category=Christmas">
+                <a href="/products/category/?category=Bracelet">
                 Bracelet</a>
               </li>
               <li>
-                <a href="/products/category/?category=Halloween">Ring</a>
+                <a href="/products/category/?category=Ring">Ring</a>
               </li>
               <li>
-                <a href="/products/category/?category=partySet">Jewelry set</a>
+                <a href="/products/category/?category=JewelrySet">Jewelry set</a>
               </li>
           </ul>
           </nav>
@@ -97,20 +97,20 @@ function renderHeader() {
           <nav>
             <ul>
             <li>
-            <a href="/products/category/?category=birthDay">Earring</a>
+            <a href="/products/category/?category=Earring">Earring</a>
           </li>
           <li>
-            <a href="/products/category/?category=newYear">Necklace</a>
+            <a href="/products/category/?category=Necklace">Necklace</a>
           </li>
           <li>
-            <a href="/products/category/?category=Christmas">
+            <a href="/products/category/?category=Bracelet">
             Bracelet</a>
           </li>
           <li>
-            <a href="/products/category/?category=Halloween">Ring</a>
+            <a href="/products/category/?category=Ring">Ring</a>
           </li>
           <li>
-            <a href="/products/category/?category=partySet">Jewelry set</a>
+            <a href="/products/category/?category=JewelrySet">Jewelry set</a>
           </li>
             </ul>
           </nav>
