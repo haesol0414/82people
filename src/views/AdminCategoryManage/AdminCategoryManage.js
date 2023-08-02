@@ -2,8 +2,10 @@ import { main, ConfirmToken } from '/Common/index.js';
 await main();
 const hasToken = await ConfirmToken();
 
-const createBtn = document.querySelectorAll('#create-btn');
-const deleteBtn = document.querySelectorAll('#delete-btn');
+// const deleteBtn = document.querySelectorAll('#delete-btn');
+// const modifyBtn = document.querySelectorAll('#modify-btn');
+const createBtn = document.querySelector('#create-btn');
+const categoryInput = document.querySelector('#category-input');
 const categoryList = document.querySelector('.category-box');
 
 let categories = '';
@@ -48,30 +50,23 @@ fetch(`/api/category`, {
 	})
 	.catch(err => console.log(err));
 
+console.log(createBtn);
 // 카테고리 추가 버튼
 createBtn.addEventListener('click', () => {
-	fetch(`/api/category`, {
-		method: 'PATCH',
+	fetch(`/api/admin/category`, {
+		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: hasToken,
 		},
 		body: JSON.stringify({
-			title: titleInput.value,
-			price: priceInput.value,
-			manufacturer: manufacturerInput.value,
-			description: descriptionInput.value,
-			currentAmount: currentAmountInput.value,
-			salesAmount: salesAmountInput.value,
-			category: categoryInput.value,
-			imageURL: imgInput.value,
+			categoryName: categoryInput.value,
 		}),
 	})
-		.then(res => res.json())
-		.catch(err => alert(err))
-		.then(json => {
-			alert(json.message);
+		.then(res => {
 			window.location.reload();
+
+			return res.json();
 		})
 		.catch(err => alert(err));
 });

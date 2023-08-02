@@ -95,15 +95,20 @@ h4 {
 	align-items: center;
 }
 .item-info #info > * > :first-child {
-	/* flex: 1; */
 	flex-basis: 100px;
 }
 .item-info #info > * > :last-child {
 	flex: 3;
 	display: flex;
 }
-.item-info #info > * > :last-child > :first-child {
-	flex: 1;
+.category {
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+}
+.category li {
+	margin-left: 0;
+	padding-left: 0;
 }
 .input {
 	outline: none;

@@ -74,6 +74,8 @@ const ProductController = {
 			description,
 			currentAmount,
 			salesAmount,
+			category,
+			imageURL,
 		} = req.body;
 
 		try {
@@ -88,6 +90,8 @@ const ProductController = {
 				description,
 				currentAmount,
 				salesAmount,
+				category,
+				imageURL,
 			});
 
 			res.status(200).json({
@@ -156,13 +160,13 @@ const ProductController = {
 	addCategory: async (req, res, next) => {
 		const role = req.currentUserRole;
 		const { categoryName } = req.body;
-
+		console.log(categoryName);
 		try {
 			if (role !== 'admin') {
 				throw new badRequestError('관리자만 접근이 가능합니다.');
 			}
 
-			await ProductService.addCategory();
+			await ProductService.addCategory({ categoryName });
 
 			res.status(200).json({
 				message: '[관리자] 카테고리 추가 성공',

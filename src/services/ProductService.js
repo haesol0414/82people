@@ -27,7 +27,16 @@ const ProductService = {
 	// [관리자] 상품 수정
 	updateProducts: async (
 		itemId,
-		{ title, price, manufacturer, description, currentAmount, salesAmount }
+		{
+			title,
+			price,
+			manufacturer,
+			description,
+			currentAmount,
+			salesAmount,
+			category,
+			imageURL,
+		}
 	) => {
 		await Product.updateOne(
 			{ _id: itemId },
@@ -38,6 +47,8 @@ const ProductService = {
 				description: description,
 				currentAmount: currentAmount,
 				salesAmount: salesAmount,
+				category: category,
+				imageURL: imageURL,
 			}
 		);
 	},
@@ -58,8 +69,8 @@ const ProductService = {
 	},
 
 	// [관리자] 카테고리 추가
-	addCategory: async categoryName => {
-		await Category.create(categoryName);
+	addCategory: async ({ categoryName }) => {
+		await Category.create({ name: categoryName });
 	},
 };
 
