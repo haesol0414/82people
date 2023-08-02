@@ -56,6 +56,11 @@ const ProductService = {
 	getCategory: async () => {
 		return await Category.find({});
 	},
+
+	// [관리자] 카테고리 추가
+	addCategory: async categoryName => {
+		await Category.create(categoryName);
+	},
 };
 
 module.exports = ProductService;

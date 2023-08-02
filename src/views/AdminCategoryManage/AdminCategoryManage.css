@@ -101,6 +101,11 @@ h4 {
 	padding: 10px;
 	color: #525151;
 }
+.btn-box {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
 button {
 	cursor: pointer;
 	background-color: #6c4e82;
