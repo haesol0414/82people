@@ -77,7 +77,10 @@ fetch(`/api/products/category/${categoryName}`, {
 	})
 	.then(({ categoryProducts }) => {
 		console.log(categoryProducts);
-
-		products.innerHTML = categoryProducts.map(getCategoryProducts).join('');
+		if (categoryProducts.length !== 0) {
+			products.innerHTML = categoryProducts.map(getCategoryProducts).join('');
+		} else {
+			products.innerHTML = `<span class="empty-items">THIS CATEGORY IS EMPTY 🫧</span>`;
+		}
 	})
 	.catch(err => console.log(err));
