@@ -175,6 +175,26 @@ const ProductController = {
 			next(err);
 		}
 	},
+
+	// [관리자] 카테고리 추가
+	deleteCategory: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { categoryName } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await ProductService.deleteCategory({ categoryName });
+
+			res.status(200).json({
+				message: '[관리자] 카테고리 삭제 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
 };
 
 module.exports = ProductController;

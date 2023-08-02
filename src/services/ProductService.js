@@ -4,7 +4,7 @@ const Product = require('../db/models/ProductModel');
 const ProductService = {
 	// 전체 상품 조회
 	getAllProducts: async () => {
-		return await Product.find({}).sort({ _id: -1 });
+		return await Product.find({}).sort({ _id: -1 }).populate('category');
 	},
 
 	// 인기 상품 3개까지 조회
@@ -73,6 +73,10 @@ const ProductService = {
 	// [관리자] 카테고리 추가
 	addCategory: async ({ categoryName }) => {
 		await Category.create({ name: categoryName });
+	},
+
+	deleteCategory: async ({ categoryName }) => {
+		await Category.deleteOne({ name: categoryName });
 	},
 };
 

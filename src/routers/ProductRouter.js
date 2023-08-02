@@ -39,13 +39,19 @@ ProductRouter.delete(
 
 // 카테고리 조회
 ProductRouter.get('/category', ProductController.getCategory);
-// 카테고리 추가
+
+// [관리자] 카테고리 추가
 ProductRouter.post(
 	'/admin/category',
 	VerifyToken,
 	ProductController.addCategory
 );
-// 카테고리 삭제
-// ProductRouter.delete('/admin/category', ProductController.getCategory);
+
+// [관리자] 카테고리 삭제
+ProductRouter.delete(
+	'/admin/category',
+	VerifyToken,
+	ProductController.deleteCategory
+);
 
 module.exports = ProductRouter;

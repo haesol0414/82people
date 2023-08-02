@@ -14,8 +14,8 @@ function getCategory(category) {
 	<li class="category-list">
 		<span>${category.name}</span>
 		<div>
-			<button id="modify-btn">수정</button>
-			<button id="delete-btn">삭제</button>
+			<button id="modify-btn" value="${category.name}">수정</button>
+			<button id="delete-btn" value="${category.name}">삭제</button>
 		</div>
 	</li>`;
 
@@ -50,7 +50,6 @@ fetch(`/api/category`, {
 	})
 	.catch(err => console.log(err));
 
-console.log(createBtn);
 // 카테고리 추가 버튼
 createBtn.addEventListener('click', () => {
 	fetch(`/api/admin/category`, {
@@ -71,32 +70,29 @@ createBtn.addEventListener('click', () => {
 		.catch(err => alert(err));
 });
 
-// // 카테고리 삭제 버튼
-// createBtn.addEventListener('click', () => {
-// 	fetch(`/api/admin/items/addItem`, {
-// 		method: 'POST',
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 			Authorization: hasToken,
-// 		},
-// 		body: JSON.stringify({
-// 			productInfo: {
-// 				title: titleInput.value,
-// 				price: priceInput.value,
-// 				manufacturer: manufacturerInput.value,
-// 				description: descriptionInput.value,
-// 				currentAmount: currentAmountInput.value,
-// 				salesAmount: salesAmountInput.value,
-// 				category: categoryInput.value,
-// 				imageURL: imgInput.value,
-// 			},
-// 		}),
-// 	})
-// 		.then(res => res.json())
-// 		.catch(err => alert(err))
-// 		.then(json => {
-// 			alert(json.message);
-// 			location.href = `/admin/items`;
-// 		})
-// 		.catch(err => alert(err));
-// });
+window.onload = function () {
+	// 카테고리 삭제 버튼
+	const deleteBtn = document.querySelectorAll('#delete-btn');
+
+	for (let i = 0; i < deleteBtn.length; i++) {
+		deleteBtn[i].addEventListener('click', event => {
+			fetch(`/api/admin/category`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: hasToken,
+				},
+				body: JSON.stringify({
+					categoryName: event.target.value,
+				}),
+			})
+				.then(res => res.json())
+				.catch(err => alert(err))
+				.then(json => {
+					alert(json.message);
+					window.location.reload();
+				})
+				.catch(err => alert(err));
+		});
+	}
+};

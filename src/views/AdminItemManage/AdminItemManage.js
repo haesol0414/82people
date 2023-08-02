@@ -40,7 +40,7 @@ const getItems = item => {
 		</div>
 		</td>
 		<td name="name">${item.title}</td>
-		<td name="category">${item.category}</td>
+		<td name="category">${item.category.name}</td>
 		<td name="price">${item.price.toLocaleString()}원</td>
 		<td name="number">${item.currentAmount}</td>
 		<td><button id="modify-btn" value=${item._id}>UPDATE</button></td>
