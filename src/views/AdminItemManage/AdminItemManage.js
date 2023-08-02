@@ -43,7 +43,9 @@ const getItems = item => {
 		<td name="category">${item.category.name}</td>
 		<td name="price">${item.price.toLocaleString()}원</td>
 		<td name="number">${item.currentAmount}</td>
-		<td><button id="modify-btn" value=${item._id}>UPDATE</button></td>
+		<td><a class="update-link" href="/admin/items/itemId/?itemId=${
+			item._id
+		}">UPDATE</a></td>
 	</tr>`;
 
 	items += newItem;
@@ -100,14 +102,14 @@ function deleteSelectedRows() {
 
 deleteBtn.addEventListener('click', deleteSelectedRows);
 
-window.onload = function () {
-	// 상품 수정 버튼
-	const modifyBtn = document.querySelectorAll('#modify-btn');
+// window.onload = function () {
+// 	// UPDATE 버튼
+// 	const modifyBtn = document.querySelectorAll('#modify-btn');
 
-	for (let i = 0; i < modifyBtn.length; i++) {
-		modifyBtn[i].addEventListener('click', event => {
-			const itemId = event.target.value;
-			location.href = `/admin/items/itemId/?itemId=${itemId}`;
-		});
-	}
-};
+// 	for (let i = 0; i < modifyBtn.length; i++) {
+// 		modifyBtn[i].addEventListener('click', event => {
+// 			const itemId = event.target.value;
+// 			location.href = `/admin/items/itemId/?itemId=${itemId}`;
+// 		});
+// 	}
+// };

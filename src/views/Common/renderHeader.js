@@ -74,9 +74,7 @@ function renderHeader() {
 							}">MyPage</a>
             </div>
             <div>
-              <a ${
-								role === 'customer' ? '' : 'style="display:none;"'
-							} href="/cart" >Cart</a>
+              <a href="/cart" >Cart</a>
             </div>
           </div>
         </div>

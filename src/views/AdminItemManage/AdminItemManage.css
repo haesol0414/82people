@@ -128,6 +128,7 @@ h3 {
 button {
 	color: #fff;
 	background-color: #6c4e82;
+	cursor: pointer;
 }
 table.product {
 	text-align: center;
@@ -156,4 +157,15 @@ table.product .img-box {
 table.product .img-box img {
 	width: 100%;
 	height: 100%;
+}
+
+.update-link {
+	color: #fff;
+	border: 2px solid #6c4e82;
+	background-color: #6c4e82;
+	text-decoration: none;
+}
+.update-link:hover {
+	border: 2px solid #cbb5e5;
+	background-color: #cbb5e5;
 }
