@@ -10,8 +10,8 @@ const categoryId = new URL(urlStr).searchParams.get('category');
 const getCategoryProducts = newProduct => {
 	let price =
 		newProduct.currentAmount <= 0
-			? 'SOLD OUT'
-			: 'KRW ' + newProduct.price.toLocaleString();
+		? '🚫 SOLD OUT'
+		: '💎 KRW ' + newProduct.price.toLocaleString();
 
 	return `<li>
 		<a class='icon-img'

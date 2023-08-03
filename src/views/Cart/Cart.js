@@ -274,20 +274,19 @@ function itemUpdate(item) {
 		cartUpdate();
 	});
 	// 수량 직접 입력
-	amountInput.addEventListener('change', e => {
-		e.preventDefault();
-		if (e.target.value < 1) {
-			e.target.value = 1;
-			alert('최소 수량은 1개 입니다!');
-		}
+	// amountInput.addEventListener('change', e => {
+	// 	if (e.target.value < 1) {
+	// 		e.target.value = 1;
+	// 		alert('최소 수량은 1개 입니다!');
+	// 	}
 
-		if (e.target.value > currentAmount) {
-			return alert(`현재 재고 : ${currentAmount}개`);
-		}
+	// 	if (e.target.value > currentAmount) {
+	// 		return alert(`현재 재고 : ${currentAmount}개`);
+	// 	}
 
-		amountValue = Number(e.target.value);
-		products.map(amountCalc);
-		cartUpdate();
-	});
+	// 	amountValue = Number(e.target.value);
+	// 	products.map(amountCalc);
+	// 	cartUpdate();
+	// });
 }
 [...cartItems].map(itemUpdate);

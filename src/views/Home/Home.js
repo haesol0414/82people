@@ -58,8 +58,8 @@ let items = '';
 const getTotalProducts = newProduct => {
 	let price =
 		newProduct.currentAmount <= 0
-			? 'SOLD OUT'
-			: 'KRW ' + newProduct.price.toLocaleString();
+			? '🚫 SOLD OUT'
+			: '💎 KRW ' + newProduct.price.toLocaleString();
 
 	const newItem = `<li>
 		<a class='product-link'
