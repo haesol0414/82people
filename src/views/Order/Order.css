@@ -51,8 +51,9 @@ h2 {
 }
 .cart-items img {
 	width: 100px;
-	height: 80px;
+	height: 100px;
 	background-color: #fff;
+	border-radius: 6px;
 }
 .cart-items article {
 	display: flex;

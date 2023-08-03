@@ -90,24 +90,42 @@ const OrderController = {
 		}
 	},
 
-	// [회원] 주문 상세 조회
+	// 주문 상세 조회
 	checkOrderDetail: async (req, res, next) => {
 		const { orderId } = req.params;
 		const { guestPassword } = req.body;
 
 		try {
-			const orderDetail = await OrderService.checkOrderDetail(orderId);
+			if (!guestPassword) {
+				const orderDetail = await OrderService.checkOrderDetail(orderId);
 
-			if (!orderDetail) {
-				throw new badRequestError(
-					'주문 상세 내역이 존재하지 않습니다. 다시 한 번 확인해주세요.'
+				if (!orderDetail) {
+					throw new badRequestError(
+						'주문 상세 내역이 존재하지 않습니다. 다시 한 번 확인해주세요.'
+					);
+				}
+
+				res.status(200).json({
+					message: '회원 주문 상세 내역 조회 성공',
+					orderDetail: orderDetail,
+				});
+			} else {
+				const orderDetail = await OrderService.checkGuestOrderDetail(
+					orderId,
+					guestPassword
 				);
-			}
 
-			res.status(200).json({
-				message: '주문 상세 내역 조회 성공',
-				orderDetail: orderDetail,
-			});
+				if (!orderDetail) {
+					throw new badRequestError(
+						'주문 상세 내역이 존재하지 않습니다. 주문 번호 또는 비밀번호를 확인해주세요.'
+					);
+				}
+
+				res.status(200).json({
+					message: '비회원 주문 상세 내역 조회 성공',
+					orderDetail: orderDetail,
+				});
+			}
 		} catch (err) {
 			next(err);
 		}

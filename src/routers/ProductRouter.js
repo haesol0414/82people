@@ -7,13 +7,16 @@ const ProductRouter = express.Router();
 // 전체 상품 조회
 ProductRouter.get('/products', ProductController.getAllProducts);
 
-// [사용자] 카테고리별 상품 조회
+// 카테고리별 상품 조회
 ProductRouter.get(
 	'/products/category/:category',
 	ProductController.getProductsByCategory
 );
 
-// [사용자] 상품 상세 조회
+// 카테고리 조회
+ProductRouter.get('/category', ProductController.getCategory);
+
+// 상품 상세 조회
 ProductRouter.get('/products/:productId', ProductController.getProductById);
 
 // [관리자] 상품 수정
@@ -36,9 +39,6 @@ ProductRouter.delete(
 	VerifyToken,
 	ProductController.deleteProducts
 );
-
-// 카테고리 조회
-ProductRouter.get('/category', ProductController.getCategory);
 
 // [관리자] 카테고리 추가
 ProductRouter.post(

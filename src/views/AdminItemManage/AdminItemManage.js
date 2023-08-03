@@ -61,8 +61,7 @@ createBtn.addEventListener('click', () => {
 const deleteBtn = document.getElementById('deleteBtn');
 
 function deleteSelectedRows() {
-	const userConfirm = confirm('선택된 상품을 정말 삭제하시겠습니까?');
-	if (userConfirm) {
+	if (confirm('선택된 상품을 정말 삭제하시겠습니까?')) {
 		let radioes = document.querySelectorAll(
 			".product tbody input[type='radio']"
 		);
@@ -73,6 +72,10 @@ function deleteSelectedRows() {
 				rowsToDelete.push(radio.parentNode.parentNode);
 			}
 		});
+
+		if (rowsToDelete.length === 0) {
+			alert('선택된 항목이 없습니다.');
+		}
 
 		rowsToDelete.forEach(function (row) {
 			row.parentNode.removeChild(row); // 화면에서 삭제
@@ -101,15 +104,3 @@ function deleteSelectedRows() {
 }
 
 deleteBtn.addEventListener('click', deleteSelectedRows);
-
-// window.onload = function () {
-// 	// UPDATE 버튼
-// 	const modifyBtn = document.querySelectorAll('#modify-btn');
-
-// 	for (let i = 0; i < modifyBtn.length; i++) {
-// 		modifyBtn[i].addEventListener('click', event => {
-// 			const itemId = event.target.value;
-// 			location.href = `/admin/items/itemId/?itemId=${itemId}`;
-// 		});
-// 	}
-// };

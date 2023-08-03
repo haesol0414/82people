@@ -22,7 +22,7 @@ orderButton.addEventListener('click', e => {
 			if (res.ok) {
 				return res.json();
 			} else {
-				throw new Error('조회 실패');
+				alert('주문 번호 또는 비밀번호를 확인해 주세요.');
 			}
 		})
 		.catch(err => {

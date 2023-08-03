@@ -95,7 +95,7 @@ function deleteUser() {
 		}
 	});
 
-	if (confirm(`${checkeduserName}님을 삭제 하시겠습니까?`)) {
+	if (checkeduserName && confirm(`${checkeduserName}님을 삭제 하시겠습니까?`)) {
 		fetch(`/api/admin/users`, {
 			method: 'DELETE',
 			headers: {
@@ -112,6 +112,8 @@ function deleteUser() {
 				return res.json();
 			})
 			.catch(err => console.log('err', err));
+	} else {
+		alert('체크된 항목이 없습니다.');
 	}
 }
 

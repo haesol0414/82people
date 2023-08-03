@@ -14,14 +14,7 @@ AdminRouter.get(
 	AdminController.adminCheckOrderDetail
 );
 
-// [관리자] 배송 상태 변경
-AdminRouter.post(
-	'/admin/orders/:orderId',
-	VerifyToken,
-	AdminController.updateShippingStatus
-);
-
-// [관리자] 주문 취소
+// [관리자] 주문 삭제
 AdminRouter.delete(
 	'/admin/orders/:orderId',
 	VerifyToken,
@@ -34,8 +27,13 @@ AdminRouter.delete(
 // [관리자] 회원 전체 조회
 AdminRouter.get('/admin/users', VerifyToken, AdminController.viewAllUsers);
 
-
 // // [관리자] 회원 삭제
 AdminRouter.delete('/admin/users', VerifyToken, AdminController.deleteUser);
 
+// 배송 상태 변경
+AdminRouter.post(
+	'/admin/orders/:orderId',
+	VerifyToken,
+	AdminController.updateShippingStatus
+);
 module.exports = AdminRouter;

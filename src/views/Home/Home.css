@@ -16,7 +16,7 @@
 .slides li img {
 	width: 498px;
 	height: 498px;
-	border-radius: 12px;
+	border-radius: 15px;
 	border: 1px dotted #6c4e82;
 }
 /* 첫 번째 슬라이드 가운데에 정렬하기위해
@@ -117,6 +117,6 @@ a {
 	height: 380px;
 	transform: scale(1);
 	margin-bottom: 20px;
-	border-radius: 12px;
+	border-radius: 15px;
 	border: 1px dotted #6c4e82;
 }

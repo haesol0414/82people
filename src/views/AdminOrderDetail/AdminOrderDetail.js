@@ -55,6 +55,7 @@ fetch(`/api/admin/orders/${orderId}`, {
 
 		if (orderDetails.shippingStatus === '상품 준비 중') {
 			shippingStatusOption.options[0].setAttribute('selected', true);
+			orderCancleBtn.style.display = 'none';
 		}
 		if (orderDetails.shippingStatus === '배송 중') {
 			shippingStatusOption.options[1].setAttribute('selected', true);
@@ -63,6 +64,9 @@ fetch(`/api/admin/orders/${orderId}`, {
 		if (orderDetails.shippingStatus === '배송 완료') {
 			shippingStatusOption.options[2].setAttribute('selected', true);
 			orderCancleBtn.style.display = 'none';
+		}
+		if (orderDetails.shippingStatus === '주문 취소') {
+			shippingStatusOption.options[3].setAttribute('selected', true);
 		}
 	});
 
@@ -121,17 +125,19 @@ shippingStatusOption.addEventListener('change', event => {
 
 // 주문 취소
 orderCancleBtn.addEventListener('click', () => {
-	fetch(`/api/admin/orders/${orderId}`, {
-		method: 'DELETE',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: hasToken,
-		},
-	})
-		.then(res => {
-			alert(`주문 내역이 삭제되었습니다`);
-			window.location.href = '/admin/orders';
-			return res.json();
+	if (confirm('해당 주문 내역을 삭제 하시겠습니까?')) {
+		fetch(`/api/admin/orders/${orderId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: hasToken,
+			},
 		})
-		.catch(err => console.log('err', err));
+			.then(res => {
+				alert(`주문 내역이 삭제되었습니다`);
+				window.location.href = '/admin/orders';
+				return res.json();
+			})
+			.catch(err => console.log('err', err));
+	}
 });

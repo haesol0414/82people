@@ -17,6 +17,11 @@ const ProductService = {
 		return await Product.find({ category: category }).populate('category');
 	},
 
+	// 카테고리 조회
+	getCategory: async () => {
+		return await Category.find({});
+	},
+
 	// 상품 상세 조회
 	getProductById: async productId => {
 		const product = await Product.findOne({ _id: productId }).populate(
@@ -65,19 +70,22 @@ const ProductService = {
 		await Product.deleteOne({ _id: productId });
 	},
 
-	// 카테고리 조회
-	getCategory: async () => {
-		return await Category.find({});
-	},
-
 	// [관리자] 카테고리 추가
 	addCategory: async ({ categoryName }) => {
 		await Category.create({ name: categoryName });
 	},
 
+	// [관리자] 카테고리 삭제
 	deleteCategory: async ({ categoryName }) => {
 		await Category.deleteOne({ name: categoryName });
 	},
+
+	// [관리자] 카테고리 수정
+	// updateCategory: async ({ categoryName }) => {
+	// 	await Category.updateOne({ name: categoryName });
+	// },
+
+	// 다 빼야 할려낭...
 };
 
 module.exports = ProductService;

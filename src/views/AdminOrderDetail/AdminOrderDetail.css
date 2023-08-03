@@ -111,7 +111,7 @@ p {
 	border-bottom: 1px solid #6c4e82;
 }
 .products-list {
-	padding: 20px;
+	padding: 10px 20px;
 }
 .products-list li {
 	display: flex;

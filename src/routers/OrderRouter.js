@@ -30,4 +30,11 @@ OrderRouter.get(
 // [회원 || 비회원] 주문 상세 내역 조회
 OrderRouter.post('/orders/history/:orderId', OrderController.checkOrderDetail);
 
+// [회원] 주문 취소
+// OrderRouter.patch(
+// 	'/orders/history/:orderId',
+// 	VerifyToken,
+// 	OrderController.cancleOrder
+// );
+
 module.exports = OrderRouter;

@@ -40,7 +40,7 @@ checkBox.addEventListener('click', () => {
 	if (checkBox.checked === true) {
 		products.innerHTML = notSoldOut;
 		if (!notSoldOut) {
-			products.innerHTML = `<span class="empty-items" style="color:red">
+			products.innerHTML = `<span style="color:red; font-size: 25px; margin: 20px 0 40px 0;">
 			All products are out of stock 🙀</span>`;
 		}
 	} else {
