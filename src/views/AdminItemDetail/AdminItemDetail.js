@@ -157,7 +157,6 @@ window.addEventListener('load', function () {
 					categoryId = category.value;
 				}
 			});
-			console.log(categoryId);
 
 			fetch(`/api/admin/items/addItem`, {
 				method: 'POST',

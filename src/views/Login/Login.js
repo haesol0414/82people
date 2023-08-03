@@ -29,9 +29,6 @@ const setCookie = (userToken, token, days) => {
 const login = e => {
 	e.preventDefault();
 
-	console.log(id.value);
-	console.log(pw.value);
-
 	fetch('/api/login', {
 		method: 'POST',
 		headers: {
