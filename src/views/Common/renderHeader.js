@@ -1,35 +1,54 @@
 function renderHeader() {
 	const header = document.querySelector('header');
 
-	// 로그인 했을때 헤더
+	// 카테고리 목록(_id,name) 받아옴
 
-	let token;
-	if (document.cookie) {
-		token = document.cookie
-			.split(';')
-			.find(row => row.startsWith('userToken'))
-			.split('=')[1];
-	}
+	fetch(`/api/category`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	})
+		.then(res => {
+			if (res.ok) {
+				return res.json();
+			} else {
+				throw new Error('조회 실패');
+			}
+		})
+		.catch(err => {
+			alert(err);
+		})
+		.then(({ allCategory }) => {
+			console.log(allCategory);
+			console.log(allCategory[0]._id);
+			// 로그인 했을때 헤더
+			let token;
+			if (document.cookie) {
+				token = document.cookie
+					.split(';')
+					.find(row => row.startsWith('userToken'))
+					.split('=')[1];
+			}
 
-	if (token) {
-		const parseJwt = token => {
-			var base64Url = token.split('.')[1];
-			var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-			var jsonPayload = decodeURIComponent(
-				atob(base64)
-					.split('')
-					.map(function (c) {
-						return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-					})
-					.join('')
-			);
+			if (token) {
+				const parseJwt = token => {
+					var base64Url = token.split('.')[1];
+					var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+					var jsonPayload = decodeURIComponent(
+						atob(base64)
+							.split('')
+							.map(function (c) {
+								return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+							})
+							.join('')
+					);
 
-			return JSON.parse(jsonPayload);
-		};
+					return JSON.parse(jsonPayload);
+				};
 
-		const { name, role } = parseJwt(token);
-
-		header.innerHTML = `
+				const { name, role } = parseJwt(token);
+				header.innerHTML = `
       <div class="header-container">
         <div class="header-group">
           <div class="logo">
@@ -39,22 +58,30 @@ function renderHeader() {
           </div>
           <nav>
           <ul>
-              <li>
-              <a href="/products/category/?category=Earring">Earring</a>
-              </li>
-              <li>
-                <a href="/products/category/?category=Necklace">Necklace</a>
-              </li>
-              <li>
-                <a href="/products/category/?category=Bracelet">
-                Bracelet</a>
-              </li>
-              <li>
-                <a href="/products/category/?category=Ring">Ring</a>
-              </li>
-              <li>
-                <a href="/products/category/?category=JewelrySet">Jewelry set</a>
-              </li>
+            <li>
+              <a href="/products/category/?category=${allCategory[0]._id}">${
+					allCategory[0].name
+				}</a>
+            </li>
+            <li>
+              <a href="/products/category/?category=${allCategory[1]._id}">${
+					allCategory[1].name
+				}</a>
+            </li>
+            <li>
+              <a href="/products/category/?category=${allCategory[2]._id}">
+              ${allCategory[2].name}</a>
+            </li>
+            <li>
+              <a href="/products/category/?category=${allCategory[3]._id}">${
+					allCategory[3].name
+				}</a>
+            </li>
+            <li>
+              <a href="/products/category/?category=${allCategory[4]._id}">${
+					allCategory[4].name
+				}</a>
+            </li>
           </ul>
           </nav>
           <div class="menu-group">
@@ -81,10 +108,10 @@ function renderHeader() {
       </div>
     </div>
       `;
-	}
-	// 로그아웃 했을때 헤더
-	else {
-		header.innerHTML = `
+			}
+			// 로그아웃 했을때 헤더
+			else {
+				header.innerHTML = `
       <div class="header-container">
         <div class="header-group">
           <div class="logo">
@@ -95,20 +122,20 @@ function renderHeader() {
           <nav>
             <ul>
             <li>
-            <a href="/products/category/?category=Earring">Earring</a>
+            <a href="/products/category/?category=${allCategory[0]._id}">${allCategory[0].name}</a>
           </li>
           <li>
-            <a href="/products/category/?category=Necklace">Necklace</a>
+            <a href="/products/category/?category=${allCategory[1]._id}">${allCategory[1].name}</a>
           </li>
           <li>
-            <a href="/products/category/?category=Bracelet">
-            Bracelet</a>
+            <a href="/products/category/?category=${allCategory[2]._id}">
+            ${allCategory[2].name}</a>
           </li>
           <li>
-            <a href="/products/category/?category=Ring">Ring</a>
+            <a href="/products/category/?category=${allCategory[3]._id}">${allCategory[3].name}</a>
           </li>
           <li>
-            <a href="/products/category/?category=JewelrySet">Jewelry set</a>
+            <a href="/products/category/?category=${allCategory[4]._id}">${allCategory[4].name}</a>
           </li>
             </ul>
           </nav>
@@ -128,7 +155,9 @@ function renderHeader() {
       </div>
     </div>
       `;
-	}
+			}
+		})
+		.catch(err => console.log(err));
 }
 
 export { renderHeader };

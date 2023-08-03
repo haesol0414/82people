@@ -14,9 +14,7 @@ const ProductService = {
 
 	// 카테고리별 제품 조회
 	getProductsByCategory: async category => {
-		const categoryId = await Category.findOne({ name: category });
-
-		return await Product.find({ category: categoryId });
+		return await Product.find({ category: category });
 	},
 
 	// 상품 상세 조회

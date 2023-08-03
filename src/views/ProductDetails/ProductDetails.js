@@ -15,10 +15,11 @@ const productImage = document.querySelector('.product-icon-image>img');
 const addToCart = document.querySelector('#add-to-cart');
 const productAmount = document.querySelector('#amount');
 const totalCash = document.querySelector('.product-total-cash');
+const toCartSpan = document.querySelector('.to-cart-span');
 
 let imageURL;
 let price;
-
+let currentAmount;
 fetch(`/api/products/${productId}`, {
 	method: 'GET',
 	headers: {
@@ -44,13 +45,16 @@ fetch(`/api/products/${productId}`, {
 			productInfo.price
 		).toLocaleString()}`;
 		productDescription.innerText = productInfo.description;
-
 		imageURL = productInfo.imageURL[0];
 		productImage.setAttribute('src', imageURL);
 		totalCash.innerText = `KRW ${Number(productInfo.price).toLocaleString()}`;
-
 		price = Number(productInfo.price);
-		totalPrice = Number(productInfo.price);
+		currentAmount = productInfo.currentAmount;
+		console.log(currentAmount);
+		if (currentAmount <= 0) {
+			toCartSpan.innerHTML = 'SOLD OUT';
+			return addToCart.setAttribute('disabled', 'disabled');
+		}
 	})
 	.catch(err => console.log(err));
 
@@ -63,9 +67,18 @@ productAmount.addEventListener('change', e => {
 	totalCash.innerText = `KRW ${(
 		price * Number(productAmount.value)
 	).toLocaleString()}`;
+
+	if (Number(productAmount.value) > currentAmount) {
+		return alert(`현재 재고 : ${currentAmount}개`);
+	}
 });
 
 addToCart.addEventListener('click', () => {
+	console.log(currentAmount);
+	if (Number(productAmount.value) > currentAmount) {
+		return alert(`재고 초과🥲 현재 재고 : ${currentAmount}개`);
+	}
+
 	const hasProduct = products.findIndex(product => product.id === productId);
 
 	let product = {
@@ -75,6 +88,7 @@ addToCart.addEventListener('click', () => {
 		imageUrl: imageURL, // api에서 가져온 imageUrl값
 		price: price,
 		totalPrice: price * Number(productAmount.value),
+		currentAmount: currentAmount,
 	};
 
 	if (hasProduct !== -1) {

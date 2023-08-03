@@ -30,6 +30,7 @@ const orderId = new URL(urlStr).searchParams.get('orderId');
 const guestModeEl = document.querySelector('#guest-mode');
 // 회원 이름
 const userName = document.querySelector('#user-name');
+let userRole = '';
 
 if (hasToken) {
 	console.log('JWT 토큰이 쿠키에 존재합니다.');
@@ -46,6 +47,7 @@ if (hasToken) {
 			.join('')
 	);
 	const tokenData = JSON.parse(jsonPayload);
+	userRole = tokenData.role;
 	userName.innerHTML = `<strong style="font-weight:700">${tokenData.name}</strong>님 💙`;
 } else {
 	console.log('JWT 토큰이 쿠키에 존재하지 않습니다.');
@@ -61,10 +63,13 @@ if (hasToken) {
 		alert('주문번호가 복사되었습니다!');
 	});
 }
-
+console.log(userRole);
 const orderHistoryBtn = document.querySelector('.order-history-btn');
-if (hasToken) {
+
+if (hasToken && userRole !== 'admin') {
 	orderHistoryBtn.setAttribute('href', `/myPage/orders`);
+} else if (hasToken && userRole === 'admin') {
+	orderHistoryBtn.setAttribute('href', `/admin/orders`);
 } else {
 	orderHistoryBtn.setAttribute(
 		'href',
