@@ -19,7 +19,9 @@ const ProductService = {
 
 	// 상품 상세 조회
 	getProductById: async productId => {
-		const product = await Product.findOne({ _id: productId });
+		const product = await Product.findOne({ _id: productId }).populate(
+			'category'
+		);
 
 		return product;
 	},
