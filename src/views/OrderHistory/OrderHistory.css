@@ -80,13 +80,13 @@ h3 {
 .order-history .history-list > li {
 	border: 1px solid #6c4e82;
 	margin-bottom: 20px;
-	background-color: #fff; 
-	color:#525151
+	background-color: #fff;
+	color: #525151;
 }
 .order-history .history-list .info {
 	display: flex;
-	align-items: center; 
-	color:#525151;
+	align-items: center;
+	color: #525151;
 	justify-content: space-between;
 	border-bottom: 1px solid #6c4e82;
 	padding: 10px 20px;
@@ -133,6 +133,7 @@ h3 {
 	height: 100px;
 	background-color: #fff;
 	margin-right: 15px;
+	border-radius: 6px;
 }
 .order-history .history-list .products-list li .title {
 	font-weight: 700;

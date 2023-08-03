@@ -15,6 +15,8 @@
 	> .item-img {
 	width: 500px;
 	height: 500px;
+	border-radius: 18px;
+	border: 2px double #6c4e82;
 }
 #product-details-main > #product-details-container > .field {
 	display: flex;

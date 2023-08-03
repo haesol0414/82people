@@ -14,8 +14,10 @@
 	transition: left 0.5s ease-out;
 }
 .slides li img {
-	width: 500px;
-	height: 500px;
+	width: 498px;
+	height: 498px;
+	border-radius: 12px;
+	border: 1px dotted #6c4e82;
 }
 /* 첫 번째 슬라이드 가운데에 정렬하기위해
   첫번째 슬라이드만 margin-left조정 */
@@ -115,4 +117,6 @@ a {
 	height: 380px;
 	transform: scale(1);
 	margin-bottom: 20px;
+	border-radius: 12px;
+	border: 1px dotted #6c4e82;
 }

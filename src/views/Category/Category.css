@@ -44,6 +44,8 @@ a {
 	height: 320px;
 	margin-bottom: 8px;
 	transform: scale(0.9);
+	border-radius: 12px;
+	border: 1px dotted #6c4e82;
 }
 .empty-items-box {
 	margin-bottom: 5%;
