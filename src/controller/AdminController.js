@@ -79,26 +79,6 @@ const AdminController = {
 		}
 	},
 
-	// [관리자] 배송지 수정
-	// updateOrderAddress: async (req, res, next) => {
-	// 	const role = req.currentUserRole;
-	// 	const { orderId } = req.params;
-
-	// 	try {
-	// 		if (role !== 'admin') {
-	// 			throw new badRequestError('관리자만 접근이 가능합니다.');
-	// 		}
-
-	// 		await AdminService.updateOrderAddress(orderId);
-
-	// 		res.status(200).json({
-	// 			message: '[관리자] 배송지 수정 성공',
-	// 		});
-	// 	} catch (err) {
-	// 		next(err);
-	// 	}
-	// },
-
 	// [관리자] 회원 전체 조회
 	viewAllUsers: async (req, res, next) => {
 		const role = req.currentUserRole;
@@ -129,15 +109,35 @@ const AdminController = {
 				throw new badRequestError('관리자만 접근이 가능합니다.');
 			}
 
-			 await AdminService.deleteUser(userId);
+			await AdminService.deleteUser(userId);
 
 			res.status(200).json({
-				message: '[관리자] 회원 삭제 성공'
+				message: '[관리자] 회원 삭제 성공',
 			});
 		} catch (err) {
 			next(err);
 		}
 	},
+
+	// [관리자] 배송지 수정
+	// updateOrderAddress: async (req, res, next) => {
+	// 	const role = req.currentUserRole;
+	// 	const { orderId } = req.params;
+
+	// 	try {
+	// 		if (role !== 'admin') {
+	// 			throw new badRequestError('관리자만 접근이 가능합니다.');
+	// 		}
+
+	// 		await AdminService.updateOrderAddress(orderId);
+
+	// 		res.status(200).json({
+	// 			message: '[관리자] 배송지 수정 성공',
+	// 		});
+	// 	} catch (err) {
+	// 		next(err);
+	// 	}
+	// },
 };
 
 module.exports = AdminController;
