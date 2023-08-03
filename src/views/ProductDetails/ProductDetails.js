@@ -75,19 +75,20 @@ productAmount.addEventListener('change', e => {
 
 addToCart.addEventListener('click', () => {
 	let amount = Number(productAmount.value);
-	
+
 	if (amount > currentAmount) {
 		return alert(`재고 초과🥲 현재 재고 : ${currentAmount}개`);
 	}
 
 	const hasProduct = products.findIndex(product => product.id === productId);
 
-	let addedAmount = products[hasProduct].amount + amount;
+	amount = hasProduct !== -1 ? products[hasProduct].amount + amount : amount;
+
 	let product = {
 		id: productId, // api에서 가져온 id값
 		title: productTitle.textContent, // api에서 가져온 title값
 		imageUrl: imageURL, // api에서 가져온 imageUrl값
-		amount: addedAmount,
+		amount: amount,
 		price: price,
 		totalPrice: price * amount,
 		currentAmount: currentAmount,
