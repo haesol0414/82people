@@ -50,7 +50,7 @@ fetch(`/api/products/${productId}`, {
 		totalCash.innerText = `KRW ${Number(productInfo.price).toLocaleString()}`;
 		price = Number(productInfo.price);
 		currentAmount = productInfo.currentAmount;
-		console.log(currentAmount);
+
 		if (currentAmount <= 0) {
 			toCartSpan.innerHTML = 'SOLD OUT';
 			return addToCart.setAttribute('disabled', 'disabled');
@@ -60,7 +60,7 @@ fetch(`/api/products/${productId}`, {
 
 const PRODUCT_KEY = 'cartProducts';
 let products = JSON.parse(localStorage.getItem(PRODUCT_KEY)) || [];
-
+console.log(products);
 productAmount.addEventListener('change', e => {
 	productAmount.value = e.target.value;
 
@@ -74,20 +74,22 @@ productAmount.addEventListener('change', e => {
 });
 
 addToCart.addEventListener('click', () => {
-	console.log(currentAmount);
-	if (Number(productAmount.value) > currentAmount) {
+	let amount = Number(productAmount.value);
+	
+	if (amount > currentAmount) {
 		return alert(`재고 초과🥲 현재 재고 : ${currentAmount}개`);
 	}
 
 	const hasProduct = products.findIndex(product => product.id === productId);
 
+	let addedAmount = products[hasProduct].amount + amount;
 	let product = {
 		id: productId, // api에서 가져온 id값
 		title: productTitle.textContent, // api에서 가져온 title값
-		amount: Number(productAmount.value),
 		imageUrl: imageURL, // api에서 가져온 imageUrl값
+		amount: addedAmount,
 		price: price,
-		totalPrice: price * Number(productAmount.value),
+		totalPrice: price * amount,
 		currentAmount: currentAmount,
 	};
 

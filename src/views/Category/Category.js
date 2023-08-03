@@ -2,9 +2,15 @@ import { main } from '/Common/index.js';
 await main();
 
 const products = document.querySelector('.icons');
-// const categoryTag = document.querySelector('.category');
 const urlStr = window.location.href;
 const categoryId = new URL(urlStr).searchParams.get('category');
+const checkBox = document.getElementById('checkBox');
+const checkBoxDiv = document.querySelector('.check-box');
+const categoryTitle = document.querySelector('.category-name');
+let categoryName = '';
+let allProducts = '';
+let notSoldOut = '';
+const emptyItem = document.querySelector('.empty-items-box');
 
 // 카테고리별 상품 화면에 뿌리기
 const getCategoryProducts = newProduct => {
@@ -13,7 +19,7 @@ const getCategoryProducts = newProduct => {
 			? '🚫 SOLD OUT'
 			: '💎 KRW ' + newProduct.price.toLocaleString();
 
-	return `<li>
+	const categoryProduct = `<li>
 		<a class='icon-img'
 			href='/products?productId=${newProduct._id}' target='_self'>
 			<img class="product-img"
@@ -23,7 +29,24 @@ const getCategoryProducts = newProduct => {
 			</div>
 		</a>
     </li>`;
+
+	allProducts += categoryProduct;
+	if (price !== '🚫 SOLD OUT') {
+		notSoldOut += categoryProduct;
+	}
 };
+
+checkBox.addEventListener('click', () => {
+	if (checkBox.checked === true) {
+		products.innerHTML = notSoldOut;
+		if (!notSoldOut) {
+			products.innerHTML = `<span class="empty-items" style="color:red">
+			All products are out of stock 🙀</span>`;
+		}
+	} else {
+		products.innerHTML = allProducts;
+	}
+});
 
 // 카테고리 id로 카테고리별 상품 가져오기
 fetch(`/api/products/category/${categoryId}`, {
@@ -46,10 +69,17 @@ fetch(`/api/products/category/${categoryId}`, {
 	})
 	.then(({ categoryProducts }) => {
 		console.log(categoryProducts);
+
 		if (categoryProducts.length !== 0) {
-			products.innerHTML = categoryProducts.map(getCategoryProducts).join('');
+			categoryProducts.reverse().map(getCategoryProducts);
+			categoryName = categoryProducts[0].category.name;
+			categoryTitle.innerHTML = `✢ ${categoryName} ✢`;
+			products.innerHTML = allProducts;
 		} else {
-			products.innerHTML = `<span class="empty-items">THIS CATEGORY IS EMPTY 🫧</span>`;
+			emptyItem.innerHTML = `<span>THIS CATEGORY IS EMPTY 🫧</span>
+			<span style="font-size: 21px">Please Wait for The Products You will soon meet ••• 🚚 </span>
+			`;
+			checkBoxDiv.style.display = 'none';
 		}
 	})
 	.catch(err => console.log(err));
