@@ -20,9 +20,6 @@ function renderHeader() {
 			alert(err);
 		})
 		.then(({ allCategory }) => {
-			console.log(allCategory);
-			console.log(allCategory[0]._id);
-			// 로그인 했을때 헤더
 			let token;
 			if (document.cookie) {
 				token = document.cookie
@@ -48,6 +45,8 @@ function renderHeader() {
 				};
 
 				const { name, role } = parseJwt(token);
+
+				// 로그인 했을때 헤더
 				header.innerHTML = `
       <div class="header-container">
         <div class="header-group">

@@ -83,6 +83,10 @@ const ProductController = {
 				throw new badRequestError('관리자만 접근이 가능합니다.');
 			}
 
+			if (!category) {
+				throw new badRequestError('카테고리 체크 버튼을 확인해주세요.');
+			}
+
 			await ProductService.updateProducts(itemId, {
 				title,
 				price,
@@ -176,7 +180,7 @@ const ProductController = {
 		}
 	},
 
-	// [관리자] 카테고리 추가
+	// [관리자] 카테고리 삭제
 	deleteCategory: async (req, res, next) => {
 		const role = req.currentUserRole;
 		const { categoryName } = req.body;

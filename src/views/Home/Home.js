@@ -35,7 +35,6 @@ fetch('/api/products', {
 	},
 })
 	.then(res => {
-		console.log(res);
 		if (res.ok) {
 			return res.json();
 			// 로그인 페이지 이동

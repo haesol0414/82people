@@ -144,7 +144,7 @@ if (itemId) {
 				alert(json.message);
 				window.location.reload();
 			})
-			.catch(err => alert(err));
+			.catch(err => console.log(err));
 	});
 } else {
 	modifyBtn.style.display = 'none';

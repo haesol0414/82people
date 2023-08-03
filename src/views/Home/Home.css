@@ -69,23 +69,11 @@
 .next:hover {
 	transform: translateX(10px);
 }
-/* 
-ul.products-best {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 20px;
-	color: #525151;
-}
-
-ul.products-best > li {
-	width: 30%;
-	margin: 0 auto;
-} */
 
 ul.products-total {
 	display: flex;
 	flex-wrap: wrap;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	color: #525151;
 }
 
@@ -98,7 +86,7 @@ h2 {
 	font-size: 28px;
 	font-weight: 700;
 	color: #6c4e82;
-	padding: 20px;
+	padding: 40px 20px 10px 20px;
 	text-align: center;
 }
 
@@ -115,7 +103,7 @@ a {
 .product-price {
 	font-size: 18px;
 	text-align: center;
-	margin-bottom: 10px;
+	margin-bottom: 60px;
 }
 
 .product-price {
@@ -124,6 +112,7 @@ a {
 .product-img {
 	display: block;
 	width: 100%;
-	margin-bottom: 10px;
-	transform: scale(0.9);
+	height: 380px;
+	transform: scale(1);
+	margin-bottom: 20px;
 }

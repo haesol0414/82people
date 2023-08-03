@@ -4,12 +4,18 @@
 }
 
 #product-details-main > #product-details-container > .product-icon-image {
-	width: 400px;
-	height: 400px;
-	/* background-color: red; */
+	width: 500px;
+	height: 500px;
 	margin-right: 40px;
 }
 
+#product-details-main
+	> #product-details-container
+	> .product-icon-image
+	> .item-img {
+	width: 500px;
+	height: 500px;
+}
 #product-details-main > #product-details-container > .field {
 	display: flex;
 	flex-direction: column;
