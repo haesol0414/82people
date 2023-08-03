@@ -10,15 +10,15 @@ const categoryId = new URL(urlStr).searchParams.get('category');
 const getCategoryProducts = newProduct => {
 	let price =
 		newProduct.currentAmount <= 0
-		? '🚫 SOLD OUT'
-		: '💎 KRW ' + newProduct.price.toLocaleString();
+			? '🚫 SOLD OUT'
+			: '💎 KRW ' + newProduct.price.toLocaleString();
 
 	return `<li>
 		<a class='icon-img'
 			href='/products?productId=${newProduct._id}' target='_self'>
 			<img class="product-img"
 			src='${newProduct.imageURL}'/>
-			<div class="product-title">${newProduct.title}</div>
+			<div class="product-title">✧ ${newProduct.title}</div>
 			<div class='product-price'>${price}</div>
 			</div>
 		</a>

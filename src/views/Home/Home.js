@@ -66,7 +66,7 @@ const getTotalProducts = newProduct => {
 		href='/products?productId=${newProduct._id}' target='_self'>
 		<img class="product-img"
 		src='${newProduct.imageURL}' alt="product-item"/>
-		<div class="product-title">${newProduct.title}</div>
+		<div class="product-title">✧ ${newProduct.title}</div>
 		<div class='product-price'>${price}</div>
 		</div>
 		</a>
