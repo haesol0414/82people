@@ -219,6 +219,26 @@ const AdminController = {
 			next(err);
 		}
 	},
+
+	// [관리자] 카테고리 수정
+	updateCategory: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { categoryName, editedName } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await AdminService.updateCategory({ categoryName, editedName });
+
+			res.status(200).json({
+				message: '[관리자] 카테고리 수정 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
 };
 
 module.exports = AdminController;

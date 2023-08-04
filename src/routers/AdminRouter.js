@@ -50,4 +50,11 @@ AdminRouter.delete(
 	AdminController.deleteCategory
 );
 
+// [관리자] 카테고리 수정
+AdminRouter.patch(
+	'/admin/category',
+	VerifyToken,
+	AdminController.updateCategory
+);
+
 module.exports = AdminRouter;

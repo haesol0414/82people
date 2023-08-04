@@ -95,23 +95,25 @@ function deleteUser() {
 		}
 	});
 
-	if (checkeduserName && confirm(`${checkeduserName}님을 삭제 하시겠습니까?`)) {
-		fetch(`/api/admin/users`, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: hasToken,
-			},
-			body: JSON.stringify({
-				userId: checkedUuserId,
-			}),
-		})
-			.then(res => {
-				alert('삭제되었습니다.');
-				window.location.href = '/admin/users';
-				return res.json();
+	if (checkeduserName) {
+		if (confirm(`${checkeduserName}님을 삭제 하시겠습니까?`)) {
+			fetch(`/api/admin/users`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: hasToken,
+				},
+				body: JSON.stringify({
+					userId: checkedUuserId,
+				}),
 			})
-			.catch(err => console.log('err', err));
+				.then(res => {
+					alert('삭제되었습니다.');
+					window.location.href = '/admin/users';
+					return res.json();
+				})
+				.catch(err => console.log('err', err));
+		}
 	} else {
 		alert('체크된 항목이 없습니다.');
 	}

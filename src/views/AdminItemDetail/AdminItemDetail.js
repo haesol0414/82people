@@ -139,7 +139,7 @@ window.addEventListener('load', function () {
 				}),
 			})
 				.then(res => res.json())
-				.catch(err => alert('상품 수정 실패', err))
+				.catch(err => alert('상품 수정 실패, 입력란 확인 요망', err))
 				.then(json => {
 					alert(json.message);
 					window.location.reload();

@@ -82,9 +82,9 @@ const AdminService = {
 	},
 
 	// [관리자] 카테고리 수정
-	// updateCategory: async ({ categoryName }) => {
-	// 	await Category.updateOne({ name: categoryName });
-	// },
+	updateCategory: async ({ categoryName, editedName }) => {
+		await Category.updateOne({ name: categoryName }, { name: editedName });
+	},
 };
 
 module.exports = AdminService;
