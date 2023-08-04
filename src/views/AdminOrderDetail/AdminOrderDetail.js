@@ -20,54 +20,55 @@ const shippingStatusOption = document.querySelector('#shippingStatus');
 const orderCancleBtn = document.querySelector('#orderCancle');
 let purchase;
 
-fetch(`/api/admin/orders/${orderId}`, {
-	method: 'GET',
+// 주문 상세 가져오기
+
+fetch(`/api/orders/history/${orderId}`, {
+	method: 'POST',
 	headers: {
 		'Content-Type': 'application/json',
-		Authorization: hasToken,
 	},
 })
 	.then(res => res.json())
-	.then(({ orderDetails }) => {
-		console.log(orderDetails);
-		purchase = orderDetails.purchase;
+	.then(({ orderDetail }) => {
+		console.log(orderDetail);
+		purchase = orderDetail.purchase;
 
-		orderNumber.innerHTML = orderDetails._id;
-		orderRecipient.innerHTML = orderDetails.addressInformation.recipient;
+		orderNumber.innerHTML = orderDetail._id;
+		orderRecipient.innerHTML = orderDetail.addressInformation.recipient;
 		orderShippingRequest.innerHTML =
-			orderDetails.addressInformation.shippingRequest;
-		orderPhone.innerHTML = orderDetails.addressInformation.phone;
-		orderAddress.innerHTML = orderDetails.addressInformation.address;
-		orderDetailAddress.innerHTML =
-			orderDetails.addressInformation.detailAddress;
+			orderDetail.addressInformation.shippingRequest;
+		orderPhone.innerHTML = orderDetail.addressInformation.phone;
+		orderAddress.innerHTML = orderDetail.addressInformation.address;
+		orderDetailAddress.innerHTML = orderDetail.addressInformation.detailAddress;
 		orderShippingPrice.innerHTML = `${Number(
-			orderDetails.totalPrice.shippingPrice
+			orderDetail.totalPrice.shippingPrice
 		).toLocaleString()} 원`;
 		orderTotalPrice.innerHTML = `${Number(
-			orderDetails.totalPrice.totalProductsPrice
+			orderDetail.totalPrice.totalProductsPrice
 		).toLocaleString()} 원`;
 		orderOrderPrice.innerHTML = `${(
-			Number(orderDetails.totalPrice.totalProductsPrice) +
-			Number(orderDetails.totalPrice.shippingPrice)
+			Number(orderDetail.totalPrice.totalProductsPrice) +
+			Number(orderDetail.totalPrice.shippingPrice)
 		).toLocaleString()} 원`;
-		orderDate.innerText = new Date(orderDetails.createdAt).toLocaleString();
-		orderuser.innerText = orderDetails.email.toLocaleString();
-		products.innerHTML = orderDetails.purchase.map(getProducts).join('');
+		orderDate.innerText = new Date(orderDetail.createdAt).toLocaleString();
+		orderuser.innerText = orderDetail.email.toLocaleString();
+		products.innerHTML = orderDetail.purchase.map(getProducts).join('');
 
-		if (orderDetails.shippingStatus === '상품 준비 중') {
+		if (orderDetail.shippingStatus === '상품 준비 중') {
 			shippingStatusOption.options[0].setAttribute('selected', true);
 			orderCancleBtn.style.display = 'none';
 		}
-		if (orderDetails.shippingStatus === '배송 중') {
+		if (orderDetail.shippingStatus === '배송 중') {
 			shippingStatusOption.options[1].setAttribute('selected', true);
 			orderCancleBtn.style.display = 'none';
 		}
-		if (orderDetails.shippingStatus === '배송 완료') {
+		if (orderDetail.shippingStatus === '배송 완료') {
 			shippingStatusOption.options[2].setAttribute('selected', true);
 			orderCancleBtn.style.display = 'none';
 		}
-		if (orderDetails.shippingStatus === '주문 취소') {
+		if (orderDetail.shippingStatus === '주문 취소') {
 			shippingStatusOption.options[3].setAttribute('selected', true);
+			shippingStatusOption.disabled = true;
 		}
 	});
 
@@ -105,7 +106,6 @@ shippingStatusOption.addEventListener('change', event => {
 				})
 				.catch(err => console.log('err', err));
 		}
-		// disabled
 	} else {
 		fetch(`/api/orders/${orderId}`, {
 			method: 'POST',

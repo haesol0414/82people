@@ -152,9 +152,6 @@ const OrderController = {
 		const { orderId } = req.params;
 		const { purchase } = req.body;
 
-		console.log('ctr - body', req.body);
-		console.log('ctr', purchase);
-
 		try {
 			await OrderService.cancleOrder(orderId, { purchase });
 

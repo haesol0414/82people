@@ -9,11 +9,6 @@ const AdminService = {
 		return await Order.find({});
 	},
 
-	// [관리자] 주문 상세 내역 조회
-	adminCheckOrderDetail: async orderId => {
-		return await Order.findOne({ _id: orderId });
-	},
-
 	// [관리자] 주문 내역 삭제
 	deleteOrder: async orderId => {
 		await Order.deleteOne({ _id: orderId });

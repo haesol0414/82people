@@ -22,27 +22,6 @@ const AdminController = {
 		}
 	},
 
-	// [관리자] 주문 상세 내역 조회
-	adminCheckOrderDetail: async (req, res, next) => {
-		const role = req.currentUserRole;
-		const { orderId } = req.params;
-
-		try {
-			if (role !== 'admin') {
-				throw new badRequestError('관리자만 접근이 가능합니다.');
-			}
-
-			const orderDetails = await AdminService.adminCheckOrderDetail(orderId);
-
-			res.status(200).json({
-				message: '[관리자] 주문 상세 조회 성공',
-				orderDetails: orderDetails,
-			});
-		} catch (err) {
-			next(err);
-		}
-	},
-
 	// [관리자] 주문 내역 삭제
 	deleteOrder: async (req, res, next) => {
 		const { orderId } = req.params;

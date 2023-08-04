@@ -7,13 +7,6 @@ const AdminRouter = express.Router();
 // [관리자] 전제 주문 목록 조회
 AdminRouter.get('/admin/orders', VerifyToken, AdminController.adminCheckOrders);
 
-// [관리자] 주문 상세 내역 조회
-AdminRouter.get(
-	'/admin/orders/:orderId',
-	VerifyToken,
-	AdminController.adminCheckOrderDetail
-);
-
 // [관리자] 주문 내역 삭제
 AdminRouter.delete(
 	'/admin/orders/:orderId',

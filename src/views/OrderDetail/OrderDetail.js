@@ -67,9 +67,7 @@ fetch(`/api/orders/history/${orderId}`, {
 })
 	.then(res => res.json())
 	.then(({ orderDetail }) => {
-		console.log(orderDetail);
 		purchase = orderDetail.purchase;
-		console.log(purchase);
 
 		const { shippingStatus, createdAt } = orderDetail;
 		const { address, detailAddress, phone, recipient, shippingRequest } =

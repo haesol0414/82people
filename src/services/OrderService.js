@@ -99,10 +99,8 @@ const OrderService = {
 
 	// 주문 취소
 	cancleOrder: async (orderId, { purchase }) => {
-		console.log('service', purchase);
 		await Order.updateOne({ _id: orderId }, { shippingStatus: '주문 취소' });
 		purchase.map(async product => {
-			console.log(product.productId);
 			await Product.updateOne(
 				{ _id: product.productId },
 				{
