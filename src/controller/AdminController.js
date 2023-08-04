@@ -43,27 +43,6 @@ const AdminController = {
 		}
 	},
 
-	// [관리자] 주문 배송 상태 변경
-	updateShippingStatus: async (req, res, next) => {
-		const role = req.currentUserRole;
-		const { orderId } = req.params;
-		const { shippingStatus } = req.body;
-
-		try {
-			if (role !== 'admin') {
-				throw new badRequestError('관리자만 접근이 가능합니다.');
-			}
-
-			await AdminService.updateShippingStatus(orderId, shippingStatus);
-
-			res.status(201).json({
-				message: '[관리자] 배송 상태 변경 성공',
-			});
-		} catch (err) {
-			next(err);
-		}
-	},
-
 	// [관리자] 주문 취소
 	cancleOrder: async (req, res, next) => {
 		const { orderId } = req.params;

@@ -146,6 +146,45 @@ const OrderController = {
 			next(err);
 		}
 	},
+
+	cancleOrder: async (req, res, next) => {
+		const { orderId } = req.params;
+		const { purchase, shippingStatus } = req.body;
+
+		try {
+			await Promise.all([
+				OrderService.cancleOrder(orderId, { purchase }),
+				OrderService.updateShippingStatus(orderId, shippingStatus),
+			]);
+
+			res.status(200).json({
+				message: '주문 취 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// 배송 상태 변경
+	adminUpdateShippingStatus: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { orderId } = req.params;
+		const { shippingStatus } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await OrderService.updateShippingStatus(orderId, shippingStatus);
+
+			res.status(201).json({
+				message: '[관리자] 배송 상태 변경 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
 };
 
 module.exports = OrderController;

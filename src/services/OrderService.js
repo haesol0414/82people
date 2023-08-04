@@ -102,8 +102,8 @@ const OrderService = {
 	// 08.04 - 주문 취소
 	// 관리자 서비스의 배송 상태 변경을 이쪽으로 가져오고
 	// 컨트롤러에서 Order 모델로 배송 상태 변경하는 서비스 호출이랑
-	// 주문 취소하는(수량 뱉어내는) 밑의 서비스 수행해서 Promise.all로 뱉기
-	// 컨트롤러 작성, 프론트 js 작업 필요
+	// 주문 취소하는(수량 뱉어내는) 밑의 서비스 수행해서 Promise.all로 뱉기 o
+	// 컨트롤러 작성, 프론트 js 작업 필요 o
 	// 주문 취소 => 회원, 관리자 : cancleOrder && updateShippingStatus
 	// 주문 내역 삭제 => 관리자 : DB에서 완전히 지움
 	cancleOrder: async (productId, { purchase }) => {
@@ -118,6 +118,10 @@ const OrderService = {
 				}
 			);
 		});
+	},
+
+	updateShippingStatus: async (orderId, shippingStatus) => {
+		await Order.updateOne({ _id: orderId }, { shippingStatus: shippingStatus });
 	},
 };
 

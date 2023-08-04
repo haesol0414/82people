@@ -3,7 +3,8 @@ await main();
 
 const urlStr = window.location.href;
 const orderId = new URL(urlStr).searchParams.get('orderId');
-console.log(orderId);
+const menuBar = document.querySelector('.myparty-menubar');
+const orderCancleBtn = document.querySelector('#orderCancle');
 
 function checkJWTTokenInCookie() {
 	const cookies = document.cookie.split(';'); // 모든 쿠키 가져오기
@@ -21,8 +22,6 @@ function checkJWTTokenInCookie() {
 }
 
 const hasToken = checkJWTTokenInCookie();
-const menuBar = document.querySelector('.myparty-menubar');
-
 if (hasToken) {
 	console.log('JWT 토큰이 쿠키에 존재합니다.');
 	menuBar.style.display = 'block';
@@ -46,8 +45,6 @@ if (hasToken) {
 	document.querySelector('#back').style.display = 'none';
 }
 
-// 회원이 아닐경우 경로 변경해주고, 회원인데 searchParams값이 없으면 주문 내역으로 옮기기
-
 const orderNumber = document.querySelector('#order-number');
 const orderStatus = document.querySelector('#order-status');
 const orderDate = document.querySelector('.date');
@@ -58,9 +55,9 @@ const orderShippingRequest = document.querySelector('#shippingRequest');
 const orderShippingPrice = document.querySelector('#shippingPrice');
 const orderTotalPrice = document.querySelector('#totalPrice');
 const orderOrderPrice = document.querySelector('#orderPrice');
-
 const itemsList = document.querySelector('.products-list ul');
 let items = '';
+let purchase;
 
 fetch(`/api/orders/history/${orderId}`, {
 	method: 'POST',
@@ -74,7 +71,7 @@ fetch(`/api/orders/history/${orderId}`, {
 		}
 	})
 	.catch(err => {
-		window.location.href = '/myPage/orders';
+		window.location.href = '/';
 		console.log(err);
 	})
 	.then(json => {
@@ -82,6 +79,7 @@ fetch(`/api/orders/history/${orderId}`, {
 		const { address, detailAddress, phone, recipient, shippingRequest } =
 			json.orderDetail.addressInformation;
 		const { shippingPrice, totalProductsPrice } = json.orderDetail.totalPrice;
+		purchase = json.orderDetail.purchase;
 
 		orderNumber.innerText = orderId;
 		orderStatus.innerText = shippingStatus;
@@ -102,12 +100,39 @@ fetch(`/api/orders/history/${orderId}`, {
 // 주문상품 화면 그려주기
 function getOrders(orders) {
 	const newItem = `<li>
-	<div class="thumbnail">
-		<img src="${orders.imageURL}" />
-		<span class="title">${orders.title}</span>
-	</div>
-	<div>${orders.orderAmount} 개 / ${(orders.price * orders.orderAmount).toLocaleString()}원</div>
-</li>`;
+		<div class="thumbnail">
+			<img src="${orders.imageURL}" />
+			<span class="title">${orders.title}</span>
+		</div>
+		<div>${orders.orderAmount} 개 / ${(
+		orders.price * orders.orderAmount
+	).toLocaleString()}원</div>
+	</li>`;
 	items += newItem;
 	itemsList.innerHTML = items;
 }
+
+// 주문 취소
+orderCancleBtn.addEventListener('click', purchase => {
+	const shippingStatus = '주문 취소';
+
+	if (confirm('주문을 취소 하시겠습니까?')) {
+		fetch(`/api/orders/history/${orderId}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				purchase,
+				shippingStatus,
+			}),
+		})
+			.then(res => {
+				alert(`주문이 취소되었습니다.`);
+				window.location.reload();
+
+				return res.json();
+			})
+			.catch(err => console.log('err', err));
+	}
+});

@@ -34,11 +34,6 @@ const AdminService = {
 	deleteUser: async userId => {
 		await User.deleteOne({ _id: userId });
 	},
-
-	// 배송 상태 변경 (관리자 = 자유자재로 변경, 회원 - 버튼으로 주문 취소만 가능)
-	updateShippingStatus: async (orderId, shippingStatus) => {
-		await Order.updateOne({ _id: orderId }, { shippingStatus: shippingStatus });
-	},
 };
 
 module.exports = AdminService;
