@@ -65,21 +65,16 @@ fetch(`/api/orders/history/${orderId}`, {
 		'Content-Type': 'application/json',
 	},
 })
-	.then(res => {
-		if (res.ok) {
-			return res.json();
-		}
-	})
-	.catch(err => {
-		window.location.href = '/';
-		console.log(err);
-	})
-	.then(json => {
-		const { shippingStatus, createdAt } = json.orderDetail;
+	.then(res => res.json())
+	.then(({ orderDetail }) => {
+		console.log(orderDetail);
+		purchase = orderDetail.purchase;
+		console.log(purchase);
+
+		const { shippingStatus, createdAt } = orderDetail;
 		const { address, detailAddress, phone, recipient, shippingRequest } =
-			json.orderDetail.addressInformation;
-		const { shippingPrice, totalProductsPrice } = json.orderDetail.totalPrice;
-		purchase = json.orderDetail.purchase;
+			orderDetail.addressInformation;
+		const { shippingPrice, totalProductsPrice } = orderDetail.totalPrice;
 
 		orderNumber.innerText = orderId;
 		orderStatus.innerText = shippingStatus;
@@ -93,7 +88,7 @@ fetch(`/api/orders/history/${orderId}`, {
 		orderOrderPrice.innerText = `${(
 			totalProductsPrice + shippingPrice
 		).toLocaleString()}원`;
-		json.orderDetail.purchase.map(getOrders);
+		orderDetail.purchase.map(getOrders);
 	})
 	.catch(err => console.log(err));
 
@@ -113,9 +108,7 @@ function getOrders(orders) {
 }
 
 // 주문 취소
-orderCancleBtn.addEventListener('click', purchase => {
-	const shippingStatus = '주문 취소';
-
+orderCancleBtn.addEventListener('click', () => {
 	if (confirm('주문을 취소 하시겠습니까?')) {
 		fetch(`/api/orders/history/${orderId}`, {
 			method: 'PATCH',
@@ -124,7 +117,6 @@ orderCancleBtn.addEventListener('click', purchase => {
 			},
 			body: JSON.stringify({
 				purchase,
-				shippingStatus,
 			}),
 		})
 			.then(res => {

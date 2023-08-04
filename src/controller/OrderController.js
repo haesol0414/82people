@@ -147,18 +147,19 @@ const OrderController = {
 		}
 	},
 
+	// 주문 취소
 	cancleOrder: async (req, res, next) => {
 		const { orderId } = req.params;
-		const { purchase, shippingStatus } = req.body;
+		const { purchase } = req.body;
+
+		console.log('ctr - body', req.body);
+		console.log('ctr', purchase);
 
 		try {
-			await Promise.all([
-				OrderService.cancleOrder(orderId, { purchase }),
-				OrderService.updateShippingStatus(orderId, shippingStatus),
-			]);
+			await OrderService.cancleOrder(orderId, { purchase });
 
 			res.status(200).json({
-				message: '주문 취 성공',
+				message: '주문 취소 성공',
 			});
 		} catch (err) {
 			next(err);

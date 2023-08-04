@@ -43,15 +43,15 @@ const AdminController = {
 		}
 	},
 
-	// [관리자] 주문 취소
-	cancleOrder: async (req, res, next) => {
+	// [관리자] 주문 내역 삭제
+	deleteOrder: async (req, res, next) => {
 		const { orderId } = req.params;
 
 		try {
-			await AdminService.cancleOrder(orderId);
+			await AdminService.deleteOrder(orderId);
 
 			res.status(200).json({
-				message: '주문 취소 성공',
+				message: '주문 내역 삭제 성공',
 			});
 		} catch (err) {
 			next(err);
@@ -117,6 +117,129 @@ const AdminController = {
 	// 		next(err);
 	// 	}
 	// },
+
+	// [관리자] 상품 수정
+	updateProducts: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { itemId } = req.params;
+		const {
+			title,
+			price,
+			manufacturer,
+			description,
+			currentAmount,
+			salesAmount,
+			category,
+			imageURL,
+		} = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			if (!category) {
+				throw new badRequestError('카테고리 체크 버튼을 확인해주세요.');
+			}
+
+			await AdminService.updateProducts(itemId, {
+				title,
+				price,
+				manufacturer,
+				description,
+				currentAmount,
+				salesAmount,
+				category,
+				imageURL,
+			});
+
+			res.status(200).json({
+				message: '[관리자] 상품 수정 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// [관리자] 상품 추가
+	addProducts: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { productInfo } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await AdminService.addProducts({ productInfo });
+
+			res.status(200).json({
+				message: '[관리자] 상품 추가 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// [관리자] 상품 삭제
+	deleteProducts: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { productId } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await AdminService.deleteProducts(productId);
+
+			res.status(200).json({
+				message: '[관리자] 상품 삭제 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// [관리자] 카테고리 추가
+	addCategory: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { categoryName } = req.body;
+		console.log(categoryName);
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await AdminService.addCategory({ categoryName });
+
+			res.status(200).json({
+				message: '[관리자] 카테고리 추가 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// [관리자] 카테고리 삭제
+	deleteCategory: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { categoryName } = req.body;
+
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
+
+			await AdminService.deleteCategory({ categoryName });
+
+			res.status(200).json({
+				message: '[관리자] 카테고리 삭제 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
 };
 
 module.exports = AdminController;

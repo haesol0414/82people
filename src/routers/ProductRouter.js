@@ -19,39 +19,5 @@ ProductRouter.get('/category', ProductController.getCategory);
 // 상품 상세 조회
 ProductRouter.get('/products/:productId', ProductController.getProductById);
 
-// [관리자] 상품 수정
-ProductRouter.patch(
-	'/admin/items/:itemId',
-	VerifyToken,
-	ProductController.updateProducts
-);
-
-// [관리자] 상품 추가
-ProductRouter.post(
-	'/admin/items/addItem',
-	VerifyToken,
-	ProductController.addProducts
-);
-
-// [관리자] 상품 삭제
-ProductRouter.delete(
-	'/admin/items',
-	VerifyToken,
-	ProductController.deleteProducts
-);
-
-// [관리자] 카테고리 추가
-ProductRouter.post(
-	'/admin/category',
-	VerifyToken,
-	ProductController.addCategory
-);
-
-// [관리자] 카테고리 삭제
-ProductRouter.delete(
-	'/admin/category',
-	VerifyToken,
-	ProductController.deleteCategory
-);
 
 module.exports = ProductRouter;

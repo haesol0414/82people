@@ -18,8 +18,8 @@ const orderOrderPrice = document.querySelector('#orderPrice');
 const products = document.querySelector('.products-list');
 const shippingStatusOption = document.querySelector('#shippingStatus');
 const orderCancleBtn = document.querySelector('#orderCancle');
+let purchase;
 
-// 확인된 토큰으로 서버에게 요청해서 현재 유저 정보받아오기
 fetch(`/api/admin/orders/${orderId}`, {
 	method: 'GET',
 	headers: {
@@ -29,8 +29,9 @@ fetch(`/api/admin/orders/${orderId}`, {
 })
 	.then(res => res.json())
 	.then(({ orderDetails }) => {
-		// 받아온 정보들을 위에 태그값에 넣어서 화면에 보여주기
 		console.log(orderDetails);
+		purchase = orderDetails.purchase;
+
 		orderNumber.innerHTML = orderDetails._id;
 		orderRecipient.innerHTML = orderDetails.addressInformation.recipient;
 		orderShippingRequest.innerHTML =
@@ -85,22 +86,45 @@ const getProducts = orders => {
 };
 
 shippingStatusOption.addEventListener('change', event => {
-	fetch(`/api/orders/${orderId}`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: hasToken,
-		},
-		body: JSON.stringify({
-			shippingStatus: event.target.value,
-		}),
-	})
-		.then(res => {
-			alert('[관리자] 배송 상태 변경');
-			// window.location.reload();
-			return res.json();
+	if (event.target.value === '주문 취소') {
+		if (confirm('주문을 취소 하시겠습니까?')) {
+			fetch(`/api/orders/history/${orderId}`, {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					purchase,
+				}),
+			})
+				.then(res => {
+					alert(`주문이 취소되었습니다.`);
+					window.location.reload();
+
+					return res.json();
+				})
+				.catch(err => console.log('err', err));
+		}
+		// disabled
+	} else {
+		fetch(`/api/orders/${orderId}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: hasToken,
+			},
+			body: JSON.stringify({
+				shippingStatus: event.target.value,
+			}),
 		})
-		.catch(err => console.log('err', err));
+			.then(res => {
+				alert('[관리자] 배송 상태 변경');
+
+				window.location.reload();
+				return res.json();
+			})
+			.catch(err => console.log('err', err));
+	}
 });
 
 // 배송지 수정 요청 Q/A로 빼버릴지 고민즁
