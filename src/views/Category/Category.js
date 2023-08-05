@@ -73,7 +73,7 @@ function generateSortedHtml(products, hideSoldOut) {
 
 	// 별도의 정렬 처리를 수행
 	if (selectedSortType === 'newest') {
-		products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+		products.sort((a, b) => b._id.localeCompare(a._id));
 	} else if (selectedSortType === 'highest') {
 		products.sort((a, b) => b.price - a.price);
 	} else if (selectedSortType === 'lowest') {
