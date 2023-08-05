@@ -78,11 +78,13 @@ header {
 .header-container .header-group .logo a {
 	font-size: 30px;
 	font-weight: 200;
-	color: #715983;
+	color: #6c4e82;
 }
 
 .header-container .header-group .logo span {
 	font-weight: 990;
+	font-style: italic;
+	font-size: 33px;
 	color: #6c4e82;
 }
 

@@ -52,7 +52,7 @@ function renderHeader() {
         <div class="header-group">
           <div class="logo">
             <a href="/">
-              <span>But</span>terfly
+              <span>ᙙᙖ</span>utterfly
             </a>
           </div>
           <nav>
@@ -115,7 +115,7 @@ function renderHeader() {
         <div class="header-group">
           <div class="logo">
             <a href="/">
-              <span>But</span>terfly
+            <span>ᙙᙖ</span>utterfly
             </a>
           </div>
           <nav>
