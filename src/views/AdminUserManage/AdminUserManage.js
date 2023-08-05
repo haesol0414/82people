@@ -67,17 +67,18 @@ fetch(`/api/admin/users`, {
 	})
 	.catch(err => console.log(err));
 
+// 셀렉트 박스
 userSelectOption.addEventListener('change', event => {
 	if (event.target.value === 'customer') {
-		userSelectOption.options[0].setAttribute('selected', true);
+		userSelectOption.options[0].selected = true;
 		userList.innerHTML = customer;
 	}
 	if (event.target.value === 'withdrawn') {
-		userSelectOption.options[1].setAttribute('selected', true);
+		userSelectOption.options[1].selected = true;
 		userList.innerHTML = withdrawn;
 	}
 	if (event.target.value === 'admin') {
-		userSelectOption.options[2].setAttribute('selected', true);
+		userSelectOption.options[2].selected = true;
 		userList.innerHTML = admin;
 	}
 });

@@ -9,6 +9,7 @@ const prev = document.querySelector('.prev'); //이전 버튼
 const next = document.querySelector('.next'); //다음 버튼
 const slideWidth = 500; //한개의 슬라이드 넓이
 const slideMargin = 100; //슬라이드간의 margin 값
+const SOLD_OUT_MESSAGE = '🚫 SOLD OUT';
 
 //전체 슬라이드 컨테이너 넓이 설정
 slides.style.width = (slideWidth + slideMargin) * (slideCount + 1) + 'px';
@@ -39,7 +40,8 @@ fetch('/api/products', {
 			return res.json();
 			// 로그인 페이지 이동
 		} else {
-			throw new Error('조회 실패');
+			console.error('조회 실패 : ', err);
+			alert('상품 조회 실패');
 		}
 	})
 	.catch(err => {
@@ -57,7 +59,7 @@ let items = '';
 const getTotalProducts = newProduct => {
 	let price =
 		newProduct.currentAmount <= 0
-			? '🚫 SOLD OUT'
+			? SOLD_OUT_MESSAGE
 			: '💎 KRW ' + newProduct.price.toLocaleString();
 
 	const newItem = `<li>
@@ -85,3 +87,5 @@ const getBestProducts = bestProduct => {
 	bestItems += newBestItem;
 	slides.innerHTML = bestItems;
 };
+
+

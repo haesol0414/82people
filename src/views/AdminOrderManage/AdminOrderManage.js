@@ -99,23 +99,23 @@ const orderSelectOption = document.querySelector('#user-order');
 
 orderSelectOption.addEventListener('change', event => {
 	if (event.target.value === 'orders') {
-		orderSelectOption.options[0].setAttribute('selected', true);
+		orderSelectOption.options[0].selected = true;
 		itemsList.innerHTML = totalOrders;
 	}
 	if (event.target.value === 'preparing') {
-		orderSelectOption.options[1].setAttribute('selected', true);
+		orderSelectOption.options[1].selected = true;
 		itemsList.innerHTML = preparing;
 	}
 	if (event.target.value === 'shipping') {
-		orderSelectOption.options[2].setAttribute('selected', true);
+		orderSelectOption.options[2].selected = true;
 		itemsList.innerHTML = shipping;
 	}
 	if (event.target.value === 'delivered') {
-		orderSelectOption.options[3].setAttribute('selected', true);
+		orderSelectOption.options[3].selected = true;
 		itemsList.innerHTML = delivered;
 	}
 	if (event.target.value === 'canceled') {
-		orderSelectOption.options[4].setAttribute('selected', true);
+		orderSelectOption.options[4].selected = true;
 		itemsList.innerHTML = canceled;
 	}
 });

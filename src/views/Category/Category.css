@@ -59,8 +59,10 @@ a {
 	padding: 0 30px 30px 30px;
 }
 .check-box {
+	display: flex;
+	justify-content: space-between;
 	padding: 0 20px;
-	text-align: right;
+	/* text-align: right; */
 	color: #525151;
 }
 
@@ -93,4 +95,8 @@ a {
 	background-color: #6c4e82;
 	border-color: 3px solid #6c4e82;
 	color: #fff;
+}
+
+#item-select {
+	color: #525151;
 }
