@@ -27,7 +27,17 @@ OrderRouter.get(
 	OrderController.checkOrderHistory
 );
 
-// [회원 || 비회원] 주문 상세 내역 조회
+// 주문 상세 조회
 OrderRouter.post('/orders/history/:orderId', OrderController.checkOrderDetail);
+
+// 주문 취소
+OrderRouter.patch('/orders/history/:orderId', OrderController.cancleOrder);
+
+// 배송 상태 변경
+OrderRouter.post(
+	'/orders/:orderId',
+	VerifyToken,
+	OrderController.adminUpdateShippingStatus
+);
 
 module.exports = OrderRouter;

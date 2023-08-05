@@ -18,51 +18,57 @@ const orderOrderPrice = document.querySelector('#orderPrice');
 const products = document.querySelector('.products-list');
 const shippingStatusOption = document.querySelector('#shippingStatus');
 const orderCancleBtn = document.querySelector('#orderCancle');
+let purchase;
 
-// 확인된 토큰으로 서버에게 요청해서 현재 유저 정보받아오기
-fetch(`/api/admin/orders/${orderId}`, {
-	method: 'GET',
+// 주문 상세 가져오기
+
+fetch(`/api/orders/history/${orderId}`, {
+	method: 'POST',
 	headers: {
 		'Content-Type': 'application/json',
-		Authorization: hasToken,
 	},
 })
 	.then(res => res.json())
-	.then(({ orderDetails }) => {
-		// 받아온 정보들을 위에 태그값에 넣어서 화면에 보여주기
-		console.log(orderDetails);
-		orderNumber.innerHTML = orderDetails._id;
-		orderRecipient.innerHTML = orderDetails.addressInformation.recipient;
+	.then(({ orderDetail }) => {
+		console.log(orderDetail);
+		purchase = orderDetail.purchase;
+
+		orderNumber.innerHTML = orderDetail._id;
+		orderRecipient.innerHTML = orderDetail.addressInformation.recipient;
 		orderShippingRequest.innerHTML =
-			orderDetails.addressInformation.shippingRequest;
-		orderPhone.innerHTML = orderDetails.addressInformation.phone;
-		orderAddress.innerHTML = orderDetails.addressInformation.address;
-		orderDetailAddress.innerHTML =
-			orderDetails.addressInformation.detailAddress;
+			orderDetail.addressInformation.shippingRequest;
+		orderPhone.innerHTML = orderDetail.addressInformation.phone;
+		orderAddress.innerHTML = orderDetail.addressInformation.address;
+		orderDetailAddress.innerHTML = orderDetail.addressInformation.detailAddress;
 		orderShippingPrice.innerHTML = `${Number(
-			orderDetails.totalPrice.shippingPrice
+			orderDetail.totalPrice.shippingPrice
 		).toLocaleString()} 원`;
 		orderTotalPrice.innerHTML = `${Number(
-			orderDetails.totalPrice.totalProductsPrice
+			orderDetail.totalPrice.totalProductsPrice
 		).toLocaleString()} 원`;
 		orderOrderPrice.innerHTML = `${(
-			Number(orderDetails.totalPrice.totalProductsPrice) +
-			Number(orderDetails.totalPrice.shippingPrice)
+			Number(orderDetail.totalPrice.totalProductsPrice) +
+			Number(orderDetail.totalPrice.shippingPrice)
 		).toLocaleString()} 원`;
-		orderDate.innerText = new Date(orderDetails.createdAt).toLocaleString();
-		orderuser.innerText = orderDetails.email.toLocaleString();
-		products.innerHTML = orderDetails.purchase.map(getProducts).join('');
+		orderDate.innerText = new Date(orderDetail.createdAt).toLocaleString();
+		orderuser.innerText = orderDetail.email.toLocaleString();
+		products.innerHTML = orderDetail.purchase.map(getProducts).join('');
 
-		if (orderDetails.shippingStatus === '상품 준비 중') {
+		if (orderDetail.shippingStatus === '상품 준비 중') {
 			shippingStatusOption.options[0].setAttribute('selected', true);
+			orderCancleBtn.style.display = 'none';
 		}
-		if (orderDetails.shippingStatus === '배송 중') {
+		if (orderDetail.shippingStatus === '배송 중') {
 			shippingStatusOption.options[1].setAttribute('selected', true);
 			orderCancleBtn.style.display = 'none';
 		}
-		if (orderDetails.shippingStatus === '배송 완료') {
+		if (orderDetail.shippingStatus === '배송 완료') {
 			shippingStatusOption.options[2].setAttribute('selected', true);
 			orderCancleBtn.style.display = 'none';
+		}
+		if (orderDetail.shippingStatus === '주문 취소') {
+			shippingStatusOption.options[3].setAttribute('selected', true);
+			shippingStatusOption.disabled = true;
 		}
 	});
 
@@ -81,28 +87,50 @@ const getProducts = orders => {
 };
 
 shippingStatusOption.addEventListener('change', event => {
-	fetch(`/api/admin/orders/${orderId}`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: hasToken,
-		},
-		body: JSON.stringify({
-			shippingStatus: event.target.value,
-		}),
-	})
-		.then(res => {
-			console.log('shippingStatusOption', res);
-			window.location.reload();
-			return res.json();
+	if (event.target.value === '주문 취소') {
+		if (confirm('주문을 취소 하시겠습니까?')) {
+			fetch(`/api/orders/history/${orderId}`, {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					purchase,
+				}),
+			})
+				.then(res => {
+					alert(`주문이 취소되었습니다.`);
+					window.location.reload();
+
+					return res.json();
+				})
+				.catch(err => console.log('err', err));
+		}
+	} else {
+		fetch(`/api/orders/${orderId}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: hasToken,
+			},
+			body: JSON.stringify({
+				shippingStatus: event.target.value,
+			}),
 		})
-		.catch(err => console.log('err', err));
+			.then(res => {
+				alert('[관리자] 배송 상태 변경');
+
+				window.location.reload();
+				return res.json();
+			})
+			.catch(err => console.log('err', err));
+	}
 });
 
 // 배송지 수정 요청 Q/A로 빼버릴지 고민즁
 // updateAddressBtn.addEventListener('click', event => {
 // 	fetch(`/api/admin/orders/${orderId}`, {
-// 		method: 'FETCH',
+// 		method: '',
 // 		headers: {
 // 			'Content-Type': 'application/json',
 // 			Authorization: hasToken,
@@ -119,19 +147,21 @@ shippingStatusOption.addEventListener('change', event => {
 // 		.catch(err => console.log('err', err));
 // });
 
-// 주문 취소
+// 주문 내역 삭제
 orderCancleBtn.addEventListener('click', () => {
-	fetch(`/api/admin/orders/${orderId}`, {
-		method: 'DELETE',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: hasToken,
-		},
-	})
-		.then(res => {
-			alert(`주문 내역이 삭제되었습니다`);
-			window.location.href = '/admin/orders';
-			return res.json();
+	if (confirm('해당 주문 내역을 삭제 하시겠습니까?')) {
+		fetch(`/api/admin/orders/${orderId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: hasToken,
+			},
 		})
-		.catch(err => console.log('err', err));
+			.then(res => {
+				alert(`주문 내역이 삭제되었습니다`);
+				window.location.href = '/admin/orders';
+				return res.json();
+			})
+			.catch(err => console.log('err', err));
+	}
 });

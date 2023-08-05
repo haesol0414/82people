@@ -44,8 +44,14 @@ const cartPriceBox = document.querySelector('.cart-price');
 // 주문하기 버튼 이동
 const orderBtn = document.querySelector('.order-btn');
 orderBtn.addEventListener('click', () => {
+	const addingBtns = document.querySelectorAll('button.adding');
+	for (let i = 0; i < addingBtns.length; i++) {
+		if (addingBtns[i].disabled === true) {
+			return alert('상품의 재고를 조정해주세요😢');
+		}
+	}
+
 	console.log('주문하기');
-	// 확인용 경로
 	window.location.href = '/orders';
 });
 
@@ -68,37 +74,44 @@ function emptyProducts() {
 	// 금액정보 안보이게
 	cartPriceBox.style.display = 'none';
 	// 주문 불가
-	orderBtn.setAttribute('disabled', 'disabled');
+	orderBtn.disabled = true;
 }
 
 // 장바구니 상품들 화면 그려주기
 function getProducts(newProducts) {
+	if (newProducts.amount > newProducts.currentAmount) {
+		alert('상품의 재고를 조정해주세요😢');
+		orderBtn.disabled = true;
+	}
+
 	const newItem = `<li>
-			<article>
-				<div class="thumbnail">
-					<input type="checkbox" id="${newProducts.id}" name="cart-item-check" checked />
-					<label for="${newProducts.id}">
-						<img src="${newProducts.imageUrl}" alt="${newProducts.title}" />
-						${newProducts.title}
-					</label>
-				</div>
-				<div class="amount-info">
-					<div class="amount-btns">
-						<button type="button" class="subtracting">-</button>
-						<input
-							type="number"
-							class="amount"
-							value="${newProducts.amount}"
-							min="1"
-						/>
-						<button type="button" class="adding">+</button>
-					</div>
-					<div>&#215; <span>KRW ${newProducts.price.toLocaleString()}</span></div>
-				</div>
-				<div><span class="product-price">KRW ${newProducts.totalPrice.toLocaleString()}</span></div>
-			</article>
-			<button type="button" class="delete-btn">삭제</button>
-			</li>`;
+	<article>
+		<div class="thumbnail">
+			<input type="checkbox" id="${newProducts.id}" name="cart-item-check" checked />
+			<label for="${newProducts.id}">
+			<a href="/products?productId=${newProducts.id}">
+				<img src="${newProducts.imageUrl}" alt="${newProducts.title}" />
+			</a>
+				${newProducts.title}
+			</label>
+		</div>
+		<div class="amount-info">
+			<div class="amount-btns">
+				<button type="button" class="subtracting">-</button>
+				<input
+					type="number"
+					class="amount"
+					value="${newProducts.amount}"
+					min="1"
+				/>
+				<button type="button" class="adding">+</button>
+			</div>
+			<div>&#215; <span>KRW ${newProducts.price.toLocaleString()}</span></div>
+		</div>
+		<div><span class="product-price">KRW ${newProducts.totalPrice.toLocaleString()}</span></div>
+	</article>
+	<button type="button" class="delete-btn">삭제</button>
+	</li>`;
 	items += newItem;
 	itemsList.innerHTML = items;
 }
@@ -203,13 +216,32 @@ function itemUpdate(item) {
 	// 가격
 	const itemCheck = item.querySelector('input[type=checkbox]');
 	const itemPrice = item.querySelector('.product-price');
+	let showAlert = true;
 
 	// 수량*가격 계산
 	const amountCalc = product => {
+		function showOneTimeAlert() {
+			if (showAlert) {
+				alert(`재고 초과🥲 현재 재고 : ${product.currentAmount}개`);
+				showAlert = false;
+			}
+		}
+
 		if (product.id === itemCheck.id) {
 			product.amount = Number(amountInput.value);
+			if (product.amount > product.currentAmount) {
+				orderBtn.disabled = true;
+				addingBtn.disabled = true;
+
+				showOneTimeAlert();
+			}
+			if (product.amount <= product.currentAmount) {
+				orderBtn.disabled = false;
+				addingBtn.disabled = false;
+			}
+
 			product.totalPrice = product.price * product.amount;
-			itemPrice.innerText = product.totalPrice.toLocaleString();
+			itemPrice.innerText = 'KRW ' + product.totalPrice.toLocaleString();
 		}
 		localStorage.setItem(PRODUCT_KEY, JSON.stringify(products));
 	};
@@ -254,11 +286,11 @@ function itemUpdate(item) {
 	});
 	// 수량 직접 입력
 	amountInput.addEventListener('change', e => {
-		e.preventDefault();
 		if (e.target.value < 1) {
 			e.target.value = 1;
 			alert('최소 수량은 1개 입니다!');
 		}
+
 		amountValue = Number(e.target.value);
 		products.map(amountCalc);
 		cartUpdate();

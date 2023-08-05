@@ -9,7 +9,7 @@
 		<!-- 우편번호 서비스 -->
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script type="module" src="./AdminItemDetail.js"></script>
-		<title>회원 정보 수정</title>
+		<title>Admin Page</title>
 	</head>
 	<body>
 		<div id="global-wrap">
@@ -43,21 +43,35 @@
 								</ul>
 							</nav>
 						</section>
-						<!-- 회원정보 수정 -->
 						<section class="item-info">
 							<h3>Product Detail</h3>
 							<div id="info">
 								<section>
 									<span>상품명</span>
-									<input class="input" id="ittem-title" />
+									<input
+										class="input"
+										id="ittem-title"
+										required
+										placeholder="Title"
+									/>
 								</section>
 								<section>
 									<span>가격</span>
-									<input class="input" id="item-price" />
+									<input
+										class="input"
+										id="item-price"
+										required
+										placeholder="0"
+									/>
 								</section>
 								<section>
 									<span>제조사</span>
-									<input class="input" id="item-manufacturer" />
+									<input
+										class="input"
+										id="item-manufacturer"
+										required
+										placeholder="Manufacturer"
+									/>
 								</section>
 								<section>
 									<span>상세 설명</span>
@@ -65,19 +79,25 @@
 										rows="3"
 										class="long-input"
 										id="item-description"
+										placeholder="Description"
 									></textarea>
 								</section>
 								<section>
 									<span>수량</span>
-									<input class="input" id="item-current-amount" />
+									<input
+										class="input"
+										id="item-current-amount"
+										required
+										placeholder="0"
+									/>
 								</section>
 								<section>
 									<span>판매량</span>
-									<input class="input" id="item-sales-amount" />
+									<input class="input" id="item-sales-amount" value="0" />
 								</section>
 								<section>
 									<span>카테고리</span>
-									<input class="input" id="item-category" />
+									<div class="category"></div>
 								</section>
 								<section>
 									<span>이미지</span>
@@ -85,6 +105,7 @@
 										rows="2"
 										class="long-input"
 										id="item-img"
+										placeholder="/"
 									></textarea>
 								</section>
 							</div>

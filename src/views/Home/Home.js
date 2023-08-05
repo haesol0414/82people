@@ -35,7 +35,6 @@ fetch('/api/products', {
 	},
 })
 	.then(res => {
-		console.log(res);
 		if (res.ok) {
 			return res.json();
 			// 로그인 페이지 이동
@@ -56,13 +55,18 @@ fetch('/api/products', {
 
 let items = '';
 const getTotalProducts = newProduct => {
+	let price =
+		newProduct.currentAmount <= 0
+			? '🚫 SOLD OUT'
+			: '💎 KRW ' + newProduct.price.toLocaleString();
+
 	const newItem = `<li>
 		<a class='product-link'
 		href='/products?productId=${newProduct._id}' target='_self'>
 		<img class="product-img"
 		src='${newProduct.imageURL}' alt="product-item"/>
-		<div class="product-title">${newProduct.title}</div>
-		<div class='product-price'>KRW ${newProduct.price.toLocaleString()}</div>
+		<div class="product-title">✧ ${newProduct.title}</div>
+		<div class='product-price'>${price}</div>
 		</div>
 		</a>
     </li>`;

@@ -12,10 +12,8 @@ function getUsers(users) {
 	const newUser = `<li>
 		<article>
 			<div class="info">
-					<span class="email">🦋 ${users.email}</span>
-					<button type="button" id="user-delete" value=${users._id} name=${
-		users.name
-	}>DELETE</button>
+				<span class="email">🦋 ${users.email}</span>
+				<input type="radio" name="user" value="${users._id}/${users.name}">
 			</div>
 			<ul class="user-list">
 				<li>
@@ -73,45 +71,52 @@ userSelectOption.addEventListener('change', event => {
 	if (event.target.value === 'customer') {
 		userSelectOption.options[0].setAttribute('selected', true);
 		userList.innerHTML = customer;
-		getDeleteUserBtn();
 	}
 	if (event.target.value === 'withdrawn') {
 		userSelectOption.options[1].setAttribute('selected', true);
 		userList.innerHTML = withdrawn;
-		getDeleteUserBtn();
 	}
 	if (event.target.value === 'admin') {
 		userSelectOption.options[2].setAttribute('selected', true);
 		userList.innerHTML = admin;
-		getDeleteUserBtn();
 	}
 });
 
-const getDeleteUserBtn = (window.onload = function () {
-	const userDeleteBtn = document.querySelectorAll('#user-delete');
+const userDeleteBtn = document.querySelector('#user-delete');
 
-	for (let i = 0; i < userDeleteBtn.length; i++) {
-		userDeleteBtn[i].onclick = function () {
-			if (confirm(`${userDeleteBtn[i].name}님을 삭제 하시겠습니까?`)) {
-				fetch(`/api/admin/users`, {
-					method: 'DELETE',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: hasToken,
-					},
-					body: JSON.stringify({
-						userId: userDeleteBtn[i].value,
-					}),
+function deleteUser() {
+	const radios = document.querySelectorAll("input[type='radio']");
+	let checkedUuserId = '';
+	let checkeduserName = '';
+
+	radios.forEach(function (radio) {
+		if (radio.checked) {
+			[checkedUuserId, checkeduserName] = radio.value.split('/');
+		}
+	});
+
+	if (checkeduserName) {
+		if (confirm(`${checkeduserName}님을 삭제 하시겠습니까?`)) {
+			fetch(`/api/admin/users`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: hasToken,
+				},
+				body: JSON.stringify({
+					userId: checkedUuserId,
+				}),
+			})
+				.then(res => {
+					alert('삭제되었습니다.');
+					window.location.href = '/admin/users';
+					return res.json();
 				})
-					.then(res => {
-						alert('삭제되었습니다.');
-						window.location.href = '/admin/users';
-						return res.json();
-					})
-					.catch(err => console.log('err', err));
-			} else {
-				alert('삭제 취소');
-			}
-		};
+				.catch(err => console.log('err', err));
+		}
+	} else {
+		alert('체크된 항목이 없습니다.');
 	}
-});
+}
+
+userDeleteBtn.addEventListener('click', deleteUser);

@@ -7,7 +7,7 @@
 		<!-- 작업할 css 연결 -->
 		<link rel="stylesheet" href="./AdminOrderManage.css" />
 		<script type="module" src="./AdminOrderManage.js"></script>
-		<title>배송 조회</title>
+		<title>Admin Page</title>
 	</head>
 	<body>
 		<div id="global-wrap">
@@ -43,6 +43,15 @@
 						</section>
 						<section class="order-history">
 							<h3>Order History</h3>
+							<div class="user-order-box">
+								<select id="user-order">
+									<option value="orders">전체 주문</option>
+									<option value="preparing">상품 준비 중</option>
+									<option value="shipping">배송 중</option>
+									<option value="delivered">배송 완료</option>
+									<option value="canceled">주문 취소</option>
+								</select>
+							</div>
 							<ul class="history-list"></ul>
 						</section>
 					</div>

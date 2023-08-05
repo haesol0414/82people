@@ -74,10 +74,15 @@ const OrderService = {
 		return orderHistory;
 	},
 
-	// [회원 || 비회원 ] 주문 상세 조회
-	checkOrderDetail: async (orderId, guestPassword) => {
+	// 주문 상세 조회
+	checkOrderDetail: async orderId => {
+		return await Order.findOne({ _id: orderId });
+	},
+
+	// [비회원] 주문 상세 조회
+	checkGuestOrderDetail: async (orderId, guestPassword) => {
 		const orderDetail = await Order.findOne(
-			{ _id: orderId },
+			{ _id: orderId, guestPassword: guestPassword },
 			{ _id: 1, guestPassword: 0 }
 		);
 
@@ -90,6 +95,27 @@ const OrderService = {
 			{ email: email },
 			{ addressInformation: addressInformation }
 		);
+	},
+
+	// 주문 취소
+	cancleOrder: async (orderId, { purchase }) => {
+		await Order.updateOne({ _id: orderId }, { shippingStatus: '주문 취소' });
+		purchase.map(async product => {
+			await Product.updateOne(
+				{ _id: product.productId },
+				{
+					$inc: {
+						salesAmount: -product.orderAmount,
+						currentAmount: product.orderAmount,
+					},
+				}
+			);
+		});
+	},
+
+	// 배송 상태 변경
+	updateShippingStatus: async (orderId, shippingStatus) => {
+		await Order.updateOne({ _id: orderId }, { shippingStatus: shippingStatus });
 	},
 };
 

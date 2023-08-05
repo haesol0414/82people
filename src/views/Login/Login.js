@@ -29,9 +29,6 @@ const setCookie = (userToken, token, days) => {
 const login = e => {
 	e.preventDefault();
 
-	console.log(id.value);
-	console.log(pw.value);
-
 	fetch('/api/login', {
 		method: 'POST',
 		headers: {
@@ -50,15 +47,16 @@ const login = e => {
 
 				return res.json();
 			} else {
+				alert('아이디 또는 비밀번호를 확인해주세요.');
 				throw new Error('로그인 실패');
 			}
 		})
 		.catch(err => {
-			alert(err);
+			console.log(err);
 		})
 		.then(json => setCookie('userToken', json.Authorization, 1))
 		.catch(err => {
-			alert(err);
+			console.log(err);
 		});
 };
 

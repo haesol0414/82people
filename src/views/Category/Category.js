@@ -2,34 +2,54 @@ import { main } from '/Common/index.js';
 await main();
 
 const products = document.querySelector('.icons');
-const categoryTag = document.querySelector('.category');
 const urlStr = window.location.href;
-const category = new URL(urlStr).searchParams.get('category');
-let categoryTitle;
-// console.log(category);
+const categoryId = new URL(urlStr).searchParams.get('category');
+const checkBox = document.getElementById('checkBox');
+const checkBoxDiv = document.querySelector('.check-box');
+const categoryTitle = document.querySelector('.category-name');
+let categoryName = '';
+let allProducts = '';
+let notSoldOut = '';
+const emptyItem = document.querySelector('.empty-items-box');
 
-switch (category) {
-	case 'Christmas':
-		categoryTitle = 'Ring';
-		break;
-	case 'newYear':
-		categoryTitle = 'Necklace';
-		break;
-	case 'birthDay':
-		categoryTitle = 'Earring';
-		break;
-	case 'Halloween':
-		categoryTitle = 'Bracelet';
-		break;
-	case 'partySet':
-		categoryTitle = 'Jewelry set';
-		break;
-	default:
-		categoryTitle = '잘못된 접근입니다.';
-}
-categoryTag.innerHTML = categoryTitle;
+// 카테고리별 상품 화면에 뿌리기
+const getCategoryProducts = newProduct => {
+	let price =
+		newProduct.currentAmount <= 0
+			? '🚫 SOLD OUT'
+			: '💎 KRW ' + newProduct.price.toLocaleString();
 
-fetch(`/api/products/category/${category}`, {
+	const categoryProduct = `<li>
+		<a class='icon-img'
+			href='/products?productId=${newProduct._id}' target='_self'>
+			<img class="product-img"
+			src='${newProduct.imageURL}'/>
+			<div class="product-title">✧ ${newProduct.title}</div>
+			<div class='product-price'>${price}</div>
+			</div>
+		</a>
+    </li>`;
+
+	allProducts += categoryProduct;
+	if (price !== '🚫 SOLD OUT') {
+		notSoldOut += categoryProduct;
+	}
+};
+
+checkBox.addEventListener('click', () => {
+	if (checkBox.checked === true) {
+		products.innerHTML = notSoldOut;
+		if (!notSoldOut) {
+			products.innerHTML = `<span style="color:red; font-size: 25px; margin: 20px 0 40px 0;">
+			All products are out of stock 🙀</span>`;
+		}
+	} else {
+		products.innerHTML = allProducts;
+	}
+});
+
+// 카테고리 id로 카테고리별 상품 가져오기
+fetch(`/api/products/category/${categoryId}`, {
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application/json',
@@ -50,20 +70,16 @@ fetch(`/api/products/category/${category}`, {
 	.then(({ categoryProducts }) => {
 		console.log(categoryProducts);
 
-		products.innerHTML = categoryProducts.map(getProducts).join('');
+		if (categoryProducts.length !== 0) {
+			categoryProducts.reverse().map(getCategoryProducts);
+			categoryName = categoryProducts[0].category.name;
+			categoryTitle.innerHTML = `✢ ${categoryName} ✢`;
+			products.innerHTML = allProducts;
+		} else {
+			emptyItem.innerHTML = `<span>THIS CATEGORY IS EMPTY 🫧</span>
+			<span style="font-size: 21px">Please Wait for The Products You will soon meet ••• 🚚 </span>
+			`;
+			checkBoxDiv.style.display = 'none';
+		}
 	})
 	.catch(err => console.log(err));
-
-//상품상세 불러오기
-const getProducts = newProduct => {
-	return `<li>
-    <a class='icon-img'
-    href='/products?productId=${newProduct._id}' target='_self'>
-    <img class="product-img"
-    src='${newProduct.imageURL}'/>
-    <div class="product-title">${newProduct.title}</div>
-    <div class='product-price'>KRW ${newProduct.price.toLocaleString()}</div>
-    </div>
-    </a>
-    </li>`;
-};

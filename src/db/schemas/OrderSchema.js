@@ -8,7 +8,7 @@ const OrderSchema = new Schema(
 		},
 		shippingStatus: {
 			type: String,
-			enum: ['상품 준비 중', '배송 중', '배송 완료'],
+			enum: ['상품 준비 중', '배송 중', '배송 완료', '주문 취소'],
 			default: '상품 준비 중',
 		},
 		purchase: [

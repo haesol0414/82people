@@ -130,9 +130,10 @@ h3 {
 }
 .order-history .history-list .products-list li img {
 	width: 100px;
-	height: 80px;
+	height: 100px;
 	background-color: #fff;
-	margin-right: 10px;
+	margin-right: 15px;
+	border-radius: 6px;
 }
 .order-history .history-list .products-list li .title {
 	font-weight: 700;
@@ -160,4 +161,13 @@ h3 {
 }
 .field > * > *:last-child {
 	flex: 3;
+}
+
+.user-order-box {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.user-order-box #user-order {
+	color: #525151;
 }

@@ -15,10 +15,11 @@ const productImage = document.querySelector('.product-icon-image>img');
 const addToCart = document.querySelector('#add-to-cart');
 const productAmount = document.querySelector('#amount');
 const totalCash = document.querySelector('.product-total-cash');
+const toCartSpan = document.querySelector('.to-cart-span');
 
 let imageURL;
 let price;
-
+let currentAmount;
 fetch(`/api/products/${productId}`, {
 	method: 'GET',
 	headers: {
@@ -44,37 +45,53 @@ fetch(`/api/products/${productId}`, {
 			productInfo.price
 		).toLocaleString()}`;
 		productDescription.innerText = productInfo.description;
-
 		imageURL = productInfo.imageURL[0];
 		productImage.setAttribute('src', imageURL);
 		totalCash.innerText = `KRW ${Number(productInfo.price).toLocaleString()}`;
-
 		price = Number(productInfo.price);
-		totalPrice = Number(productInfo.price);
+		currentAmount = productInfo.currentAmount;
+
+		if (currentAmount <= 0) {
+			toCartSpan.innerHTML = 'SOLD OUT';
+			return (addToCart.disabled = true);
+		}
 	})
 	.catch(err => console.log(err));
 
 const PRODUCT_KEY = 'cartProducts';
 let products = JSON.parse(localStorage.getItem(PRODUCT_KEY)) || [];
-
+console.log(products);
 productAmount.addEventListener('change', e => {
 	productAmount.value = e.target.value;
 
 	totalCash.innerText = `KRW ${(
 		price * Number(productAmount.value)
 	).toLocaleString()}`;
+
+	if (Number(productAmount.value) > currentAmount) {
+		return alert(`현재 재고 : ${currentAmount}개`);
+	}
 });
 
 addToCart.addEventListener('click', () => {
+	let amount = Number(productAmount.value);
+
+	if (amount > currentAmount) {
+		return alert(`재고 초과🥲 현재 재고 : ${currentAmount}개`);
+	}
+
 	const hasProduct = products.findIndex(product => product.id === productId);
+
+	amount = hasProduct !== -1 ? products[hasProduct].amount + amount : amount;
 
 	let product = {
 		id: productId, // api에서 가져온 id값
 		title: productTitle.textContent, // api에서 가져온 title값
-		amount: Number(productAmount.value),
 		imageUrl: imageURL, // api에서 가져온 imageUrl값
+		amount: amount,
 		price: price,
-		totalPrice: price * Number(productAmount.value),
+		totalPrice: price * amount,
+		currentAmount: currentAmount,
 	};
 
 	if (hasProduct !== -1) {

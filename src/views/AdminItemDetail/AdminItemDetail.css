@@ -95,15 +95,20 @@ h4 {
 	align-items: center;
 }
 .item-info #info > * > :first-child {
-	/* flex: 1; */
 	flex-basis: 100px;
 }
 .item-info #info > * > :last-child {
 	flex: 3;
 	display: flex;
 }
-.item-info #info > * > :last-child > :first-child {
-	flex: 1;
+.category {
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+}
+.category li {
+	margin-left: 0;
+	padding-left: 0;
 }
 .input {
 	outline: none;
@@ -122,9 +127,6 @@ h4 {
 .api-btn {
 	margin-bottom: 10px;
 }
-#updateAddress {
-	display: block !important;
-}
 .btn-box {
 	float: right;
 	padding: 10px 0;
@@ -137,16 +139,6 @@ button {
 .btn {
 	border-left: none;
 	color: #6c4e82;
-}
-.member-out {
-	text-align: right;
-	margin-top: 20px;
-}
-.member-out a {
-	color: #9c9c9c;
-}
-.member-out a:hover {
-	text-decoration: underline;
 }
 input:disabled {
 	background-color: #eee;

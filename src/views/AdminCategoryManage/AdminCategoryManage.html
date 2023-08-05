@@ -5,8 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/Common/common.css" />
 		<!-- 작업할 css 연결 -->
-		<link rel="stylesheet" href="./AdminUserManage.css" />
-		<script type="module" src="./AdminUserManage.js"></script>
+		<link rel="stylesheet" href="./AdminCategoryManage.css" />
+		<!-- 우편번호 서비스 -->
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script type="module" src="./AdminCategoryManage.js"></script>
 		<title>Admin Page</title>
 	</head>
 	<body>
@@ -32,28 +34,28 @@
 									<li>
 										<a href="/admin/orders">Order List</a>
 									</li>
-									<li class="active">
+									<li>
 										<a href="/admin/users">User List</a>
 									</li>
-									<li>
+									<li class="active">
 										<a href="/admin/items">Item List</a>
 									</li>
 								</ul>
 							</nav>
 						</section>
-						<section class="user-history">
-							<h3>User List</h3>
-							<div class="user-select-box">
-								<button id="user-delete">DELETE</button>
-								<select id="user-select">
-									<option value="customer">전체 회원</option>
-									<option value="withdrawn">탈퇴 회원</option>
-									<option value="admin">관리자</option>
-								</select>
+						<section class="category-info">
+							<h3>Category</h3>
+							<div class="delete-modify-box">
+								<button id="delete-btn">DELETE</button>
+								<button id="modify-btn">MODIFY</button>
 							</div>
-							<ul class="history-list">
-								<!-- 유저 목록 -->
-							</ul>
+							<div id="info">
+								<ul class="category-box"></ul>
+								<div class="create-box">
+									<input type="text" id="category-input"/>
+									<button id="create-btn">ADD</button>
+								</div>
+							</div>
 						</section>
 					</div>
 				</div>

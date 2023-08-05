@@ -40,10 +40,12 @@ const getItems = item => {
 		</div>
 		</td>
 		<td name="name">${item.title}</td>
-		<td name="category">${item.category}</td>
+		<td name="category">${item.category.name}</td>
 		<td name="price">${item.price.toLocaleString()}원</td>
 		<td name="number">${item.currentAmount}</td>
-		<td><button id="modify-btn" value=${item._id}>UPDATE</button></td>
+		<td><a class="update-link" href="/admin/items/itemId/?itemId=${
+			item._id
+		}">UPDATE</a></td>
 	</tr>`;
 
 	items += newItem;
@@ -59,8 +61,7 @@ createBtn.addEventListener('click', () => {
 const deleteBtn = document.getElementById('deleteBtn');
 
 function deleteSelectedRows() {
-	const userConfirm = confirm('선택된 상품을 정말 삭제하시겠습니까?');
-	if (userConfirm) {
+	if (confirm('선택된 상품을 정말 삭제하시겠습니까?')) {
 		let radioes = document.querySelectorAll(
 			".product tbody input[type='radio']"
 		);
@@ -71,6 +72,10 @@ function deleteSelectedRows() {
 				rowsToDelete.push(radio.parentNode.parentNode);
 			}
 		});
+
+		if (rowsToDelete.length === 0) {
+			alert('선택된 항목이 없습니다.');
+		}
 
 		rowsToDelete.forEach(function (row) {
 			row.parentNode.removeChild(row); // 화면에서 삭제
@@ -94,20 +99,8 @@ function deleteSelectedRows() {
 					// window.location.reload();
 				})
 				.catch(err => console.log(err));
-		}); // API에서 삭제
+		});
 	}
 }
 
 deleteBtn.addEventListener('click', deleteSelectedRows);
-
-window.onload = function () {
-	// 상품 수정 버튼
-	const modifyBtn = document.querySelectorAll('#modify-btn');
-
-	for (let i = 0; i < modifyBtn.length; i++) {
-		modifyBtn[i].addEventListener('click', event => {
-			const itemId = event.target.value;
-			location.href = `/admin/items/itemId/?itemId=${itemId}`;
-		});
-	}
-};

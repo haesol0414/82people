@@ -1,9 +1,10 @@
+const Category = require('../db/models/CategoryModel');
 const Product = require('../db/models/ProductModel');
 
 const ProductService = {
 	// 전체 상품 조회
 	getAllProducts: async () => {
-		return await Product.find({}).sort({ _id: -1 });
+		return await Product.find({}).sort({ _id: -1 }).populate('category');
 	},
 
 	// 인기 상품 3개까지 조회
@@ -13,42 +14,21 @@ const ProductService = {
 
 	// 카테고리별 제품 조회
 	getProductsByCategory: async category => {
-		return await Product.find({ category: category });
+		return await Product.find({ category: category }).populate('category');
+	},
+
+	// 카테고리 조회
+	getCategory: async () => {
+		return await Category.find({});
 	},
 
 	// 상품 상세 조회
 	getProductById: async productId => {
-		const product = await Product.findOne({ _id: productId });
+		const product = await Product.findOne({ _id: productId }).populate(
+			'category'
+		);
 
 		return product;
-	},
-
-	// [관리자] 상품 수정
-	updateProducts: async (
-		itemId,
-		{ title, price, manufacturer, description, currentAmount, salesAmount }
-	) => {
-		await Product.updateOne(
-			{ _id: itemId },
-			{
-				title: title,
-				price: price,
-				manufacturer: manufacturer,
-				description: description,
-				currentAmount: currentAmount,
-				salesAmount: salesAmount,
-			}
-		);
-	},
-
-	// [관리자] 상품 추가
-	addProducts: async ({ productInfo }) => {
-		await Product.create(productInfo);
-	},
-
-	// [관리자] 상품 삭제
-	deleteProducts: async productId => {
-		await Product.deleteOne({ _id: productId });
 	},
 };
 

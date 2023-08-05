@@ -8,17 +8,22 @@
 		<link rel="stylesheet" href="./Category.css" />
 		<script type="module" src="./Category.js" defer></script>
 		<!-- 페이지에 맞는 타이틀 입력 -->
-		<title>홈페이지 메인</title>
+		<title>🦋 Butterfly</title>
 	</head>
 	<body>
 		<div id="global-wrap">
 			<header></header>
 			<main role="main" id="main">
 				<div class="main-container">
-					<h2 class="category"></h2>
+					<h2 class="category-name"></h2>
+					<div class="check-box">
+						<input id="checkBox" type="checkbox" />
+						<label for="checkBox"><span> 품절 제외</span></label>
+					</div>
 					<ul class="icons products">
 						<!-- 상품 -->
 					</ul>
+					<div class="empty-items-box"></div>
 				</div>
 			</main>
 			<footer></footer>

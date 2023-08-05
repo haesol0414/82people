@@ -7,7 +7,7 @@
 		<!-- 작업할 css 연결 -->
 		<link rel="stylesheet" href="./AdminItemManage.css" />
 		<script type="module" src="./AdminItemManage.js"></script>
-		<title>배송 조회</title>
+		<title>Admin Page</title>
 	</head>
 	<body>
 		<div id="global-wrap">
@@ -42,8 +42,10 @@
 							</nav>
 						</section>
 						<section class="items-section">
-							<h3>Item List</h3>
-
+							<div class="title-box">
+								<h3>Item List</h3>
+								<a class="category-link" href="/admin/category">🔎 Edit Category</a>
+							</div>
 							<div class="btn_btw">
 								<button type="button" class="button" id="deleteBtn">
 									- DELETE CHECKED ITEM

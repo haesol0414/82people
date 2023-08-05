@@ -1,8 +1,7 @@
-/* 여기서 부터 각자 레이아웃 스타일 작업 */
 .main-container {
 	padding: 0;
 }
-#order-history-wrap {
+#member-info-wrap {
 	width: 80%;
 	height: 100%;
 	margin: 0 auto;
@@ -16,18 +15,26 @@ h2 {
 h3 {
 	font-size: 24px;
 	color: #6c4e82;
+	margin-bottom: 29px;
 }
-#order-history-wrap > section {
+h4 {
+	font-size: 24px;
+	margin-top: 20px;
+	border-top: 1px solid;
+	padding-top: 20px;
+	color: #6c4e82;
+}
+#member-info-wrap > section {
 	padding: 30px;
+	color: #6c4e82;
 }
 .myparty-menubar {
 	/* border-right: 1px solid #000; */
 	width: 200px;
 }
 .myparty-menubar h2,
-.order-history h3 {
+.item-info h3 {
 	margin-bottom: 30px;
-	color: #6c4e82;
 }
 .user-info {
 	border: 1px solid #6c4e82;
@@ -62,79 +69,52 @@ h3 {
 }
 .myparty-menubar nav li.active a {
 	background-color: #6c4e82;
+	font-size: 20px;
+	font-weight: 400;
 	color: #fff;
 }
 .myparty-menubar nav a {
 	border: 1px solid #6c4e82;
 	background-color: #fff;
 	font-size: 20px;
+	font-weight: 400;
 	margin-top: 10px;
 	display: block;
 	padding: 20px;
 	text-decoration: none;
 	color: #6c4e82;
 }
-.order-history {
+.category-info {
 	flex: 1;
 }
-.order-history .history-list > li {
-	border: 1px solid #6c4e82;
+#info .category-list {
+	font-size: 24px;
+	color: #6c4e82;
 	margin-bottom: 20px;
-	background-color: #fff;
-	color: #525151;
-}
-.order-history .history-list .info {
 	display: flex;
-	align-items: center;
-	color: #525151;
 	justify-content: space-between;
-	border-bottom: 1px solid #6c4e82;
-	padding: 10px 20px;
-	font-size: 18px;
 }
-.order-history .history-list .info .status {
+input {
+	outline: none;
+	background-color: #fff;
+	border: 1px solid #6c4e82;
+	padding: 5px;
+	color: #525151;
+}
+.create-box {
+	display: flex;
+	justify-content: space-between;
+}
+button {
+	cursor: pointer;
 	background-color: #6c4e82;
 	color: #fff;
-	padding: 3px 16px;
-	border-radius: 999px;
-	margin-left: 20px;
 }
-.order-history .history-list .info .date {
-	font-weight: 700;
+input:disabled {
+	background-color: #eee;
 }
-.order-history .history-list .info .detail-btn {
-	text-decoration: none;
-	margin-right: 10px;
-	border-bottom: 1px solid transparent;
-	color: #6c4e82;
-}
-.order-history .history-list .info .detail-btn:hover {
-	border-color: #6c4e82;
-}
-.order-history .history-list .products-list {
-	padding: 20px;
-}
-.order-history .history-list .products-list li {
+.delete-modify-box {
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
-	font-size: 20px;
-	margin-bottom: 10px;
-}
-.order-history .history-list .products-list li:last-child {
-	margin-bottom: 0;
-}
-.order-history .history-list .products-list li .thumbnail {
-	display: flex;
-	align-items: center;
-}
-.order-history .history-list .products-list li img {
-	width: 100px;
-	height: 100px;
-	background-color: #fff;
-	margin-right: 15px;
-	border-radius: 6px;
-}
-.order-history .history-list .products-list li .title {
-	font-weight: 700;
+	margin-bottom: 20px;
 }

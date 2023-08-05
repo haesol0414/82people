@@ -3,7 +3,12 @@ await main();
 const hasToken = await ConfirmToken();
 
 const itemsList = document.querySelector('.history-list');
-let items = '';
+let totalOrders = '';
+let preparing = '';
+let shipping = '';
+let delivered = '';
+let canceled = '';
+
 // 주문상품 화면 그려주기
 function getOrders(orders) {
 	let orderItem = '';
@@ -42,8 +47,21 @@ function getOrders(orders) {
 		</ul>
 	</article>
 	</li>`;
-	items += newItem;
-	itemsList.innerHTML = items;
+
+	if (orders.shippingStatus === '상품 준비 중') {
+		preparing += newItem;
+	}
+	if (orders.shippingStatus === '배송 중') {
+		shipping += newItem;
+	}
+	if (orders.shippingStatus === '배송 완료') {
+		delivered += newItem;
+	}
+	if (orders.shippingStatus === '주문 취소') {
+		canceled += newItem;
+	}
+
+	totalOrders += newItem;
 }
 
 fetch(`/api/admin/orders`, {
@@ -68,12 +86,39 @@ fetch(`/api/admin/orders`, {
 		console.log(json);
 		if (json.orders.length !== 0) {
 			json.orders.reverse().map(getOrders);
+			itemsList.innerHTML = totalOrders;
 		} else {
 			itemsList.innerHTML =
 				'<li style="padding:20px">주문 내역이 없습니다.</li>';
 		}
-	});
-// 	.catch(err => console.log(err));
+	})
+	.catch(err => console.log(err));
+
+// 주문 상태에 따른 주문 목록 보기
+const orderSelectOption = document.querySelector('#user-order');
+
+orderSelectOption.addEventListener('change', event => {
+	if (event.target.value === 'orders') {
+		orderSelectOption.options[0].setAttribute('selected', true);
+		itemsList.innerHTML = totalOrders;
+	}
+	if (event.target.value === 'preparing') {
+		orderSelectOption.options[1].setAttribute('selected', true);
+		itemsList.innerHTML = preparing;
+	}
+	if (event.target.value === 'shipping') {
+		orderSelectOption.options[2].setAttribute('selected', true);
+		itemsList.innerHTML = shipping;
+	}
+	if (event.target.value === 'delivered') {
+		orderSelectOption.options[3].setAttribute('selected', true);
+		itemsList.innerHTML = delivered;
+	}
+	if (event.target.value === 'canceled') {
+		orderSelectOption.options[4].setAttribute('selected', true);
+		itemsList.innerHTML = canceled;
+	}
+});
 
 // function deleteSelectedRows() {
 // 	const userConfirm = confirm('선택된 상품을 정말 삭제하시겠습니까?');

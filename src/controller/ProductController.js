@@ -34,7 +34,7 @@ const ProductController = {
 			);
 
 			res.status(200).json({
-				message: `${category} 카테고리 제품 조회 성공`,
+				message: '카테고리 제품 조회 성공',
 				categoryProducts: categoryProducts,
 			});
 		} catch (err) {
@@ -42,6 +42,21 @@ const ProductController = {
 		}
 	},
 
+	// 카테고리 조회
+	getCategory: async (req, res, next) => {
+		try {
+			const allCategory = await ProductService.getCategory();
+
+			res.status(200).json({
+				message: '[관리자] 상품 삭제 성공',
+				allCategory: allCategory,
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
+
+	// 상품 상세 조회
 	getProductById: async (req, res, next) => {
 		const { productId } = req.params;
 
@@ -57,81 +72,6 @@ const ProductController = {
 			res.status(200).json({
 				message: '제품 상세 보기 조회 성공',
 				productInfo: product,
-			});
-		} catch (err) {
-			next(err);
-		}
-	},
-
-	// [관리자] 상품 수정
-	updateProducts: async (req, res, next) => {
-		const role = req.currentUserRole;
-		const { itemId } = req.params;
-		const {
-			title,
-			price,
-			manufacturer,
-			description,
-			currentAmount,
-			salesAmount,
-		} = req.body;
-
-		try {
-			if (role !== 'admin') {
-				throw new badRequestError('관리자만 접근이 가능합니다.');
-			}
-
-			await ProductService.updateProducts(itemId, {
-				title,
-				price,
-				manufacturer,
-				description,
-				currentAmount,
-				salesAmount,
-			});
-
-			res.status(200).json({
-				message: '[관리자] 상품 수정 성공',
-			});
-		} catch (err) {
-			next(err);
-		}
-	},
-
-	// [관리자] 상품 추가
-	addProducts: async (req, res, next) => {
-		const role = req.currentUserRole;
-		const { productInfo } = req.body;
-
-		try {
-			if (role !== 'admin') {
-				throw new badRequestError('관리자만 접근이 가능합니다.');
-			}
-
-			await ProductService.addProducts({ productInfo });
-
-			res.status(200).json({
-				message: '[관리자] 상품 추가 성공',
-			});
-		} catch (err) {
-			next(err);
-		}
-	},
-
-	// [관리자] 상품 삭제
-	deleteProducts: async (req, res, next) => {
-		const role = req.currentUserRole;
-		const { productId } = req.body;
-
-		try {
-			if (role !== 'admin') {
-				throw new badRequestError('관리자만 접근이 가능합니다.');
-			}
-
-			await ProductService.deleteProducts(productId);
-
-			res.status(200).json({
-				message: '[관리자] 상품 삭제 성공',
 			});
 		} catch (err) {
 			next(err);
