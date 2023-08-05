@@ -16,6 +16,9 @@ function checkJWTTokenInCookie() {
 			// 토큰이 유효한지 여부 확인
 			if (jwtToken) {
 				return jwtToken; // 유효한 토큰이 존재함
+			} else {
+				const expiredDate = new Date(0).toUTCString();
+				document.cookie = `jwtToken=; expires=${expiredDate}; path=/;`;
 			}
 		}
 	}

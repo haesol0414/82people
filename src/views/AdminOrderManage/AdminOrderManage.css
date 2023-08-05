@@ -162,3 +162,12 @@ h3 {
 .field > * > *:last-child {
 	flex: 3;
 }
+
+.user-order-box {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.user-order-box #user-order {
+	color: #525151;
+}
