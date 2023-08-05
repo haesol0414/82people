@@ -99,7 +99,7 @@ function deleteSelectedRows() {
 					// window.location.reload();
 				})
 				.catch(err => console.log(err));
-		}); // API에서 삭제
+		});
 	}
 }
 

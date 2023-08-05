@@ -74,14 +74,14 @@ function emptyProducts() {
 	// 금액정보 안보이게
 	cartPriceBox.style.display = 'none';
 	// 주문 불가
-	orderBtn.setAttribute('disabled', 'disabled');
+	orderBtn.disabled = true;
 }
 
 // 장바구니 상품들 화면 그려주기
 function getProducts(newProducts) {
 	if (newProducts.amount > newProducts.currentAmount) {
 		alert('상품의 재고를 조정해주세요😢');
-		orderBtn.setAttribute('disabled', 'disabled');
+		orderBtn.disabled = true;
 	}
 
 	const newItem = `<li>
@@ -89,7 +89,9 @@ function getProducts(newProducts) {
 		<div class="thumbnail">
 			<input type="checkbox" id="${newProducts.id}" name="cart-item-check" checked />
 			<label for="${newProducts.id}">
+			<a href="/products?productId=${newProducts.id}">
 				<img src="${newProducts.imageUrl}" alt="${newProducts.title}" />
+			</a>
 				${newProducts.title}
 			</label>
 		</div>
@@ -228,8 +230,8 @@ function itemUpdate(item) {
 		if (product.id === itemCheck.id) {
 			product.amount = Number(amountInput.value);
 			if (product.amount > product.currentAmount) {
-				orderBtn.setAttribute('disabled', 'disabled');
-				addingBtn.setAttribute('disabled', 'disabled');
+				orderBtn.disabled = true;
+				addingBtn.disabled = true;
 
 				showOneTimeAlert();
 			}
