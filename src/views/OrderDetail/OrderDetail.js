@@ -73,6 +73,9 @@ fetch(`/api/orders/history/${orderId}`, {
 		const { address, detailAddress, phone, recipient, shippingRequest } =
 			orderDetail.addressInformation;
 		const { shippingPrice, totalProductsPrice } = orderDetail.totalPrice;
+		if (shippingStatus !== '상품 준비 중') {
+			orderCancleBtn.style.display = 'none';
+		}
 
 		orderNumber.innerText = orderId;
 		orderStatus.innerText = shippingStatus;
