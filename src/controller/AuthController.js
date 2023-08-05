@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const UserService = require('../services/UserService');
+const AuthService = require('../services/AuthService');
 const {
 	badRequestError,
 	conflictError,
@@ -9,10 +9,9 @@ const AuthController = {
 	login: async (req, res, next) => {
 		const { email, password } = req.body;
 		console.log('body', req.body);
-		console.log('server', email);
-		console.log('ser', password);
+
 		try {
-			const searchedUser = await UserService.findUser(email);
+			const searchedUser = await AuthService.userLogin(email);
 
 			if (searchedUser === null) {
 				throw new badRequestError('존재하지 않는 아이디입니다.');

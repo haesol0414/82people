@@ -109,16 +109,34 @@ h4 {
 .member-info #default-address > * > :last-child > :first-child {
 	flex: 1;
 }
-input,
-button {
+.password-box {
+	display: flex;
+	text-align: left;
+}
+input {
 	outline: none;
 	background-color: #fff;
 	border: 1px solid #6c4e82;
 	padding: 10px;
 	color: #525151;
 }
+button {
+	outline: none;
+	background-color: #fff;
+	border: 1px solid #6c4e82;
+	padding: 10px;
+	color: #6c4e82;
+	cursor: pointer;
+}
 #address-input {
 	display: block !important;
+}
+#updatePassword,
+#updateAddress,
+#searchAddress {
+	display: block !important;
+	background-color: #6c4e82;
+	color: #fff;
 }
 #address-input > * {
 	display: flex;
@@ -128,13 +146,6 @@ button {
 }
 .api-btn {
 	margin-bottom: 10px;
-}
-#updateAddress {
-	display: block !important;
-}
-button {
-	cursor: pointer;
-	color: #6c4e82;
 }
 .btn {
 	border-left: none;

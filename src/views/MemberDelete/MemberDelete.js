@@ -7,12 +7,16 @@ const checkButton = document.querySelector('.check-button');
 
 // 확인 버튼 클릭 이벤트 처리
 checkButton.addEventListener('click', () => {
-	console.log('clickCheck');
 	const withdrawalStatement = inputElement.value.trim();
 
 	if (withdrawalStatement === '탈퇴하겠습니다.') {
-		// 탈퇴 신청 처리
-		processWithdrawal();
+		if (
+			confirm(
+				'정말 탈퇴 하시겠습니까? 재 가입 시 동일한 이메일로 가입이 불가능 합니다.'
+			)
+		) {
+			processWithdrawal();
+		}
 	} else {
 		// 알림창 표시
 		alert('입력한 문구가 일치하지 않습니다.');

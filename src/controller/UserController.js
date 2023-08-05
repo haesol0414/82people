@@ -22,14 +22,14 @@ const UserController = {
 	},
 
 	updateUser: async (req, res, next) => {
-		const { email, password } = req.body;
+		const { userId, password } = req.body;
 
 		try {
-			if (!email || !password) {
+			if (!userId || !password) {
 				throw new badRequestError('누락된 값이 있습니다.');
 			}
 
-			await UserService.updateUser(email, password);
+			await UserService.updateUser(userId, password);
 
 			return res.status(200).json({
 				message: '회원 정보 수정 성공',

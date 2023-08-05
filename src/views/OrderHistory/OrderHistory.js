@@ -66,7 +66,7 @@ fetch('/api/orders/history', {
 			json.userOrderHistory.reverse().map(getOrders);
 		} else {
 			itemsList.innerHTML =
-				'<li style="padding:20px">주문하신 내역이 없습니다.</li>';
+				'<li style="padding:20px; font-size: 20px;">주문하신 내역이 없습니다.</li>';
 		}
 	})
 	.catch(err => console.log(err));

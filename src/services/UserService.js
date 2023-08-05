@@ -2,11 +2,11 @@ const User = require('../db/models/UserModel');
 
 const UserService = {
 	findUser: async email => {
-		return await User.findOne({ email });
+		return await User.findOne({ email }, { password: 0 });
 	},
 
-	updateUser: async (email, password) => {
-		await User.updateOne({ email }, { password });
+	updateUser: async (userId, password) => {
+		await User.updateOne({ _id: userId }, { password: password });
 	},
 
 	withdrawn: async email => {

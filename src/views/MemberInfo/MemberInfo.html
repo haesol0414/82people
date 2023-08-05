@@ -52,17 +52,35 @@
 									<span class="member-email">이메일</span>
 									<input class="input" id="receiver-email" disabled />
 								</section>
-								<section>
-									<span class="member-password">비밀번호</span>
-									<div>
-										<input
-											class="input"
-											id="receiver-password"
-											type="password"
-										/>
-										<button class="modify-botton btn">비밀번호 변경</button>
-									</div>
-								</section>
+									<form>
+										<span class="member-password">비밀번호</span>
+										<div class="password-box">
+											<input
+												class="input"
+												id="receiver-password"
+												type="password"
+												name="form-pw"
+												minlength="8"
+												pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$"
+												placeholder="영문, 숫자, 특수문자 조합 8글자를 입력해 주세요."
+												required
+											/>
+											<input
+												class="input"
+												id="receiver-password-check"
+												type="password"
+												name="form-pwCheck"
+												minlength="8"
+												pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$"
+												style="margin: 0 2px"
+												placeholder="비밀번호 확인"
+												required
+											/>
+											<button type="submit" id="updatePassword">
+												비밀번호 변경
+											</button>
+										</div>
+									</form>
 							</div>
 							<div>
 								<h4>Set Default Shipping Address</h4>
@@ -106,7 +124,7 @@
 										<input type="text" id="shippingRequest" name="orderForm" />
 									</section>
 									<section>
-										<button id="updateAddress">배송지 변경</button>
+										<button id="updateAddress">기본 배송지 등록</button>
 									</section>
 								</div>
 							</div>

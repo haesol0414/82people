@@ -68,7 +68,10 @@ productAmount.addEventListener('change', e => {
 		price * Number(productAmount.value)
 	).toLocaleString()}`;
 
-	if (Number(productAmount.value) > currentAmount) {
+	if (currentAmount === 0) {
+		return alert(`SOLD OUT !!`);
+	}
+	if (currentAmount !== 0 && Number(productAmount.value) > currentAmount) {
 		return alert(`현재 재고 : ${currentAmount}개`);
 	}
 });
@@ -102,5 +105,5 @@ addToCart.addEventListener('click', () => {
 		products.push(product);
 	}
 	localStorage.setItem(PRODUCT_KEY, JSON.stringify(products));
-	alert('장바구니에 추가되었습니다!');
+	alert('장바구니에 추가되었습니다 💜');
 });

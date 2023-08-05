@@ -27,7 +27,7 @@ async function CategoryProductsInit() {
 
 CategoryProductsInit();
 
-// 카테고리 id로 카테고리별 상품 가져오기
+// 카테고리별 상품 가져오기
 fetch(`/api/products/category/${categoryId}`, {
 	method: 'GET',
 	headers: {
@@ -54,7 +54,6 @@ fetch(`/api/products/category/${categoryId}`, {
 			categoryName = categoryProducts[0].category.name;
 			categoryTitle.innerHTML = `✢ ${categoryName} ✢`;
 
-			// sortSelectOption.options[0].selected = true;
 			products.innerHTML = generateSortedHtml(categoryProducts, false);
 		} else {
 			emptyItem.innerHTML = `<span>THIS CATEGORY IS EMPTY 🫧</span>
@@ -71,7 +70,6 @@ function generateSortedHtml(products, hideSoldOut) {
 	let sotedProduct = '';
 	let price = '';
 
-	// 별도의 정렬 처리를 수행
 	if (selectedSortType === 'newest') {
 		products.sort((a, b) => b._id.localeCompare(a._id));
 	} else if (selectedSortType === 'highest') {

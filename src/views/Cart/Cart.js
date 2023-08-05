@@ -80,7 +80,9 @@ function emptyProducts() {
 // 장바구니 상품들 화면 그려주기
 function getProducts(newProducts) {
 	if (newProducts.amount > newProducts.currentAmount) {
-		alert('상품의 재고를 조정해주세요😢');
+		alert(
+			`[${newProducts.title}]상품의 재고를 조정해주세요😢\n현재 재고 : ${newProducts.currentAmount}개`
+		);
 		orderBtn.disabled = true;
 	}
 

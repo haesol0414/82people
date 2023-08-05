@@ -6,18 +6,17 @@ const hasToken = await ConfirmToken();
 const receiverNameInput = document.querySelector('#receiver-name');
 const receiverEmailInput = document.querySelector('#receiver-email');
 const receiverPasswordInput = document.querySelector('#receiver-password');
+const PassworCheckInput = document.querySelector('#receiver-password-check');
 const updateAddress = document.querySelector('#updateAddress');
 const searchAddress = document.querySelector('#searchAddress');
 const defaultAddress = document.querySelector('#address');
 const defaultDetailAddress = document.querySelector('#detail-address');
-// 회원정보수정하는 버튼
-const modifyBotton = document.querySelector('.modify-botton');
-
-const userName = document.querySelector('#user-name');
-
+const modifyBotton = document.querySelector('#updatePassword');
 const defaultRecipient = document.querySelector('#recipient');
 const defaultPhone = document.querySelector('#phone');
 const defaultShippingRequest = document.querySelector('#shippingRequest');
+
+let userId = '';
 
 // 확인된 토큰으로 서버에게 요청해서 현재 유저 정보받아오기
 fetch('/api/users/myPage', {
@@ -28,18 +27,18 @@ fetch('/api/users/myPage', {
 })
 	.then(res => res.json())
 	.then(json => {
-		// 받아온 정보들을 위에 태그값에 넣어서 화면에 보여주기
 		console.log('json', json);
-		const { name, email, password, role } = json.userInformation;
+		const { _id, name, email, role } = json.userInformation;
 		const { address, detailAddress, recipient, shippingRequest, phone } =
 			json.userInformation.addressInformation;
-		receiverNameInput.value = name;
-		receiverEmailInput.value = email;
-		receiverPasswordInput.value = password;
-		if (role === 'admin') {
+		userId = _id;
+		if (role !== 'customer') {
 			window.location.href = '/';
 		}
 
+		// 받아온 정보들을 위에 태그값에 넣어서 화면에 보여주기
+		receiverNameInput.value = name;
+		receiverEmailInput.value = email;
 		if (json.userInformation.addressInformation.length !== 0) {
 			defaultAddress.value = address;
 			defaultDetailAddress.value = detailAddress;
@@ -47,7 +46,7 @@ fetch('/api/users/myPage', {
 			defaultPhone.value = phone;
 			defaultShippingRequest.value = shippingRequest;
 		}
-		userName.innerText = json.userInformation.name;
+
 		console.log(json.userInformation);
 	});
 
@@ -102,6 +101,7 @@ function addressApi() {
 	}).open();
 }
 
+// 배송지 변경 버튼을 클릭 했을 때
 updateAddress.addEventListener('click', () => {
 	fetch('/api/orders/addAddress', {
 		method: 'POST',
@@ -125,26 +125,28 @@ updateAddress.addEventListener('click', () => {
 		.catch(err => alert(err));
 });
 
-// 회원정보수정 버튼을 클릭했을 떄
+// 비밀번호 변경 버튼을 클릭했을 때
 modifyBotton.addEventListener('click', () => {
-	// 확인된 토큰으로 서버에게 수정 요청보내기
-	fetch('/api/users', {
-		method: 'PATCH',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: hasToken,
-		},
-		body: JSON.stringify({
-			email: receiverEmailInput.value,
-			password: receiverPasswordInput.value,
-			address: '',
-		}),
-	})
-		.then(res => res.json())
-		.catch(err => alert(err))
-		.then(json => {
-			// console.log(json);
-			alert(json.message);
+	if (receiverPasswordInput.value === PassworCheckInput.value) {
+		fetch('/api/users', {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: hasToken,
+			},
+			body: JSON.stringify({
+				userId,
+				password: receiverPasswordInput.value,
+			}),
 		})
-		.catch(err => alert(err));
+			.then(res => res.json())
+			.catch(err => console.log(err))
+			.then(json => {
+				alert('비밀번호가 변경되었습니다.');
+				console.log(json);
+			})
+			.catch(err => console.log(err));
+	} else {
+		alert('비밀번호가 일치하지 않습니다. 다시 한 번 확인해주세요.');
+	}
 });
