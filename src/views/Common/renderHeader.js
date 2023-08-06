@@ -20,7 +20,7 @@ function renderHeader() {
 			}
 		})
 		.catch(err => {
-			alert(err);
+			console.log(err);
 		})
 		.then(({ allCategory }) => {
 			headerCategory = allCategory;

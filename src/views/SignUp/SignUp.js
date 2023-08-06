@@ -28,15 +28,15 @@ const signupEvent = e => {
 			.then(res => {
 				if (res.ok) {
 					alert(`성공적으로 회원가입이 되었습니다.`);
+
 					// 로그인 페이지 이동
-					console.log(res);
 					window.location.href = '/login';
 				} else {
-					throw new Error('회원가입 실패');
+					alert('회원가입 실패');
 				}
 			})
 			.catch(err => {
-				alert(err);
+				console.log(err);
 			});
 	}
 };
@@ -56,9 +56,9 @@ const searchedEmail = () => {
 			}
 		})
 		.catch(err => {
-			alert(err);
+			console.log(err);
 		});
 };
 
-form.addEventListener('submit', signupEvent); // 가입하기 버튼을 클릭하였을때 handleSubmit 함수가 동작
-emailOverlapCheck.addEventListener('click', searchedEmail); // 가입하기 버튼을 클릭하였을때 handleSubmit 함수가 동작
+form.addEventListener('submit', signupEvent);
+emailOverlapCheck.addEventListener('click', searchedEmail);

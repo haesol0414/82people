@@ -54,11 +54,11 @@ fetch('/api/orders/history', {
 		if (res.ok) {
 			return res.json();
 		} else {
-			throw new Error('로그인한 회원만 사용 가능합니다.');
+			alert('로그인한 회원만 사용 가능합니다.');
+			window.location.href = '/';
 		}
 	})
 	.catch(err => {
-		window.location.href = '/';
 		console.log(err);
 	})
 	.then(json => {

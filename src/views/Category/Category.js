@@ -45,7 +45,7 @@ fetch(`/api/products/category/${categoryId}`, {
 		}
 	})
 	.catch(err => {
-		alert(err);
+		console.log(err);
 	})
 	.then(({ categoryProducts }) => {
 		Products = categoryProducts;

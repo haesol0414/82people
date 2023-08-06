@@ -24,7 +24,7 @@
 - HTML, CSS 디자인
 - 폰트 적용
 - Best Items UI를 단일 슬라이드 이용하여 구현
-- ConfirmToken.js : 토큰을 이용해 사용자의 로그인 상태를 판별하고 회원 정보를 확인하는 코드들을 ConfirmToken.js 파일로 모듈화 하였음
+- ConfirmToken.js : 토큰을 이용해 사용자의 로그인 상태를 판별하고 회원 정보를 확인하는 코드들을 ConfirmToken.js 파일로 모듈화 하였음, 서버쪽 토큰 만료 시간(1h)이 지나면 프론트에서도 세션 만료 alert를 띄우며 자동 로그아웃 처리를 하도록 함
 - Category Model & Schema : String 타입이였던 기존 ProductSchema의 category 필드는 CategorySchema를 참조하도록 ref 옵션을 주어 상품 조회 시 populate를 통해 상품의 카테고리 이름을 가져올 수 있도록 하였음
 - Cart : 장바구니에서 상품 이미지를 클릭하면 해당 상품 상세 페이지로 넘어가도록 수정함
 - UserLogin Service : 기존 유저 정보를 받아오는 API가 로그인 확인 과정과 사용자 정보 페이지에서 사용자 정보를 받아오는 과정 모두에서 쓰였음. 이 경우 사용자 정보를 받아올 때 password까지 그대로 res로 모두 받아오게 되어 비밀번호가 콘솔에 노출되는 상황이 발생 => 사용자 정보를 받아오는 API에서 비밀번호 필드를 제외하고 res에 담도록 DB 로직을 수정하였고, 로그인 시 사용자의 비밀번호가 일치하는지 확인할 수 있도록 AuthService.js에 UserLogin Service를 따로 만들어 AuthController에서 관리하도록 함
@@ -62,3 +62,7 @@
 ## 🔜
 
 - '상품 준비 중' 상태에서는 배송지 변경이 가능하도록 하기
+- 상품 상세
+- 리뷰
+- Q&A 페이지
+- 이미지 파일 업로드 => 이미지 모델을 따로? DB에는 URL??

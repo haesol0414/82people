@@ -26,7 +26,7 @@ orderButton.addEventListener('click', e => {
 			}
 		})
 		.catch(err => {
-			alert(err);
+			console.log(err);
 		})
 		.then(({ orderDetail }) => {
 			console.log('value', orderDetail._id);
