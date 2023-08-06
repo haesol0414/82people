@@ -33,7 +33,7 @@ if (hasToken) {
 } else {
 	console.log('JWT 토큰이 쿠키에 존재하지 않습니다.');
 	userName.innerHTML = '';
-	guestModeEl.innerHTML = `주문번호 <label for="order-id" id="order-id-label">${orderId}</label><input id="order-id"  />와 비밀번호를
+	guestModeEl.innerHTML = `주문번호 <label for="order-id" id="order-id-label">${orderId}</label><input id="order-id" />와 비밀번호를
     기억해주세요!`;
 	const orderIdInput = document.querySelector('#order-id');
 	const orderIdCopy = document.querySelector('#order-id-label');

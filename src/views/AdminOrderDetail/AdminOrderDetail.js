@@ -19,6 +19,18 @@ const products = document.querySelector('.products-list');
 const shippingStatusOption = document.querySelector('#shippingStatus');
 const orderCancleBtn = document.querySelector('#orderCancle');
 
+const editAddressBtn = document.querySelector('#editAddressBtn'); // 배송지 수정 버튼
+const modal = document.querySelector('.modal'); // 모달 창 자체
+const closeModalBtn = document.querySelector('.close'); // 모달창 내부 닫기 버튼
+const newAddressSubmit = document.querySelector('#modalSubmit'); // 모달창 내부 수정 버튼 (API 호출)
+const searchAddress = document.querySelector('#searchAddress'); // 모달창 내부 주소 검색 버튼
+// 모달 인풋들
+const newRecipientInput = document.querySelector('#newRecipient');
+const newPhoneInput = document.querySelector('#newPhone');
+const newMainAddressInput = document.querySelector('#newMainAddress');
+const newDetailAddressInput = document.querySelector('#newDetailAddress');
+const newRequestInput = document.querySelector('#newRequest');
+
 let purchase;
 let addressInformation;
 
@@ -70,13 +82,16 @@ fetch(`/api/orders/history/${orderId}`, {
 		if (orderDetail.shippingStatus === '배송 중') {
 			shippingStatusOption.options[1].setAttribute('selected', true);
 			orderCancleBtn.style.display = 'none';
+			editAddressBtn.style.display = 'none';
 		}
 		if (orderDetail.shippingStatus === '배송 완료') {
 			shippingStatusOption.options[2].setAttribute('selected', true);
 			orderCancleBtn.style.display = 'none';
+			editAddressBtn.style.display = 'none';
 		}
 		if (orderDetail.shippingStatus === '주문 취소') {
 			shippingStatusOption.options[3].setAttribute('selected', true);
+			editAddressBtn.style.display = 'none';
 			shippingStatusOption.disabled = true;
 		}
 	});
@@ -154,18 +169,6 @@ orderCancleBtn.addEventListener('click', () => {
 			.catch(err => console.log('err', err));
 	}
 });
-
-const editAddressBtn = document.querySelector('#editAddressBtn'); // 배송지 수정 버튼
-const modal = document.querySelector('.modal'); // 모달 창 자체
-const closeModalBtn = document.querySelector('.close'); // 모달창 내부 닫기 버튼
-const newAddressSubmit = document.querySelector('#modalSubmit'); // 모달창 내부 수정 버튼 (API 호출)
-const searchAddress = document.querySelector('#searchAddress'); // 주소 검색 버튼
-// 모달 인풋들
-const newRecipientInput = document.querySelector('#newRecipient');
-const newPhoneInput = document.querySelector('#newPhone');
-const newMainAddressInput = document.querySelector('#newMainAddress');
-const newDetailAddressInput = document.querySelector('#newDetailAddress');
-const newRequestInput = document.querySelector('#newRequest');
 
 // 모달 열기 버튼 클릭 시
 editAddressBtn.addEventListener('click', function () {

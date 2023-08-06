@@ -163,24 +163,34 @@ p {
 .input-pair {
 	display: flex;
 	align-items: center; /* 라벨과 인풋 쌍을 수직 정렬하기 위해 세로 중앙 정렬 */
-	font-size: 20px;
 }
 .input-pair label {
 	margin-right: 10px;
 	color: #6c4e82;
+	font-size: 20px;
 }
 .input-pair input {
 	color: #525151;
+	font-size: 20px;
 }
-
-#editAddressBtn,
-#modalSubmit {
+#editAddressBtn {
 	background-color: #6c4e82;
 	color: #fff;
 	border: 1px solid #6c4e82;
 	padding: 3px 16px;
 	border-radius: 999px;
 }
+#modalSubmit {
+	background-color: #6c4e82;
+	color: #fff;
+	border: 1px solid #6c4e82;
+	border-radius: 999px;
+	text-align: center;
+	width: 80px;
+	height: 50px;
+	margin: 5px 0 15px 0;
+}
+
 .order-info section,
 .purchase-info section {
 	background-color: #fff;
@@ -241,19 +251,25 @@ p {
 }
 
 .modal-content {
-	background-color: #fff;
+	background-color: #d4c7d4;
 	margin: 15% auto;
 	padding: 20px;
-	border: 1px solid #888;
+	border: 10px double #6c4e82;
 	width: 50%;
 }
 #searchAddress {
-	display: block !important;
 	background-color: #6c4e82;
 	color: #fff;
 	border: 1px solid #6c4e82;
+	width: 48px;
+	height: 28px;
 }
-#newMainAddress, #newDetailAddress {
-	width: 60%
-	
+#newMainAddress,
+#newDetailAddress {
+	width: 60%;
+}
+.close {
+	font-size: 25px;
+	cursor: pointer;
+	margin-top: 15px;
 }

@@ -47,7 +47,12 @@
 								<fieldset>
 									<section>
 										<label class="require" for="recipient">수령인</label>
-										<input type="text" id="recipient" name="orderForm" />
+										<input
+											type="text"
+											id="recipient"
+											name="orderForm"
+											required
+										/>
 									</section>
 									<section>
 										<label class="require" for="phone">연락처</label>
@@ -56,6 +61,7 @@
 											id="phone"
 											name="orderForm"
 											maxlength="13"
+											required
 										/>
 									</section>
 									<section class="address-input">
@@ -68,6 +74,7 @@
 													id="address"
 													name="orderForm"
 													placeholder="주소검색"
+													required
 												/>
 											</section>
 											<input
@@ -75,6 +82,7 @@
 												id="detail-address"
 												name="orderForm"
 												placeholder="상세주소"
+												required
 											/>
 										</div>
 									</section>

@@ -26,6 +26,9 @@ if (hasToken) {
             type="password"
             id="guestPwd"
             name="orderForm"
+			placeholder="조회용 비밀번호는 최소 4자리 이상 입력해주세요."
+			minlength="4"
+			required
         />
     </section>`;
 }
@@ -253,11 +256,6 @@ if (hasToken) {
 function orderBtn(e) {
 	e.preventDefault();
 	const onlyPhoneNumbers = phone.value.replace(/[^0-9]/g, '');
-	// console.log('수령인', recipient.value);
-	// console.log('연락처', onlyPhoneNumbers);
-	// console.log('배송지', address.value + detailAddress.value);
-	// console.log('배송시 요청사항', shippingRequest.value);
-	// console.log('비회원 비밀번호', guestPwd?.value);
 
 	const orderProducts = [];
 	products.map(product => {
@@ -300,15 +298,14 @@ function orderBtn(e) {
 			})
 				.then(res => {
 					if (res.ok) {
-						alert('회원주문 완료');
+						alert(`회원님의 주문이 완료되었습니다 💜`);
 						window.location.href = '/orders/complete';
 						localStorage.removeItem(PRODUCT_KEY);
 					} else {
-						throw new Error('회원주문 실패');
+						throw new Error('회원 주문 실패');
 					}
 				})
 				.catch(err => console.log(err));
-			// res, json부분 dev에서 확인 다시 필요함! res 에러 컨트롤 작업 필요함.. 볼수없어서 이렇게.. 했어요
 		} else {
 			alert('필수입력을 적어주세요!');
 		}
@@ -339,14 +336,24 @@ function orderBtn(e) {
 					shippingPrice: shippingPriceNumber,
 				}),
 			})
-				.then(res => res.json())
+				.then(res => {
+					if (res.ok) {
+						return res.json();
+					} else {
+						throw new Error('비회원 주문 실패');
+					}
+				})
 				.then(json => {
 					console.log(json);
+					alert(
+						`비회원님 주문이 완료되었습니다 💜\n다음 화면에서 주문 번호를 꼭❗️복사해주세요❗️`
+					);
+
 					window.location.href = '/orders/complete?orderId=' + json.orderId._id;
+
 					localStorage.removeItem(PRODUCT_KEY);
 				})
 				.catch(err => console.log(err));
-			// res, json부분 dev에서 확인 다시 필요함! res 에러 컨트롤 작업 필요함.. 볼수없어서 이렇게.. 했어요
 		} else {
 			alert('필수입력을 적어주세요!');
 		}
