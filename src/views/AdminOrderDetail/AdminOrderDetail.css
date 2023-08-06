@@ -147,11 +147,39 @@ p {
 	margin-bottom: 20px;
 	color: #525151;
 }
-.order-info .title-container {
+.order-info .address-container {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 10px;
+}
+
+#addressForm {
+	display: flex;
+	flex-direction: column; /* 수직 정렬을 위해 컨테이너를 세로 방향으로 배치 */
+	gap: 20px; /* 라벨과 인풋 쌍 사이 간격 설정 */
+}
+
+.input-pair {
+	display: flex;
+	align-items: center; /* 라벨과 인풋 쌍을 수직 정렬하기 위해 세로 중앙 정렬 */
+	font-size: 20px;
+}
+.input-pair label {
+	margin-right: 10px;
+	color: #6c4e82;
+}
+.input-pair input {
+	color: #525151;
+}
+
+#editAddressBtn,
+#modalSubmit {
+	background-color: #6c4e82;
+	color: #fff;
+	border: 1px solid #6c4e82;
+	padding: 3px 16px;
+	border-radius: 999px;
 }
 .order-info section,
 .purchase-info section {
@@ -172,12 +200,6 @@ p {
 }
 .order-info section > div > span:first-child {
 	font-weight: 700;
-}
-.order-info .order-modify {
-	background-color: #fff;
-	border: 1px solid #6c4e82;
-	padding: 3px 16px;
-	border-radius: 999px;
 }
 .purchase-info h4 {
 	margin-bottom: 10px;
@@ -205,4 +227,23 @@ p {
 	text-decoration: none;
 	line-height: 1;
 	padding: 10px 20px;
+}
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	background-color: #fff;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 50%;
 }

@@ -70,12 +70,70 @@
 							</article>
 							<!-- 주문 정보 -->
 							<article class="order-info">
-								<div class="title-container">
+								<div class="address-container">
 									<h4>주문 정보</h4>
 									<!-- 상품준비중일 때에만 해당요소 노출 -->
-									<!-- <button type="button" class="order-modify">
-										주문 정보 수정
-									</button> -->
+									<button id="editAddressBtn">배송지 수정</button>
+
+									<div id="modal" class="modal" style="display: none">
+										<div class="modal-content">
+											<span class="close">&times;</span>
+											<h2 style="padding: 10px 0; margin-top: 10px; font-size: 28px;"">배송지 수정</h2>
+											<p style="margin: 3px 0 15px 0; color: #525151;">(* 입력하신 정보만 변경됩니다.)</p>
+											<form id="addressForm">
+ 												 <div class="input-pair">
+													<label for="newAddress">수령인 : </label>
+													<input
+														type="text"
+														id="newAddress"
+														name="newAddress"
+														required
+													/>
+												</div>
+
+  												<div class="input-pair">
+													<label for="newAddress">연락처 : </label>
+													<input
+														type="text"
+														id="newAddress"
+														name="newAddress"
+														required
+													/>
+												</div>
+
+ 												 <div class="input-pair">
+												<label for="newAddress">배송지 : </label>
+												<input
+													type="text"
+													id="newAddress"
+													name="newAddress"
+													required
+												/>
+												</div>
+
+ 												 <div class="input-pair">
+												<label for="newAddress">상세 주소 : </label>
+												<input
+													type="text"
+													id="newAddress"
+													name="newAddress"
+													required
+												/>
+												</div>
+
+ 												 <div class="input-pair">
+												<label for="newAddress">배송시 요청사항 : </label>
+												<input
+													type="text"
+													id="newAddress"
+													name="newAddress"
+													required
+												/>
+												</div>
+												<button type="submit" id="modalSubmit">수정</button>
+											</form>
+										</div>
+									</div>
 								</div>
 								<section>
 									<div>

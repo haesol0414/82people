@@ -165,3 +165,22 @@ orderCancleBtn.addEventListener('click', () => {
 			.catch(err => console.log('err', err));
 	}
 });
+
+const editAddressBtn = document.querySelector('#editAddressBtn'); // 배송지 수정 버튼
+const modal = document.querySelector('.modal'); // 모달 창 자체
+const closeModalBtn = document.querySelector('.close'); // 모달창 내부 닫기 버튼
+const newAddressSubmit = document.querySelector('#modalSubmit'); // 모달창 내부 수정 버튼 (API 호출)
+
+// 모달 열기 버튼 클릭 시
+editAddressBtn.addEventListener('click', function () {
+	modal.style.display = 'block';
+});
+
+// 모달 닫기 버튼 클릭 시
+closeModalBtn.addEventListener('click', function () {
+	modal.style.display = 'none';
+});
+
+// newAddressSubmit.addEventListener('click', function () {
+// 	modal.style.display = 'none';
+// });
