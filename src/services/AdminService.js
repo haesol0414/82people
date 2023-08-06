@@ -15,9 +15,12 @@ const AdminService = {
 	},
 
 	// [관리자] 배송지 수정
-	// updateOrderAddress: async ({ orderId }) => {
-	// 	await Order.updateOne({ _id: orderId });
-	// },
+	updateOrderAddress: async (orderId, { addressInformation }) => {
+		await Order.updateOne(
+			{ _id: orderId },
+			{ addressInformation: addressInformation }
+		);
+	},
 
 	// [관리자] 회원 전체 조회
 	viewAllUsers: async () => {

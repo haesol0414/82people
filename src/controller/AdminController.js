@@ -78,24 +78,25 @@ const AdminController = {
 	},
 
 	// [관리자] 배송지 수정
-	// updateOrderAddress: async (req, res, next) => {
-	// 	const role = req.currentUserRole;
-	// 	const { orderId } = req.params;
+	updateOrderAddress: async (req, res, next) => {
+		const role = req.currentUserRole;
+		const { orderId } = req.params;
+		const { addressInformation } = req.body;
 
-	// 	try {
-	// 		if (role !== 'admin') {
-	// 			throw new badRequestError('관리자만 접근이 가능합니다.');
-	// 		}
+		try {
+			if (role !== 'admin') {
+				throw new badRequestError('관리자만 접근이 가능합니다.');
+			}
 
-	// 		await AdminService.updateOrderAddress(orderId);
+			await AdminService.updateOrderAddress(orderId, { addressInformation });
 
-	// 		res.status(200).json({
-	// 			message: '[관리자] 배송지 수정 성공',
-	// 		});
-	// 	} catch (err) {
-	// 		next(err);
-	// 	}
-	// },
+			res.status(200).json({
+				message: '[관리자] 배송지 수정 성공',
+			});
+		} catch (err) {
+			next(err);
+		}
+	},
 
 	// [관리자] 상품 수정
 	updateProducts: async (req, res, next) => {

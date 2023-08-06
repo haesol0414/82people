@@ -15,7 +15,11 @@ AdminRouter.delete(
 );
 
 // [관리자] 배송지 수정
-// AdminRouter.fetch('/admin/:orderId', VerifyToken, AdminController.updateOrderAddress);
+AdminRouter.patch(
+	'/admin/orders/:orderId',
+	VerifyToken,
+	AdminController.updateOrderAddress
+);
 
 // [관리자] 회원 전체 조회
 AdminRouter.get('/admin/users', VerifyToken, AdminController.viewAllUsers);
