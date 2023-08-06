@@ -1,7 +1,7 @@
 import { renderHeader } from './renderHeader.js';
 import { renderFooter } from './renderFooter.js';
 import { renderLogin } from './loginForm.js';
-import { ConfirmToken } from './confirmToken.js';
+import { ConfirmToken } from './ConfirmToken.js';
 
 async function main() {
 	renderHeader();

@@ -1,26 +1,10 @@
-import { main } from '/Common/index.js';
+import { main, ConfirmToken } from '/Common/index.js';
 await main();
 
-// checkJWTTokenInCookie를 공통 js로 만들어서 header,footer 불러올때 함께 사용하면 좋을 듯 함
-// 쿠키에서 JWT 토큰 확인
-function checkJWTTokenInCookie() {
-	const cookies = document.cookie.split(';'); // 모든 쿠키 가져오기
-	// console.log(cookies);
-	for (let i = 0; i < cookies.length; i++) {
-		const cookie = cookies[i].trim();
-		// JWT 토큰 쿠키인지 확인
-		if (cookie.startsWith('userToken=')) {
-			const jwtToken = cookie.split('=')[1]; // JWT 토큰 값 가져오기
-			// 토큰이 유효한지 여부 확인
-			if (jwtToken) {
-				return jwtToken; // 유효한 토큰이 존재함
-			}
-		}
-	}
-}
+// 👉 개발 시작 코드
+const PRODUCT_KEY = 'cartProducts';
 
-// 쿠키에서 JWT 토큰 확인
-const hasToken = checkJWTTokenInCookie();
+const hasToken = await ConfirmToken();
 const guestModeEl = document.querySelector('#guest-mode');
 
 if (hasToken) {
@@ -30,9 +14,6 @@ if (hasToken) {
 	console.log('JWT 토큰이 쿠키에 존재하지 않습니다.');
 	guestModeEl.innerText = 'Guest';
 }
-
-// 👉 개발 시작 코드
-const PRODUCT_KEY = 'cartProducts';
 
 // 로컬스토리지 장바구니 데이터
 let products = JSON.parse(localStorage.getItem(PRODUCT_KEY));

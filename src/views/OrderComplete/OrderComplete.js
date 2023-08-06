@@ -1,25 +1,6 @@
-import { main } from '/Common/index.js';
+import { main, ConfirmToken } from '/Common/index.js';
 await main();
-
-function checkJWTTokenInCookie() {
-	const cookies = document.cookie.split(';'); // 모든 쿠키 가져오기
-	for (let i = 0; i < cookies.length; i++) {
-		const cookie = cookies[i].trim();
-		// 	JWT 토큰 쿠키인지 확인
-		if (cookie.startsWith('userToken=')) {
-			const jwtToken = cookie.split('=')[1]; // JWT 토큰 값 가져오기
-			// 토큰이 유효한지 여부 확인
-			if (jwtToken) {
-				return jwtToken; // 유효한 토큰이 존재함
-			}
-		}
-	}
-}
-
-// 👉 개발 시작 코드
-
-// 쿠키에서 JWT 토큰 확인
-const hasToken = checkJWTTokenInCookie();
+const hasToken = await ConfirmToken();
 
 // 비회원 파라미터 정보
 const urlStr = window.location.href;
@@ -63,9 +44,8 @@ if (hasToken) {
 		alert('주문번호가 복사되었습니다!');
 	});
 }
-console.log(userRole);
-const orderHistoryBtn = document.querySelector('.order-history-btn');
 
+const orderHistoryBtn = document.querySelector('.order-history-btn');
 if (hasToken && userRole !== 'admin') {
 	orderHistoryBtn.setAttribute('href', `/myPage/orders`);
 } else if (hasToken && userRole === 'admin') {

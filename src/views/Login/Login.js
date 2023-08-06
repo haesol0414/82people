@@ -47,7 +47,7 @@ const login = e => {
 
 				return res.json();
 			} else {
-				alert(res.message);
+				alert('아이디 또는 비밀번호를 확인해주세요.');
 			}
 		})
 		.catch(err => {
