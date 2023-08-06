@@ -53,6 +53,7 @@ fetch(`/api/products/${productId}`, {
 
 		if (currentAmount <= 0) {
 			toCartSpan.innerHTML = 'SOLD OUT';
+			addToCart.style.cursor = 'not-allowed';
 			return (addToCart.disabled = true);
 		}
 	})

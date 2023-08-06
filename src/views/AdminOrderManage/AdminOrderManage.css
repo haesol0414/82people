@@ -164,10 +164,22 @@ h3 {
 }
 
 .user-order-box {
-	text-align: right;
+	display: flex;
+	justify-content: space-between;
 	margin-bottom: 10px;
 }
-
+#orderNumberInput {
+	color: #525151;
+	padding: 5px;
+	width: 35%;
+}
+.ignore-justify {
+	cursor: pointer;
+	margin-right: auto;
+	background-color: #6c4e82;
+	color: #fff;
+	width: 5%;
+}
 .user-order-box #user-order {
 	color: #525151;
 }

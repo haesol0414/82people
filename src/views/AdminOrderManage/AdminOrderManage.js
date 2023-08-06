@@ -120,29 +120,26 @@ orderSelectOption.addEventListener('change', event => {
 	}
 });
 
-// function deleteSelectedRows() {
-// 	const userConfirm = confirm('선택된 상품을 정말 삭제하시겠습니까?');
-// 	if (userConfirm) {
-// 		let radioes = document.querySelectorAll(
-// 			".product tbody input[type='radio']"
-// 		);
-// 		let rowsToDelete = [];
+// 검색된 주문의 상세 페이지로 이동
+const searchButton = document.getElementById('searchButton');
+searchButton.addEventListener('click', () => {
+	const orderNumberInput = document.getElementById('orderNumberInput').value;
 
-// 		radioes.forEach(function (radio) {
-// 			if (radio.checked) {
-// 				rowsToDelete.push(radio.parentNode.parentNode);
-// 			}
-// 		});
+	if (orderNumberInput) {
+		if (!isValidObjectId(orderNumberInput)) {
+			alert('올바른 주문 번호를 입력해주세요.');
 
-// 		rowsToDelete.forEach(function (row) {
-// 			row.parentNode.removeChild(row); // 화면에서 삭제
-// 			count.innerHTML = Number(count.innerText) - 1;
-// 			const id = row.getAttribute('product_id');
-// 			API.delete('/api/admin/product/', id); // API에서 삭제
-// 		});
-// 		getProductList();
-// 		alert('삭제되었습니다.');
-// 	}
-// }
-// const deleteBtn = document.getElementById('deleteRows');
-// deleteBtn.addEventListener('click', deleteSelectedRows);
+			return;
+		}
+
+		window.location.href = `/admin/orders/orderId?orderId=${orderNumberInput}`;
+	} else {
+		alert('주문 번호를 입력하세요.');
+	}
+});
+
+// 입력된 값이 ObjectId 형식인지 확인하는 함수
+function isValidObjectId(orderNumberInput) {
+	const objectIdPattern = /^[0-9a-fA-F]{24}$/;
+	return objectIdPattern.test(orderNumberInput);
+}
