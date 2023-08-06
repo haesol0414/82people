@@ -60,7 +60,7 @@ function logout() {
 	document.cookie =
 		'userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
-	alert('세션이 만료되어 로그아웃되었습니다.');
+	alert('세션이 만료되어 로그아웃되었습니다.\n세션 만료 시간 : 1 Hour');
 	window.location.href = '/';
 }
 
