@@ -81,14 +81,23 @@ const AdminController = {
 	updateOrderAddress: async (req, res, next) => {
 		const role = req.currentUserRole;
 		const { orderId } = req.params;
-		const { addressInformation } = req.body;
+		console.log(orderId);
+		const { recipient, phone, address, detailAddress, shippingRequest } =
+			req.body;
 
 		try {
 			if (role !== 'admin') {
 				throw new badRequestError('관리자만 접근이 가능합니다.');
 			}
 
-			await AdminService.updateOrderAddress(orderId, { addressInformation });
+			await AdminService.updateOrderAddress(
+				orderId,
+				recipient,
+				phone,
+				address,
+				detailAddress,
+				shippingRequest
+			);
 
 			res.status(200).json({
 				message: '[관리자] 배송지 수정 성공',

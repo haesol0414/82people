@@ -18,7 +18,9 @@ const orderOrderPrice = document.querySelector('#orderPrice');
 const products = document.querySelector('.products-list');
 const shippingStatusOption = document.querySelector('#shippingStatus');
 const orderCancleBtn = document.querySelector('#orderCancle');
+
 let purchase;
+let addressInformation;
 
 // 주문 상세 가져오기
 
@@ -31,15 +33,25 @@ fetch(`/api/orders/history/${orderId}`, {
 	.then(res => res.json())
 	.then(({ orderDetail }) => {
 		console.log(orderDetail);
-		purchase = orderDetail.purchase;
 
+		// 유저 & 상품 정보
+		purchase = orderDetail.purchase;
+		addressInformation = orderDate.innerText = new Date(
+			orderDetail.createdAt
+		).toLocaleString();
+		orderuser.innerText = orderDetail.email.toLocaleString();
+		products.innerHTML = orderDetail.purchase.map(getProducts).join('');
 		orderNumber.innerHTML = orderDetail._id;
-		orderRecipient.innerHTML = orderDetail.addressInformation.recipient;
-		orderShippingRequest.innerHTML =
-			orderDetail.addressInformation.shippingRequest;
-		orderPhone.innerHTML = orderDetail.addressInformation.phone;
-		orderAddress.innerHTML = orderDetail.addressInformation.address;
-		orderDetailAddress.innerHTML = orderDetail.addressInformation.detailAddress;
+
+		// 배송지 정보
+		addressInformation = orderDetail.addressInformation;
+		orderRecipient.innerHTML = addressInformation.recipient;
+		orderShippingRequest.innerHTML = addressInformation.shippingRequest;
+		orderPhone.innerHTML = addressInformation.phone;
+		orderAddress.innerHTML = addressInformation.address;
+		orderDetailAddress.innerHTML = addressInformation.detailAddress;
+
+		// 가격 정보
 		orderShippingPrice.innerHTML = `${Number(
 			orderDetail.totalPrice.shippingPrice
 		).toLocaleString()} 원`;
@@ -50,9 +62,6 @@ fetch(`/api/orders/history/${orderId}`, {
 			Number(orderDetail.totalPrice.totalProductsPrice) +
 			Number(orderDetail.totalPrice.shippingPrice)
 		).toLocaleString()} 원`;
-		orderDate.innerText = new Date(orderDetail.createdAt).toLocaleString();
-		orderuser.innerText = orderDetail.email.toLocaleString();
-		products.innerHTML = orderDetail.purchase.map(getProducts).join('');
 
 		if (orderDetail.shippingStatus === '상품 준비 중') {
 			shippingStatusOption.options[0].setAttribute('selected', true);
@@ -127,26 +136,6 @@ shippingStatusOption.addEventListener('change', event => {
 	}
 });
 
-// 배송지 수정 요청 Q/A로 빼버릴지 고민즁
-// updateAddressBtn.addEventListener('click', event => {
-// 	fetch(`/api/admin/orders/${orderId}`, {
-// 		method: '',
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 			Authorization: hasToken,
-// 		},
-// 		body: JSON.stringify({
-// 			shippingStatus: event.target.value,
-// 		}),
-// 	})
-// 		.then(res => {
-// 			console.log('shippingStatusOption', res);
-// 			window.location.reload();
-// 			return res.json();
-// 		})
-// 		.catch(err => console.log('err', err));
-// });
-
 // 주문 내역 삭제
 orderCancleBtn.addEventListener('click', () => {
 	if (confirm('해당 주문 내역을 삭제 하시겠습니까?')) {
@@ -171,16 +160,61 @@ const modal = document.querySelector('.modal'); // 모달 창 자체
 const closeModalBtn = document.querySelector('.close'); // 모달창 내부 닫기 버튼
 const newAddressSubmit = document.querySelector('#modalSubmit'); // 모달창 내부 수정 버튼 (API 호출)
 
+// 모달 인풋들
+const newRecipientInput = document.querySelector('#newRecipient');
+const newPhoneInput = document.querySelector('#newPhone');
+const newMainAddressInput = document.querySelector('#newMainAddress');
+const newDetailAddressInput = document.querySelector('#newDetailAddress');
+const newRequestInput = document.querySelector('#newRequest');
+
 // 모달 열기 버튼 클릭 시
 editAddressBtn.addEventListener('click', function () {
+	console.log(addressInformation);
+	// 기존 데이터 뿌리기
+	newRecipientInput.value = addressInformation.recipient;
+	newPhoneInput.value = addressInformation.phone;
+	newMainAddressInput.value = addressInformation.address;
+	newDetailAddressInput.value = addressInformation.detailAddress;
+	newRequestInput.value = addressInformation.shippingRequest;
+
+	// 모달 열기
 	modal.style.display = 'block';
+
+	// 수정 버튼 클릭 시 API 요청
+	newAddressSubmit.addEventListener('click', function () {
+		if (
+			confirm(
+				`입력하신 정보로 배송지를 변경하시겠습니까? 다시 한 번 확인해 주세요!\n\n수령인: ${newRecipientInput.value}\n전화번호: ${newPhoneInput.value}\n배송지: ${newMainAddressInput.value}\n상세 주소: ${newDetailAddressInput.value}\n배송시 요청사항: ${newRequestInput.value}`
+			)
+		) {
+			fetch(`/api/admin/orders/${orderId}`, {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: hasToken,
+				},
+				body: JSON.stringify({
+					recipient: newRecipientInput.value,
+					phone: newPhoneInput.value,
+					address: newMainAddressInput.value,
+					detailAddress: newDetailAddressInput.value,
+					shippingRequest: newRequestInput.value,
+				}),
+			})
+				.then(res => {
+					if (res.ok) {
+						alert('배송지 수정 성공!');
+					} else {
+						alert('배송지 수정 실패');
+					}
+				})
+				.catch(err => console.log('err', err));
+		}
+	});
 });
 
 // 모달 닫기 버튼 클릭 시
 closeModalBtn.addEventListener('click', function () {
 	modal.style.display = 'none';
+	window.location.href = `/admin/orders/orderId/?orderId=${orderId}`;
 });
-
-// newAddressSubmit.addEventListener('click', function () {
-// 	modal.style.display = 'none';
-// });

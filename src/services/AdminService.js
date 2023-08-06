@@ -15,10 +15,23 @@ const AdminService = {
 	},
 
 	// [관리자] 배송지 수정
-	updateOrderAddress: async (orderId, { addressInformation }) => {
+	updateOrderAddress: async (
+		orderId,
+		recipient,
+		phone,
+		address,
+		detailAddress,
+		shippingRequest
+	) => {
 		await Order.updateOne(
 			{ _id: orderId },
-			{ addressInformation: addressInformation }
+			{
+				'addressInformation.recipient': recipient,
+				'addressInformation.phone': phone,
+				'addressInformation.address': address,
+				'addressInformation.detailAddress': detailAddress,
+				'addressInformation.shippingRequest': shippingRequest,
+			}
 		);
 	},
 

@@ -78,60 +78,70 @@
 									<div id="modal" class="modal" style="display: none">
 										<div class="modal-content">
 											<span class="close">&times;</span>
-											<h2 style="padding: 10px 0; margin-top: 10px; font-size: 28px;"">배송지 수정</h2>
-											<p style="margin: 3px 0 15px 0; color: #525151;">(* 입력하신 정보만 변경됩니다.)</p>
-											<form id="addressForm">
- 												 <div class="input-pair">
+											<h2
+												style="
+													padding: 10px 0;
+													margin: 10px 0 20px 0;
+													font-size: 28px;
+												"
+											>
+												배송지 수정
+											</h2>
+											<div id="addressForm">
+												<div class="input-pair">
 													<label for="newAddress">수령인 : </label>
 													<input
 														type="text"
-														id="newAddress"
+														id="newRecipient"
 														name="newAddress"
 														required
 													/>
 												</div>
 
-  												<div class="input-pair">
+												<div class="input-pair">
 													<label for="newAddress">연락처 : </label>
 													<input
 														type="text"
-														id="newAddress"
+														id="newPhone"
 														name="newAddress"
 														required
 													/>
 												</div>
 
- 												 <div class="input-pair">
-												<label for="newAddress">배송지 : </label>
-												<input
-													type="text"
-													id="newAddress"
-													name="newAddress"
-													required
-												/>
+												<div class="input-pair">
+													<label for="newAddress">배송지 : </label>
+													<input
+														type="text"
+														id="newMainAddress"
+														name="newAddress"
+														required
+													/>
+													<button id="searchAddress" class="btn">
+														주소검색
+													</button>
 												</div>
 
- 												 <div class="input-pair">
-												<label for="newAddress">상세 주소 : </label>
-												<input
-													type="text"
-													id="newAddress"
-													name="newAddress"
-													required
-												/>
+												<div class="input-pair">
+													<label for="newAddress">상세 주소 : </label>
+													<input
+														type="text"
+														id="newDetailAddress"
+														name="newAddress"
+														required
+													/>
 												</div>
 
- 												 <div class="input-pair">
-												<label for="newAddress">배송시 요청사항 : </label>
-												<input
-													type="text"
-													id="newAddress"
-													name="newAddress"
-													required
-												/>
+												<div class="input-pair">
+													<label for="newAddress">배송시 요청사항 : </label>
+													<input
+														type="text"
+														id="newRequest"
+														name="newAddress"
+														required
+													/>
 												</div>
-												<button type="submit" id="modalSubmit">수정</button>
-											</form>
+												<button id="modalSubmit">수정</button>
+											</div>
 										</div>
 									</div>
 								</div>
