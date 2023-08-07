@@ -102,9 +102,10 @@ const getBestProducts = bestProduct => {
 };
 
 // 뱃지 닫기
-const badges = document.querySelector('.badges');
 const badgeXbtn = document.querySelector('#badge-close-btn');
 
 badgeXbtn.addEventListener('click', () => {
+	const badges = document.querySelector('.badges');
+
 	badges.style.display = 'none';
 });

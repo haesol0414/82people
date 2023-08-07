@@ -48,7 +48,7 @@ a {
 	border: 1px dotted #6c4e82;
 }
 .empty-items-box {
-	margin-bottom: 5%;
+	margin: 5% 5% 7% 5%;
 }
 .empty-items-box span {
 	display: block;

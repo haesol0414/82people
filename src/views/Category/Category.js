@@ -60,6 +60,7 @@ fetch(`/api/products/category/${categoryId}`, {
 			<span style="font-size: 21px">Please Wait for The Products You will soon meet ••• 🚚 </span>
 			`;
 			checkBoxDiv.style.display = 'none';
+			sortSelectOption.style.display = 'none';
 		}
 	})
 	.catch(err => console.log(err));
