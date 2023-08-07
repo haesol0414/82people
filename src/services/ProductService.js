@@ -7,9 +7,9 @@ const ProductService = {
 		return await Product.find({}).sort({ _id: -1 }).populate('category');
 	},
 
-	// 인기 상품 3개까지 조회
+	// 인기 상품 4개까지 조회
 	getBestProducts: async () => {
-		return await Product.find({}).sort({ salesAmount: -1 }).limit(3);
+		return await Product.find({}).sort({ salesAmount: -1 }).limit(4);
 	},
 
 	// 카테고리별 제품 조회

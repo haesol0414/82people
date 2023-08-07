@@ -124,3 +124,53 @@ a {
 	border-radius: 15px;
 	border: 1px dotted #6c4e82;
 }
+
+/* 뱃지 */
+.badges {
+	position: fixed;
+	top: 140px;
+	right: 12px;
+}
+
+.badges .badge {
+	position: relative;
+	width: 160px;
+	height: 165px;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-bottom: 12px;
+	box-shadow: 4px 4px 10px rgba(108, 78, 130, 0.5);
+}
+
+.badges .badge a {
+	display: block;
+}
+
+.badges .badge a img {
+	width: 160px;
+	height: 160px;
+}
+
+.badges .badge a div {
+	width: 100%;
+	padding: 5px 0;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%);
+	background-color: #bca4d7;
+	color: #fff;
+	text-align: center;
+}
+
+.badges .badge a .new-title {
+	background-color: #9b82c3;
+}
+
+.badges #badge-close-btn {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	color: #876fb4;
+}

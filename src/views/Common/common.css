@@ -125,7 +125,7 @@ header {
 }
 
 /* 뱃지 */
-header > .badges {
+/* header > .badges {
 	position: fixed;
 	top: 140px;
 	right: 12px;
@@ -173,7 +173,7 @@ header > .badges .badge a div {
 
 header > .badges .badge a .new-title {
 	background-color: #008cff;
-}
+} */
 
 /* 푸터 */
 footer {

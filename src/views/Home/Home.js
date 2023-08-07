@@ -11,6 +11,12 @@ const slideWidth = 500; //한개의 슬라이드 넓이
 const slideMargin = 100; //슬라이드간의 margin 값
 const SOLD_OUT_MESSAGE = '🚫 SOLD OUT';
 
+// 뱃지
+const badgeNewImg = document.querySelector('.badge-new-img');
+const badgeNewUrl = document.querySelector('.badge-new-url');
+const badgeBestImg = document.querySelector('.badge-best-img');
+const badgeBestUrl = document.querySelector('.badge-best-url');
+
 //전체 슬라이드 컨테이너 넓이 설정
 slides.style.width = (slideWidth + slideMargin) * (slideCount + 1) + 'px';
 
@@ -50,12 +56,19 @@ fetch('/api/products', {
 	.then(({ bestProducts, totalProducts }) => {
 		console.log('bestProducts', bestProducts);
 		console.log('totalProducts', totalProducts);
+
+		badgeBestImg.src = bestProducts[3].imageURL[0];
+		badgeBestUrl.href = `/products?productId=${bestProducts[3]._id}`;
+		badgeNewImg.src = totalProducts[0].imageURL[0];
+		badgeNewUrl.href = `/products?productId=${totalProducts[0]._id}`;
+
 		bestProducts.map(getBestProducts);
 		totalProducts.map(getTotalProducts);
 	})
 	.catch(err => console.log(err));
 
 let items = '';
+
 const getTotalProducts = newProduct => {
 	let price =
 		newProduct.currentAmount <= 0
@@ -88,4 +101,10 @@ const getBestProducts = bestProduct => {
 	slides.innerHTML = bestItems;
 };
 
+// 뱃지 닫기
+const badges = document.querySelector('.badges');
+const badgeXbtn = document.querySelector('#badge-close-btn');
 
+badgeXbtn.addEventListener('click', () => {
+	badges.style.display = 'none';
+});
