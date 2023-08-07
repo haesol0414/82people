@@ -65,8 +65,6 @@ fetch(`/api/products/category/${categoryId}`, {
 	.catch(err => console.log(err));
 
 function generateSortedHtml(products, hideSoldOut) {
-	console.log(selectedSortType);
-	console.log(hideSoldOut);
 	let sotedProduct = '';
 	let price = '';
 

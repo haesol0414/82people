@@ -64,12 +64,6 @@
 	font-size: 20px;
 	color: #6c4e82;
 }
-#product-details-container > .field > strong > .input {
-	width: 200px;
-	height: 50px;
-	font-size: 24px;
-	margin: 0 0 0 100px;
-}
 #product-details-container > .field > strong > .product-total-price {
 	margin: 70px 0 0 0;
 	width: 150px;
@@ -78,7 +72,7 @@
 	color: #6c4e82;
 }
 #product-details-container > .field > strong > .product-total-cash {
-	margin: 70px 0 0 50px;
+	margin: 70px 0 0 80px;
 	width: 150px;
 	height: 30px;
 	font-size: 20px;
@@ -120,7 +114,7 @@
 
 input {
 	outline: none;
-	margin: 0 15px;
+	margin: 0 0 0 100px;
 	text-align: right;
 	padding: 3px;
 	border: 1px solid #876fb4;

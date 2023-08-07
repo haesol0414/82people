@@ -131,23 +131,25 @@ shippingStatusOption.addEventListener('change', event => {
 				.catch(err => console.log('err', err));
 		}
 	} else {
-		fetch(`/api/orders/${orderId}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: hasToken,
-			},
-			body: JSON.stringify({
-				shippingStatus: event.target.value,
-			}),
-		})
-			.then(res => {
-				alert('[관리자] 배송 상태 변경');
-
-				window.location.reload();
-				return res.json();
+		if (confirm(`[${event.target.value}] 상태로 변경 하시겠습니까?`)) {
+			fetch(`/api/orders/${orderId}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: hasToken,
+				},
+				body: JSON.stringify({
+					shippingStatus: event.target.value,
+				}),
 			})
-			.catch(err => console.log('err', err));
+				.then(res => {
+					alert('배송 상태 변경 성공!');
+
+					window.location.reload();
+					return res.json();
+				})
+				.catch(err => console.log('err', err));
+		}
 	}
 });
 
