@@ -60,6 +60,7 @@ const AdminService = {
 			salesAmount,
 			category,
 			imageURL,
+			detailImageURL,
 		}
 	) => {
 		await Product.updateOne(
@@ -73,6 +74,7 @@ const AdminService = {
 				salesAmount: salesAmount,
 				category: category,
 				imageURL: imageURL,
+				detailImageURL: detailImageURL,
 			}
 		);
 	},

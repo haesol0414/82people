@@ -120,6 +120,7 @@ const AdminController = {
 			salesAmount,
 			category,
 			imageURL,
+			detailImageURL,
 		} = req.body;
 
 		try {
@@ -140,6 +141,7 @@ const AdminController = {
 				salesAmount,
 				category,
 				imageURL,
+				detailImageURL,
 			});
 
 			res.status(200).json({

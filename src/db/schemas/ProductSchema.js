@@ -24,6 +24,7 @@ const ProductSchema = new Schema(
 			required: true,
 		},
 		imageURL: [String],
+		detailImageURL: [String],
 		currentAmount: {
 			type: Number,
 			required: true,

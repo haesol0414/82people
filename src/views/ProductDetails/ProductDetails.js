@@ -20,7 +20,6 @@ const detailImage = document.querySelector('.detail-img');
 
 let imageURL;
 let detailImgeURL;
-let imageURL2;
 let price;
 let currentAmount;
 fetch(`/api/products/${productId}`, {
@@ -51,7 +50,7 @@ fetch(`/api/products/${productId}`, {
 
 		// imgae
 		imageURL = productInfo.imageURL[0];
-		detailImgeURL = productInfo.imageURL[0]; // 나중에 상세 이미지 [1]에 추가해서 수정
+		detailImgeURL = productInfo.detailImageURL[0]; // 나중에 상세 이미지 [1]에 추가해서 수정
 		productImage.setAttribute('src', imageURL);
 		detailImage.setAttribute('src', detailImgeURL);
 

@@ -10,11 +10,11 @@ const descriptionInput = document.querySelector('#item-description');
 const currentAmountInput = document.querySelector('#item-current-amount');
 const salesAmountInput = document.querySelector('#item-sales-amount');
 const imgInput = document.querySelector('#item-img');
+const detailImageInput = document.querySelector('#item-detail-img');
 const modifyBtn = document.querySelector('#modify-btn');
 const createBtn = document.querySelector('#create-btn');
 const urlStr = window.location.href;
 const itemId = new URL(urlStr).searchParams.get('itemId');
-
 // 1. 카테고리 뿌리기
 let categoryId = '';
 let categories = '';
@@ -91,6 +91,7 @@ window.addEventListener('load', function () {
 					salesAmount,
 					category,
 					imageURL,
+					detailImageURL,
 				} = productInfo;
 				// 받아온 데이터 화면에 뿌리기
 				titleInput.value = title;
@@ -108,6 +109,7 @@ window.addEventListener('load', function () {
 					}
 				});
 				imgInput.value = imageURL;
+				detailImageInput.value = detailImageURL;
 			});
 
 		// 상품 수정 버튼 눌렀을 때
@@ -136,6 +138,7 @@ window.addEventListener('load', function () {
 					salesAmount: salesAmountInput.value,
 					category: categoryId,
 					imageURL: imgInput.value,
+					detailImageURL: detailImageInput.value,
 				}),
 			})
 				.then(res => res.json())
@@ -174,6 +177,7 @@ window.addEventListener('load', function () {
 						salesAmount: salesAmountInput.value,
 						category: categoryId,
 						imageURL: imgInput.value,
+						detailImageURL: detailImageInput.value,
 					},
 				}),
 			})
