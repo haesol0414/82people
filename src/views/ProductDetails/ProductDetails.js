@@ -10,14 +10,17 @@ console.log(productId);
 const productMaker = document.querySelector('.maker');
 const productTitle = document.querySelector('.product-title');
 const productPrice = document.querySelector('.product-price');
-const productDescription = document.querySelector('.product-detail');
 const productImage = document.querySelector('.product-icon-image>img');
 const addToCart = document.querySelector('#add-to-cart');
 const productAmount = document.querySelector('#amount');
 const totalCash = document.querySelector('.product-total-cash');
 const toCartSpan = document.querySelector('.to-cart-span');
+const detailDescription = document.querySelector('.detail-description');
+const detailImage = document.querySelector('.detail-img');
 
 let imageURL;
+let detailImgeURL;
+let imageURL2;
 let price;
 let currentAmount;
 fetch(`/api/products/${productId}`, {
@@ -39,18 +42,26 @@ fetch(`/api/products/${productId}`, {
 		alert(err);
 	})
 	.then(({ productInfo }) => {
+		// product info
 		productMaker.innerText = productInfo.manufacturer;
 		productTitle.innerText = productInfo.title;
 		productPrice.innerText = `KRW ${Number(
 			productInfo.price
 		).toLocaleString()}`;
-		productDescription.innerText = productInfo.description;
+
+		// imgae
 		imageURL = productInfo.imageURL[0];
+		detailImgeURL = productInfo.imageURL[0]; // 나중에 상세 이미지 [1]에 추가해서 수정
 		productImage.setAttribute('src', imageURL);
+		detailImage.setAttribute('src', detailImgeURL);
+
+		// discription
+		detailDescription.innerText = productInfo.description;
+
+		// amount, price, button
 		totalCash.innerText = `KRW ${Number(productInfo.price).toLocaleString()}`;
 		price = Number(productInfo.price);
 		currentAmount = productInfo.currentAmount;
-
 		if (currentAmount <= 0) {
 			toCartSpan.innerHTML = 'SOLD OUT';
 			addToCart.style.cursor = 'not-allowed';

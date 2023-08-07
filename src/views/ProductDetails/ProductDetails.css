@@ -33,31 +33,27 @@
 	width: 200px;
 	height: 30px;
 	font-size: 20px;
-	color: #696969;
+	margin-top: 10px;
+	color: #9b82c3;
 }
 
 #product-details-container > .field > .product-title {
 	width: 450px;
 	height: 50px;
 	font-size: 40px;
-	margin-top: 30px;
+	margin-top: 20px;
 	border-radius: 10px;
 	border-bottom: solid 2px;
 	color: #6c4e82;
 }
-
 #product-details-container > .field > .product-price {
-	width: 204px;
-	height: 68px;
-	font-size: 20px;
-	margin-top: 12px;
-	color: #6c4e82;
-}
-#product-details-container > .field > .product-detail {
 	width: 450px;
-	height: 70px;
-	font-size: 24px;
-	margin-top: 20px;
+	height: 144px;
+	font-size: 22px;
+	margin-top: 12px;
+	margin-bottom: 20px;
+	text-align: right;
+	color: #6c4e82;
 }
 #product-details-container > .field > strong {
 	margin: 20px 0 0 0;
@@ -66,6 +62,7 @@
 	width: 100px;
 	height: 30px;
 	font-size: 20px;
+	color: #6c4e82;
 }
 #product-details-container > .field > strong > .input {
 	width: 200px;
@@ -78,12 +75,14 @@
 	width: 150px;
 	height: 30px;
 	font-size: 20px;
+	color: #6c4e82;
 }
 #product-details-container > .field > strong > .product-total-cash {
 	margin: 70px 0 0 50px;
 	width: 150px;
 	height: 30px;
 	font-size: 20px;
+	color: #6c4e82;
 }
 
 .product-put-shoppingcart {
@@ -124,9 +123,9 @@ input {
 	margin: 0 15px;
 	text-align: right;
 	padding: 3px;
-	border: 1px solid #6c4e82;
+	border: 1px solid #876fb4;
 	font-size: inherit;
-	color: #525151;
+	color: #6c4e82;
 }
 
 .detail-item-box {
