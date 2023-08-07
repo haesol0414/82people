@@ -4,24 +4,19 @@
 * {
 	font-family: 'Yeon Sung', cursive !important;
 	font-size: 18px;
+	margin: 0px;
+	padding: 0px;
 }
 html,
 body {
 	width: 100%;
 	height: 100%;
 }
-
-* {
-	margin: 0px;
-	padding: 0px;
-}
-
 li,
 ul,
 ol {
 	list-style: none;
 }
-
 a {
 	text-decoration: none;
 }
@@ -36,14 +31,12 @@ a {
 	height: 100%;
 	justify-content: space-between;
 }
-
 main {
 	display: flex;
 	flex: 1;
 	align-self: stretch;
 	background-color: #d9d2d9;
 }
-
 .main-container {
 	padding: 35px;
 	box-sizing: border-box;
@@ -123,57 +116,6 @@ header {
 .header-container .header-group .menu-group a {
 	color: #6c4e82;
 }
-
-/* 뱃지 */
-/* header > .badges {
-	position: fixed;
-	top: 140px;
-	right: 12px;
-}
-
-header > .badges .badge {
-	position: relative;
-	width: 150px;
-	height: 200px;
-	border-radius: 10px;
-	overflow: hidden;
-	margin-bottom: 12px;
-	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-header > .badges .badge:last-child {
-	height: 100px;
-}
-
-header > .badges .badge a {
-	display: block;
-}
-
-header > .badges .badge a img {
-	width: 170px;
-	height: 200px;
-}
-
-header > .badges .badge:last-child a img {
-	width: 160px;
-	height: 140px;
-}
-
-header > .badges .badge a div {
-	width: 100%;
-	padding: 5px 0;
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translate(-50%);
-	background-color: #6c4e82;
-	color: #fff;
-	text-align: center;
-}
-
-header > .badges .badge a .new-title {
-	background-color: #008cff;
-} */
 
 /* 푸터 */
 footer {

@@ -9,7 +9,7 @@ function ConfirmToken() {
 				const jwtToken = cookie.split('=')[1]; // JWT 토큰 값 가져오기
 				// 토큰이 유효한지 여부 및 만료 시간 확인
 				if (jwtToken) {
-					const decodedToken = decodeJWTToken(jwtToken); // 토큰 해석
+					const decodedToken = decodeJWTToken(jwtToken);
 					if (decodedToken && isTokenExpired(decodedToken.exp)) {
 						logout(); // 만료 시간이 지났다면 로그아웃
 					} else {
@@ -27,6 +27,7 @@ function ConfirmToken() {
 	}
 
 	const hasToken = checkJWTTokenInCookie();
+
 	// JWT 토큰 해석
 	function decodeJWTToken(hasToken) {
 		try {
@@ -60,7 +61,7 @@ function logout() {
 	document.cookie =
 		'userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
-	alert('세션이 만료되어 로그아웃되었습니다.\n세션 만료 시간 : 1 Hour');
+	alert('세션이 만료되어 로그아웃되었습니다.\n세션 유효 시간 : 1 Hour');
 	window.location.href = '/';
 }
 

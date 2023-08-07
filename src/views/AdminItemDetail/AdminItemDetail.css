@@ -21,7 +21,6 @@ h3 {
 	color: #6c4e82;
 }
 .myparty-menubar {
-	/* border-right: 1px solid #000; */
 	width: 200px;
 }
 .myparty-menubar h2,
@@ -79,13 +78,6 @@ h3 {
 .item-info {
 	flex: 1;
 }
-h4 {
-	font-size: 24px;
-	margin-top: 20px;
-	border-top: 1px solid;
-	padding-top: 20px;
-	color: #6c4e82;
-}
 .item-info #info span {
 	font-size: 20px;
 }
@@ -124,9 +116,6 @@ h4 {
 	padding: 10px;
 	color: #525151;
 }
-.api-btn {
-	margin-bottom: 10px;
-}
 .btn-box {
 	float: right;
 	padding: 10px 0;
@@ -135,10 +124,6 @@ button {
 	cursor: pointer;
 	background-color: #6c4e82;
 	color: #fff;
-}
-.btn {
-	border-left: none;
-	color: #6c4e82;
 }
 input:disabled {
 	background-color: #eee;

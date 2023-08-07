@@ -2,7 +2,7 @@
 	padding: 0;
 }
 #member-info-wrap {
-	display: flex; /* 여기 추가 */
+	display: flex;
 	width: 80%;
 	height: 100%;
 	margin: 0 auto;
@@ -154,45 +154,6 @@ p {
 	justify-content: space-between;
 	margin-bottom: 10px;
 }
-
-#addressForm {
-	display: flex;
-	flex-direction: column; /* 수직 정렬을 위해 컨테이너를 세로 방향으로 배치 */
-	gap: 20px; /* 라벨과 인풋 쌍 사이 간격 설정 */
-}
-
-.input-pair {
-	display: flex;
-	align-items: center; /* 라벨과 인풋 쌍을 수직 정렬하기 위해 세로 중앙 정렬 */
-}
-.input-pair label {
-	margin-right: 10px;
-	color: #6c4e82;
-	font-size: 20px;
-}
-.input-pair input {
-	padding: 5px;
-	color: #525151;
-	font-size: 20px;
-}
-#editAddressBtn {
-	background-color: #6c4e82;
-	color: #fff;
-	border: 1px solid #6c4e82;
-	padding: 3px 16px;
-	border-radius: 999px;
-}
-#modalSubmit {
-	background-color: #6c4e82;
-	color: #fff;
-	border: 1px solid #6c4e82;
-	border-radius: 999px;
-	text-align: center;
-	width: 80px;
-	height: 50px;
-	margin: 5px 0 15px 0;
-}
-
 .order-info section,
 .purchase-info section {
 	background-color: #fff;
@@ -240,6 +201,8 @@ p {
 	line-height: 1;
 	padding: 10px 20px;
 }
+
+/* 배송지 수정 모달창 */
 .modal {
 	display: none;
 	position: fixed;
@@ -251,7 +214,6 @@ p {
 	overflow: auto;
 	background-color: rgba(0, 0, 0, 0.4);
 }
-
 .modal-content {
 	background-color: #d4c7d4;
 	margin: 15% auto;
@@ -275,4 +237,40 @@ p {
 	font-size: 25px;
 	cursor: pointer;
 	margin-top: 15px;
+}
+#addressForm {
+	display: flex;
+	flex-direction: column; /* 수직 정렬을 위해 컨테이너를 세로 방향으로 배치 */
+	gap: 20px; /* 라벨과 인풋 쌍 사이 간격 설정 */
+}
+.input-pair {
+	display: flex;
+	align-items: center; /* 라벨과 인풋 쌍을 수직 정렬하기 위해 세로 중앙 정렬 */
+}
+.input-pair label {
+	margin-right: 10px;
+	color: #6c4e82;
+	font-size: 20px;
+}
+.input-pair input {
+	padding: 5px;
+	color: #525151;
+	font-size: 20px;
+}
+#editAddressBtn {
+	background-color: #6c4e82;
+	color: #fff;
+	border: 1px solid #6c4e82;
+	padding: 3px 16px;
+	border-radius: 999px;
+}
+#modalSubmit {
+	background-color: #6c4e82;
+	color: #fff;
+	border: 1px solid #6c4e82;
+	border-radius: 999px;
+	text-align: center;
+	width: 80px;
+	height: 50px;
+	margin: 5px 0 15px 0;
 }

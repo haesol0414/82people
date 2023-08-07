@@ -35,7 +35,6 @@ let purchase;
 let addressInformation;
 
 // 주문 상세 가져오기
-
 fetch(`/api/orders/history/${orderId}`, {
 	method: 'POST',
 	headers: {

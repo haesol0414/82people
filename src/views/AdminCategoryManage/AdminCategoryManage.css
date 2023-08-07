@@ -17,13 +17,6 @@ h3 {
 	color: #6c4e82;
 	margin-bottom: 29px;
 }
-h4 {
-	font-size: 24px;
-	margin-top: 20px;
-	border-top: 1px solid;
-	padding-top: 20px;
-	color: #6c4e82;
-}
 #member-info-wrap > section {
 	padding: 30px;
 	color: #6c4e82;
@@ -94,13 +87,6 @@ h4 {
 	display: flex;
 	justify-content: space-between;
 }
-input {
-	outline: none;
-	background-color: #fff;
-	border: 1px solid #6c4e82;
-	padding: 5px;
-	color: #525151;
-}
 .create-box {
 	display: flex;
 	justify-content: space-between;
@@ -109,6 +95,13 @@ button {
 	cursor: pointer;
 	background-color: #6c4e82;
 	color: #fff;
+}
+input {
+	outline: none;
+	background-color: #fff;
+	border: 1px solid #6c4e82;
+	padding: 5px;
+	color: #525151;
 }
 input:disabled {
 	background-color: #eee;
