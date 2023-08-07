@@ -40,7 +40,7 @@
 
 .controller span {
 	position: absolute;
-	background-color: #a992cd;
+	background-color: #bca4d7;
 	color: #eeeaf1;
 	text-align: center;
 	border-radius: 50%;
@@ -91,7 +91,7 @@ ul.products-total > li {
 h2 {
 	font-size: 28px;
 	font-weight: 700;
-	color: #876fb4;
+	color: #6c4e82;
 	padding: 40px 20px 10px 20px;
 	text-align: center;
 }

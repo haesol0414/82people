@@ -220,7 +220,7 @@ footer {
 }
 
 .signin h1 {
-	color: #876fb4;
+	color: #6c4e82;
 	font-size: 30px;
 	font-weight: 700;
 	text-align: center;
@@ -230,7 +230,7 @@ footer {
 .signin-card {
 	width: 500px;
 	margin: 0 auto;
-	border: 4mm ridge rgba(169, 146, 205, 0.6);
+	border: 4mm ridge rgba(133, 80, 152, 0.6);
 	border-radius: 0 20px 0 10px;
 	color: #6c4e82;
 }
@@ -254,7 +254,7 @@ footer {
 	width: 100%;
 	margin-bottom: 12px;
 	padding: 15px;
-	background-color: #a992cd;
+	background-color: #6c4e82;
 	border: none;
 	border-radius: 4px;
 	color: #fff;
@@ -265,7 +265,7 @@ footer {
 .signin-card form .btn-link {
 	margin-bottom: 12px;
 	background-color: #fff;
-	border: 1px solid #a992cd;
+	border: 1px solid #6c4e82;
 	border-radius: 4px;
 	color: #fff;
 	font-size: 20px;
@@ -274,7 +274,7 @@ footer {
 }
 
 .signin-card form .outline-btn {
-	color: #a992cd;
+	color: #6c4e82;
 	display: block;
 	padding: 15px;
 }
