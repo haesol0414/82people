@@ -14,29 +14,52 @@
 		<div id="global-wrap">
 			<header></header>
 			<main role="main" id="product-details-main">
-				<div class="main-container" id="product-details-container">
-					<!-- 클래스명 main-container까지 공통, id값은 페이지에 맞게 이름설정해서 사용 -->
-					<!-- 해당 위치에 페이지 마크업 -->
-					<div class="product-icon-image">
-						<img class="item-img" src="/" width="400" height="400" />
+				<div class="main-container">
+					<div id="product-details-container">
+						<div class="product-icon-image">
+							<img class="item-img" src="/" width="400" height="400" />
+						</div>
+						<div class="field">
+							<span class="maker"></span>
+							<span class="product-title"></span>
+							<span class="product-price"></span>
+							<span class="product-detail"></span>
+							<strong>
+								<span class="product-count">Quantity :</span>
+								<input type="number" id="amount" value="1" min="1" />
+							</strong>
+							<strong>
+								<span class="product-total-price">Total (QTY) :</span>
+								<span class="product-total-cash"></span>
+							</strong>
+							<div class="product-put-shoppingcart">
+								<button id="add-to-cart">
+									<span class="to-cart-span">Add Cart</span>
+								</button>
+							</div>
+						</div>
 					</div>
-					<div class="field">
-						<span class="maker"></span>
-						<span class="product-title"></span>
-						<span class="product-price"></span>
-						<span class="product-detail"></span>
-						<strong>
-							<span class="product-count">Quantity :</span>
-							<input type="number" id="amount" value="1" min="1" />
-						</strong>
-						<strong>
-							<span class="product-total-price">Total (QTY) :</span>
-							<span class="product-total-cash"></span>
-						</strong>
-						<div class="product-put-shoppingcart">
-							<button id="add-to-cart">
-								<span class="to-cart-span">Add Cart</span>
-							</button>
+
+					<div class="detail-item-box">
+						<div class="detail-description-box">
+							<h2>" Description "</h2>
+							<span class="detail-description"
+								>존잘고양이 웅냥냥 존잘고양이 존잘고양이 존잘고양이 존잘고양이
+								존잘고양이 존잘고양이 존잘고양이 존잘고양이 존잘고양이
+								존잘고양이 존잘고양이 존잘고양이 존잘고양이 존잘고양이
+								존잘고양이 존잘고양이 존잘고양이 존잘고양이 존잘고양이
+								존잘고양이 존잘고양이 존잘고양이 존잘고양이 존잘고양이
+								존잘고양이 존잘고양이 존잘고양이 존잘고양이 존잘고양이
+								존잘고양이 존잘고양이 존잘고양이
+							</span>
+						</div>
+
+						<div class="detail-img-box">
+							<img
+								class="detail-img"
+								src="https://blogfiles.pstatic.net/MjAyMTA2MTRfMjYg/MDAxNjIzNjAyOTUxNDE5.LBP8Rh_BpzJenRGiiQfyUiKFBd9NFqpm-VfGCRwC5hEg.HP52LwGYwksJVMoRqBztZwnx792EuVYVXrAfRXB_E9wg.JPEG.dldustj9/IMG_9753.JPG"
+								alt="detail-img"
+							/>
 						</div>
 					</div>
 				</div>
