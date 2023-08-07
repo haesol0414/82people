@@ -5,7 +5,7 @@ const hasToken = await ConfirmToken();
 // 인풋 태그들
 const receiverNameInput = document.querySelector('#receiver-name');
 const receiverEmailInput = document.querySelector('#receiver-email');
-const receiverPasswordInput = document.querySelector('#receiver-password');
+const passwordInput = document.querySelector('#receiver-password');
 const PassworCheckInput = document.querySelector('#receiver-password-check');
 const updateAddress = document.querySelector('#updateAddress');
 const searchAddress = document.querySelector('#searchAddress');
@@ -127,7 +127,11 @@ updateAddress.addEventListener('click', () => {
 
 // 비밀번호 변경 버튼을 클릭했을 때
 modifyBotton.addEventListener('click', () => {
-	if (receiverPasswordInput.value === PassworCheckInput.value) {
+	if (!passwordInput.value) {
+		return alert('변경할 비밀번호를 입력하세요.');
+	}
+
+	if (passwordInput.value === PassworCheckInput.value) {
 		fetch('/api/users', {
 			method: 'PATCH',
 			headers: {
@@ -136,7 +140,7 @@ modifyBotton.addEventListener('click', () => {
 			},
 			body: JSON.stringify({
 				userId,
-				password: receiverPasswordInput.value,
+				password: passwordInput.value,
 			}),
 		})
 			.then(res => res.json())
