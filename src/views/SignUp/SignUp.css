@@ -10,7 +10,6 @@
 	text-align: center;
 	margin-bottom: 24px;
 }
-
 .signup-card {
 	width: 500px;
 	margin: 0 auto;
@@ -18,11 +17,9 @@
 	border-radius: 0 20px 0 10px;
 	color: #6c4e82;
 }
-
 .signup-card form {
 	padding: 30px 22px;
 }
-
 .signup-card form input {
 	width: 100%;
 	margin-bottom: 12px;
@@ -33,7 +30,6 @@
 	box-sizing: border-box;
 	font-size: 14px;
 }
-
 .signup-card form button {
 	width: 100%;
 	margin-bottom: 12px;
@@ -45,16 +41,13 @@
 	font-size: 20px;
 	cursor: pointer;
 }
-
 .signup-card form .signup-email {
 	display: flex;
 }
-
 .signup-card form .signup-email input {
 	flex: 1 1 0%;
 	margin-right: 10px;
 }
-
 .signup-card form .signup-email button {
 	width: 100px;
 	font-size: 16px;
