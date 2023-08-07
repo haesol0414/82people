@@ -21,7 +21,6 @@ h3 {
 	padding: 30px;
 }
 .myparty-menubar {
-	/* border-right: 1px solid #000; */
 	width: 200px;
 }
 .myparty-menubar h2,
@@ -75,11 +74,11 @@ h3 {
 .order-history {
 	flex: 1;
 }
+
 /* 여기부터 내용 스타일 */
 .member-delete-notice-container {
 	line-height: 22px;
 }
-
 .member-delete-notice-container .member-delete-notice {
 	display: flex;
 	font-size: 24px;
@@ -87,23 +86,9 @@ h3 {
 	margin-bottom: 30px;
 	color: #525151;
 }
-
 .member-delete-notice-container .member-delete-notice2 {
 	font-size: 20px;
 	color: #525151;
-}
-.member-email-container .member-email {
-	display: inline-block;
-	background-color: #d4c7d4;
-	padding: 40px 125px 0 0;
-	color: #6c4e82;
-	font-size: 20px;
-}
-.member-email-container .member-email2 {
-	display: inline-block;
-	font-size: 20px;
-	color: #525151;
-	background-color: #d4c7d4;
 }
 .member-withdrawal-statement-container {
 	display: flex;

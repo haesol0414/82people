@@ -89,6 +89,7 @@ h4 {
 	padding-top: 20px;
 	color: #6c4e82;
 }
+
 .member-info #info > *,
 .member-info #default-address > * {
 	display: flex;
@@ -113,21 +114,6 @@ h4 {
 	display: flex;
 	text-align: left;
 }
-input {
-	outline: none;
-	background-color: #fff;
-	border: 1px solid #6c4e82;
-	padding: 10px;
-	color: #525151;
-}
-button {
-	outline: none;
-	background-color: #fff;
-	border: 1px solid #6c4e82;
-	padding: 10px;
-	color: #6c4e82;
-	cursor: pointer;
-}
 #address-input {
 	display: block !important;
 }
@@ -147,10 +133,6 @@ button {
 .api-btn {
 	margin-bottom: 10px;
 }
-.btn {
-	border-left: none;
-	color: #6c4e82;
-}
 .member-out {
 	text-align: right;
 	margin-top: 20px;
@@ -161,6 +143,21 @@ button {
 .member-out a:hover {
 	text-decoration: underline;
 }
+input {
+	outline: none;
+	background-color: #fff;
+	border: 1px solid #6c4e82;
+	padding: 10px;
+	color: #525151;
+}
 input:disabled {
 	background-color: #eee;
+}
+button {
+	outline: none;
+	background-color: #fff;
+	border: 1px solid #6c4e82;
+	padding: 10px;
+	color: #6c4e82;
+	cursor: pointer;
 }

@@ -1,3 +1,4 @@
+/* 슬라이더 */
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow {
 	width: 700px;
@@ -5,10 +6,6 @@
 	position: relative;
 	margin: 50px auto;
 	overflow: hidden;
-}
-.best-emoji {
-	font-size: 50px;
-	text-align: center;
 }
 .slides {
 	position: absolute;
@@ -28,7 +25,6 @@
 .slides li:first-child {
 	margin-left: 100px;
 }
-
 /* 슬라이드들 옆으로 정렬 */
 .slides li:not(:last-child) {
 	float: left;
@@ -38,6 +34,7 @@
 	float: left;
 }
 
+/* 이전, 다음 화살표 */
 .controller span {
 	position: absolute;
 	background-color: #bca4d7;
@@ -49,33 +46,26 @@
 	font-size: 1.4em;
 	cursor: pointer;
 }
-
-/* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
 .controller span:hover {
 	background-color: rgba(161, 123, 185, 0.11);
 	color: #bca4d7;
 }
-
 .prev {
 	left: 10px;
 }
-
-/* 이전 화살표에 마우스 커서가 올라가 있을때 
-이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
-.prev:hover {
-	transform: translateX(-10px);
-}
-
 .next {
 	right: 10px;
 }
-
-/* 다음 화살표에 마우스 커서가 올라가 있을때 
-  이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+/* 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 왼쪽으로 이동하는 효과 */
+.prev:hover {
+	transform: translateX(-10px);
+}
 .next:hover {
 	transform: translateX(10px);
 }
 
+/* 메인 상품 */
 ul.products-total {
 	display: flex;
 	flex-wrap: wrap;
@@ -87,7 +77,6 @@ ul.products-total > li {
 	width: 30%;
 	margin: 0 auto;
 }
-
 h2 {
 	font-size: 28px;
 	font-weight: 700;
@@ -100,7 +89,6 @@ a {
 	font-size: inherit;
 	color: inherit;
 }
-
 .product-title {
 	font-size: 22px;
 	text-align: center;
@@ -111,7 +99,6 @@ a {
 	text-align: center;
 	margin-bottom: 60px;
 }
-
 .product-price {
 	font-weight: 600;
 }
@@ -141,16 +128,13 @@ a {
 	margin-bottom: 12px;
 	box-shadow: 4px 4px 10px rgba(108, 78, 130, 0.5);
 }
-
 .badges .badge a {
 	display: block;
 }
-
 .badges .badge a img {
 	width: 160px;
 	height: 160px;
 }
-
 .badges .badge a div {
 	width: 100%;
 	padding: 5px 0;
@@ -162,11 +146,9 @@ a {
 	color: #fff;
 	text-align: center;
 }
-
 .badges .badge a .new-title {
 	background-color: #9b82c3;
 }
-
 .badges #badge-close-btn {
 	border: none;
 	background-color: transparent;

@@ -6,11 +6,9 @@
 	background-color: #d4c7d4;
 	box-shadow: 0 0 0 0;
 }
-
 #guest-wrap section {
 	padding: 48px;
 }
-
 .guest h1 {
 	color: #876fb4;
 	font-size: 30px;
@@ -18,7 +16,6 @@
 	text-align: center;
 	margin-bottom: 24px;
 }
-
 .guest-card {
 	width: 500px;
 	margin: 0 auto;
@@ -26,11 +23,9 @@
 	border-radius: 0 20px 0 10px;
 	color: #876fb4;
 }
-
 .guest-card form {
 	padding: 30px 22px;
 }
-
 .guest-card form input {
 	width: 100%;
 	margin-bottom: 12px;
@@ -41,7 +36,6 @@
 	box-sizing: border-box;
 	font-size: 14px;
 }
-
 .guest-card form button {
 	width: 100%;
 	margin-bottom: 12px;

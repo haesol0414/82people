@@ -5,7 +5,6 @@ input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
-
 button {
 	border: none;
 	background: none;
@@ -27,7 +26,6 @@ button {
 	width: 80%;
 	margin: 0 auto;
 }
-
 .cart-step {
 	display: flex;
 	align-items: center;
