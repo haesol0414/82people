@@ -154,3 +154,15 @@ input {
 	font-size: 24px;
 	color: #525151;
 }
+
+.send-message-box {
+	margin: 10px 0 0 0;
+	text-align: center;
+}
+
+#send-message {
+	background-color: #9b82c3;
+	color: #fff;
+	padding: 5px;
+	border: 1px dashed #fff;
+}

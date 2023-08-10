@@ -89,7 +89,7 @@ fetch(`/api/admin/orders`, {
 			itemsList.innerHTML = totalOrders;
 		} else {
 			itemsList.innerHTML =
-				'<li style="padding:20px">주문 내역이 없습니다.</li>';
+				'<li style="padding:20px; color:#525151">주문 내역이 없습니다.</li>';
 		}
 	})
 	.catch(err => console.log(err));

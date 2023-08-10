@@ -10,15 +10,11 @@ const ProductController = {
 				ProductService.getBestProducts(),
 			]);
 
-			if (totalProducts.length > 0) {
-				return res.status(200).json({
-					message: '전체 제품 목록 조회 성공',
-					totalProducts: totalProducts,
-					bestProducts: bestProducts,
-				});
-			} else {
-				throw new badRequestError('제품 조회 실패!');
-			}
+			return res.status(200).json({
+				message: '전체 제품 목록 조회 성공',
+				totalProducts: totalProducts,
+				bestProducts: bestProducts,
+			});
 		} catch (err) {
 			next(err);
 		}

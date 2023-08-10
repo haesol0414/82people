@@ -57,10 +57,12 @@ fetch('/api/products', {
 		console.log('bestProducts', bestProducts);
 		console.log('totalProducts', totalProducts);
 
-		badgeBestImg.src = bestProducts[3].imageURL[0];
-		badgeBestUrl.href = `/products?productId=${bestProducts[3]._id}`;
-		badgeNewImg.src = totalProducts[0].imageURL[0];
-		badgeNewUrl.href = `/products?productId=${totalProducts[0]._id}`;
+		if (bestProducts) {
+			badgeBestImg.src = bestProducts[0].imageURL[0];
+			badgeBestUrl.href = `/products?productId=${bestProducts[0]._id}`;
+			badgeNewImg.src = totalProducts[0].imageURL[0];
+			badgeNewUrl.href = `/products?productId=${totalProducts[0]._id}`;
+		}
 
 		bestProducts.map(getBestProducts);
 		totalProducts.map(getTotalProducts);

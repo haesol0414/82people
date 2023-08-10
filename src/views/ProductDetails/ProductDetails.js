@@ -118,3 +118,4 @@ addToCart.addEventListener('click', () => {
 	localStorage.setItem(PRODUCT_KEY, JSON.stringify(products));
 	alert('장바구니에 추가되었습니다 💜');
 });
+
