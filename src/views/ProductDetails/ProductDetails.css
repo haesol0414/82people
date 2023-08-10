@@ -38,12 +38,14 @@
 }
 
 #product-details-container > .field > .product-title {
+	display: flex;
+	align-items: center;
 	width: 450px;
 	height: 50px;
-	font-size: 40px;
-	margin-top: 20px;
-	border-radius: 10px;
+	padding: 30px 0;
 	border-bottom: solid 2px;
+	border-radius: 10px;
+	font-size: 40px;
 	color: #6c4e82;
 }
 #product-details-container > .field > .product-price {
@@ -51,7 +53,6 @@
 	height: 144px;
 	font-size: 22px;
 	margin-top: 12px;
-	margin-bottom: 20px;
 	text-align: right;
 	color: #6c4e82;
 }
@@ -65,7 +66,7 @@
 	color: #6c4e82;
 }
 #product-details-container > .field > strong > .product-total-price {
-	margin: 70px 0 0 0;
+	margin: 60px 0 0 0;
 	width: 150px;
 	height: 30px;
 	font-size: 20px;
@@ -86,7 +87,7 @@
 	font-size: 24px;
 	background-color: black;
 	line-height: 100px;
-	margin: 50px 0 0 0;
+	margin: 30px 0 0 0;
 }
 
 #add-to-cart {

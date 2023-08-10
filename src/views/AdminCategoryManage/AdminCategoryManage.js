@@ -80,12 +80,6 @@ function deleteCategory() {
 		}
 	});
 
-	if (categoryName.length === 0) {
-		return alert('삭제할 카테고리를 선택하세요.');
-	} else if (radios.length < 6) {
-		return alert('카테고리가 5개 미만일 수 없습니다.');
-	}
-
 	if (confirm(`${categoryName} 카테고리를 삭제 하시겠습니까?`)) {
 		fetch(`/api/admin/category`, {
 			method: 'DELETE',
