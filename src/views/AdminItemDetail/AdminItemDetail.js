@@ -142,7 +142,7 @@ window.addEventListener('load', function () {
 				}),
 			})
 				.then(res => res.json())
-				.catch(err => alert('상품 수정 실패, 입력란 확인 요망', err))
+				.catch(err => alert('상품 수정 실패, 입력란 확인 요망'))
 				.then(json => {
 					alert(json.message);
 					window.location.reload();
@@ -182,12 +182,12 @@ window.addEventListener('load', function () {
 				}),
 			})
 				.then(res => res.json())
-				.catch(err => alert('상품 등록 실패 ', err))
+				.catch(err => alert('상품 등록 실패, 입력란 확인 요망 '))
 				.then(json => {
 					alert(json.message);
 					location.href = `/admin/items`;
 				})
-				.catch(err => alert(err));
+				.catch(err => console.log(err));
 		});
 	}
 });

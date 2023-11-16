@@ -116,6 +116,6 @@ addToCart.addEventListener('click', () => {
 		products.push(product);
 	}
 	localStorage.setItem(PRODUCT_KEY, JSON.stringify(products));
-	alert('장바구니에 추가되었습니다 💜');
+	alert('장바구니에 추가되었습니다');
 });
 
