@@ -20,12 +20,9 @@
 	border-radius: 15px;
 	border: 1px dotted #6c4e82;
 }
-/* 첫 번째 슬라이드 가운데에 정렬하기위해
-  첫번째 슬라이드만 margin-left조정 */
 .slides li:first-child {
 	margin-left: 100px;
 }
-/* 슬라이드들 옆으로 정렬 */
 .slides li:not(:last-child) {
 	float: left;
 	margin-right: 100px;
@@ -34,16 +31,15 @@
 	float: left;
 }
 
-/* 이전, 다음 화살표 */
 .controller span {
 	position: absolute;
-	background-color: #bca4d7;
-	color: #eeeaf1;
+	/* background-color: #bca4d7; */
+	color: #6c4e82;
 	text-align: center;
 	border-radius: 50%;
 	padding: 9px 12px;
 	top: 50%;
-	font-size: 1.4em;
+	font-size: 1.6em;
 	cursor: pointer;
 }
 .controller span:hover {
