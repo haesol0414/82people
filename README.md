@@ -2,15 +2,15 @@
 
 - Ver1 파티 용품 쇼핑몰 프로젝트를 활용하여 개별적으로 리팩토링
 - Ver1에서 짧은 프로젝트 기간 상 모두 구현하지 못했던 관리자 기능을 완성하는 것을 중점으로 두고 리팩토링 하였음
-- 목적 : 쥬얼리 쇼핑몰
+- 서비스 목적 : 쥬얼리 쇼핑몰
 - 사용 기술 : JavaScript, Node.js, Express, MongoDB
 - 인원 및 포지션 : 1인, 프론트엔드 + 백엔드
 
 ## 리팩토링
 
 - HTML, CSS 디자인
-- 폰트 적용
-- Best Items UI를 단일 슬라이드 이용하여 구현
+- 웹 폰트 적용
+- Best Items UI를 단일 슬라이드 이용하여 구현 (Swiper JS)
 - ConfirmToken.js : 토큰을 이용해 사용자의 로그인 상태를 판별하고 회원 정보를 확인하는 코드들을 ConfirmToken.js 파일로 모듈화 하였음, 서버쪽 토큰 만료 시간(1h)이 지나면 프론트에서도 세션 만료 alert를 띄우며 자동 로그아웃 처리를 하도록 함
 - Category Model & Schema : String 타입이였던 기존 ProductSchema의 category 필드는 CategorySchema를 참조하도록 ref 옵션을 주어 상품 조회 시 populate를 통해 상품의 카테고리 이름을 가져올 수 있도록 하였음
 - Cart : 장바구니에서 상품 이미지를 클릭하면 해당 상품 상세 페이지로 넘어가도록 수정함
