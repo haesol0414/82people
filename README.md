@@ -1,16 +1,3 @@
-# Ver1. (23.07.03 ~ 23.07.14)
-
-- My First Team Project ✨
-- 엘리스 S/W 엔지니어 트랙 1차 프로젝트
-- 목적 : 파티 용품 쇼핑몰
-- 사용 기술 : JavaScript, Node.js, Express, MongoDB
-- 인원 및 포지션 : 프론트엔드(3인) & 백엔드(2인, My Position❕) => 본래 프론트엔드 포지션을 희망 하였으나, 프론트엔드 개발자 양성 중심의 교육 과정이다 보니 프론트엔드를 희망하면서 백엔드를 두려워하는 팀원들이 대부분이였음. 이참에 백엔드의 구조와 기능도 공부하고 작지만 직접 구현해보는 것도 프론트엔드 개발자로서 많은 도움이 될 것 같아 백엔드를 맡게 되었음❕
-- My API : Order API, Product API, Admin API, ErrorHandler, MongoDB Cloud 구축
-- (1) Order API : Model & Schema 작성, 주문하기, 전체 주문 내역 조회, 주문 상세 내역 조회, 회원 기본 배송지 조회, 회원 기본 배송지 등록 (Router ~ Controller ~ Service)
-- (2) Product API : Model & Schema 작성, 전체 상품 조회, 판매량 TOP4 베스트 상품 조회, 카테고리별 상품 조회, 상품 상세 조회 (Router ~ Controller ~ Service)
-- (3) Admin API : Model & Schema 작성, 회원 전체 주문 내역 조회, 배송 상태 변경 (Router ~ Controller ~ Service)
-- (4) ErrorHandler : 에러 처리 미들웨어 작성
-
 # Ver2. 쥬얼리 판매 사이트로 리팩토링 (23.07.24 ~ 23.08.08)
 
 - Ver1 파티 용품 쇼핑몰 프로젝트를 활용하여 개별적으로 리팩토링
