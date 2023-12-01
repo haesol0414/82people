@@ -24,7 +24,6 @@
 
 
 ### ADMIN 상품 관리
-<img width="835" alt="스크린샷 2023-11-20 오후 3 12 36" src="https://github.com/haesol0414/82people/assets/86980317/2f6a500b-cbf0-4f81-9e69-af7ac1203201">
 - 상품 등록
 - 상품 수정
 - 상품 삭제
