@@ -127,9 +127,6 @@ PW : dls1212@@
 
 https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC%9E%90%EC%9D%B8?type=design&node-id=0-1&mode=design&t=vZyo3RFhiuSgD7e3-0
 
-## 발표자료 pdf
-
-https://drive.google.com/file/d/1xMlq8HHSsPQvuoCMdZQ5RlUgdbIJAvo6/view?usp=share_link
 
 ## 페이지 별 화면
 
