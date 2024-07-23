@@ -178,7 +178,7 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 <summary> 장바구니 담기 </summary>
 <div markdown="1">
  <aside>
- <img src="https://github.com/user-attachments/assets/88b52911-2466-4024-b26c-d826dc4645ba">
+ <img src="https://github.com/user-attachments/assets/f941dd19-0c9f-4e34-bd87-c23975d6996c">
 </aside>
 </div>
 </details>
@@ -205,7 +205,7 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 <summary> 비회원 주문하기 </summary>
 <div markdown="1">
  <aside>
- <img src="https://github.com/user-attachments/assets/f941dd19-0c9f-4e34-bd87-c23975d6996c">
+ <img src="https://github.com/user-attachments/assets/58c0a465-ede0-4f7d-9f06-a30784adeead">
 </aside>
 </div>
 </details>
