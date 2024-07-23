@@ -150,10 +150,7 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 <summary> 홈 </summary>
 <div markdown="1">
  <aside>
- <img width="400" src="https://github.com/hitzza/82People/assets/103095794/be6f2c50-692e-4241-affc-c246756d79d7">
-
-   ![제목 없음 2](https://github.com/user-attachments/assets/44cdda68-739b-47eb-b7d5-66b52ccd9b27)
-
+![제목 없음 7](https://github.com/user-attachments/assets/a4e13cb8-4a43-45f3-95a4-f39a77707222)
 </aside>
 </div>
 </details>
