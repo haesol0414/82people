@@ -150,17 +150,17 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 <summary> 홈 </summary>
 <div markdown="1">
  <aside>
-
    <img src="https://github.com/user-attachments/assets/11b84fca-bf67-4a55-ac74-0d3b46ca1fcf">
 </aside>
 </div>
 </details>
 
 <details>
-<summary> 로그인 / 회원가입 </summary>
+<summary> 회원가입 / 로그인 </summary>
 <div markdown="1">
  <aside>
- <img width="400" src="https://github.com/hitzza/82People/assets/103095794/701cf94b-bc94-4894-9d1c-117bbd1208ad">
+ <img src="https://github.com/user-attachments/assets/41cba4c8-6255-40f3-9560-424269a10f95">
+ <img src="https://github.com/user-attachments/assets/b50c5b3c-f46f-471d-a169-320cf9ad8847">
 </aside>
 </div>
 </details>
