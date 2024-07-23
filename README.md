@@ -151,6 +151,9 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 <div markdown="1">
  <aside>
  <img width="400" src="https://github.com/hitzza/82People/assets/103095794/be6f2c50-692e-4241-affc-c246756d79d7">
+
+   ![제목 없음 2](https://github.com/user-attachments/assets/44cdda68-739b-47eb-b7d5-66b52ccd9b27)
+
 </aside>
 </div>
 </details>
@@ -201,7 +204,7 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 </details>
 
 <details>
-<summary> 비회원 주문 & 주문내역 확인 </summary>
+<summary> 비회원 주문하기 </summary>
 <div markdown="1">
  <aside>
  <img width="400" src="https://github.com/hitzza/82People/assets/103095794/a11697ea-8f4b-45d6-aa73-b66d72e16108">
@@ -210,7 +213,7 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 </details>
 
 <details>
-<summary> 관리자 배송 상태 관리 </summary>
+<summary> 비회원 주문내역 확인 </summary>
 <div markdown="1">
  <aside>
  <img width="400" src="https://github.com/hitzza/82People/assets/103095794/8097567e-287f-4f46-8ec1-92b1733ed51c">
