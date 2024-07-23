@@ -3,12 +3,17 @@
 <img width="1341" alt="82people" src="https://github.com/user-attachments/assets/e60c0a77-770a-4666-82dd-fbed75e71cfa">
 
 
+<br />
+<br />
 
 ## 배포 URL(23.10.11일자 서버 중지)
 
 [82People](http://kdt-sw-5-team08.elicecoding.com/)
 
 <img width="200" alt="qr" src="https://github.com/hitzza/82People/assets/103095794/82ac2ae1-58b7-4392-b6e5-d733d0f78d5b">
+
+<br />
+<br />
 
 ## 테스트 계정
 
@@ -21,12 +26,18 @@ PW : admin123!
 ID : [gogo@elice.com]
 PW : dls1212@@
 
+<br />
+<br />
+
 ## 페르소나
 
 <img width="300" alt="페르소나" src="https://github.com/hitzza/82People/assets/103095794/fe8eb56e-57e1-45fd-bbca-2dcdb3e51693">
 
 - 파티와 추억을 사랑하는 20대 초반 여성
 - 1년 365일 기념일만 생각!
+
+<br />
+<br />
 
 ## 서비스 소개
 
@@ -40,6 +51,9 @@ PW : dls1212@@
 - 관리자로 로그인하면 고객이 주문한 상품의 배송상태를 상태별로 볼 수 있으며, 배송상태 변경이 가능하다.
 
 
+<br />
+<br />
+
 ## 담당 기능 (BE)
 
 - 프론트엔드와 백엔드의 소통 창구인 API 명세서를 문서화하여 요청과 응답 데이터 정리
@@ -50,8 +64,12 @@ PW : dls1212@@
 - 관리자 API 작성
 - 상태 코드에 맞게 에러 핸들러를 미들웨어로 두어 에러 처리를 진행
 
+<br />
+<br />
+
 
 ## 기술 및 개발 환경
+
 
 ### [ 프로젝트 기간 ]
 
@@ -61,6 +79,9 @@ PW : dls1212@@
 
 - VanillaJs만을 사용한 기초 자바스크립트 이해와 협엽 프로젝트 경험
 
+
+<br />
+<br />
 
 ### [ 사용 기술 ]
 
@@ -83,6 +104,10 @@ PW : dls1212@@
   <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
   <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
   <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
+
+
+<br />
+<br />
 
 ### [ 컨벤션 ]
 
@@ -129,6 +154,9 @@ PW : dls1212@@
 </div>
 </details>
 
+<br />
+<br />
+
 ### [ Git-flow 전략 ]
 
 기본적으로 5가지 브랜치를 활용하는 Git-flow 전략이나, 프로젝트 규모에 맞춰 3가지로 축소해 활용하였습니다.
@@ -140,10 +168,16 @@ PW : dls1212@@
 - `feat` : 개발을 위한 브랜치
   - 각 브랜치의 이름은 `feat/세부기능`으로 이름 지어 어떠한 기능의 브랜치인지를 알 수 있도록 했습니다.
 
+<br />
+<br />
+
 ## Figma 문서
 
 https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC%9E%90%EC%9D%B8?type=design&node-id=0-1&mode=design&t=vZyo3RFhiuSgD7e3-0
 
+
+<br />
+<br />
 
 ## 페이지 별 화면
 
@@ -222,6 +256,8 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 
 
 
+<br />
+<br />
 
 ## 프로젝트 경험과 깨달음
 - 첫 팀 프로젝트 경험으로, API 명세서, 기능 분담, 코드 컨벤션, 깃 컨벤션 등 협업에 필요한 주요 사항들을 팀원들과 함께 문서화 하며 체계적인 개발 경험을 얻을 수 있었습니다.
