@@ -49,6 +49,18 @@ PW : dls1212@@
 
 - VanillaJs만을 사용한 기초 자바스크립트 이해와 협엽 프로젝트 경험
 
+
+## 담당 기능 (BE)
+
+- 프론트엔드와 백엔드의 소통 창구인 API 명세서를 문서화하여 요청과 응답 데이터 정리
+- 상품 DB 모델, 스키마 생성
+- 주문 DB 모델, 스키마 생성
+- 상품 조회 API 작성
+- 주문, 주문 조회 API 작성
+- 관리자 API 작성
+- 상태 코드에 맞게 에러 핸들러를 미들웨어로 두어 에러 처리를 진행
+
+
 ### [ 사용 기술 ]
 
 - Front-end
@@ -153,6 +165,15 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 </details>
 
 <details>
+<summary> 마이페이지 주소지 설정 </summary>
+<div markdown="1">
+ <aside>
+![제목 없음](https://github.com/user-attachments/assets/f2d0e14e-6041-494d-82fe-b4687b31c790)
+</aside>
+</div>
+</details>
+
+<details>
 <summary> 장바구니 담기 </summary>
 <div markdown="1">
  <aside>
@@ -162,7 +183,7 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 </details>
 
 <details>
-<summary> 마이페이지 주소지 설정 </summary>
+<summary> 회원 주문하기 </summary>
 <div markdown="1">
  <aside>
 ![제목 없음](https://github.com/user-attachments/assets/f2d0e14e-6041-494d-82fe-b4687b31c790)
@@ -197,15 +218,6 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 </div>
 </details>
 
-
-## What did I do? (BE)
-- 프론트엔드와 백엔드의 소통 창구인 API 명세서를 문서화하여 요청과 응답 데이터 정리
-- 상품 DB 모델, 스키마 생성
-- 주문 DB 모델, 스키마 생성
-- 상품 조회 API 작성
-- 주문, 주문 조회 API 작성
-- 관리자 API 작성
-- 상태 코드에 맞게 에러 핸들러를 미들웨어로 두어 에러 처리를 진행
 
 
 
