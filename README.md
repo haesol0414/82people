@@ -162,10 +162,10 @@ https://www.figma.com/file/Qgj2Gkawk3Le2L5UbroH03/82people-%EC%9B%B9%EB%94%94%EC
 </details>
 
 <details>
-<summary> 장바구니 주소지 설정 </summary>
+<summary> 마이페이지 주소지 설정 </summary>
 <div markdown="1">
  <aside>
- <img width="400" src="https://github.com/hitzza/82People/assets/103095794/7cb38e58-c8bc-4f15-a59c-41cda24b858a">
+![제목 없음](https://github.com/user-attachments/assets/f2d0e14e-6041-494d-82fe-b4687b31c790)
 </aside>
 </div>
 </details>
