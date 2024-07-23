@@ -3,9 +3,6 @@
 <img width="1341" alt="82people" src="https://github.com/user-attachments/assets/e60c0a77-770a-4666-82dd-fbed75e71cfa">
 
 
-<br />
-<br />
-
 ## 배포 URL(23.10.11일자 서버 중지)
 
 [82People](http://kdt-sw-5-team08.elicecoding.com/)
