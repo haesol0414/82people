@@ -52,14 +52,13 @@ PW : dls1212@@
 <br />
 
 ## 담당 기능 (BE)
-
 - 프론트엔드와 백엔드의 소통 창구인 API 명세서를 문서화하여 요청과 응답 데이터 정리
-- 상품 DB 모델, 스키마 생성
-- 주문 DB 모델, 스키마 생성
-- 상품 조회 API 작성
-- 주문, 주문 조회 API 작성
-- 관리자 API 작성
-- 상태 코드에 맞게 에러 핸들러를 미들웨어로 두어 에러 처리를 진행
+- My API : Order API, Product API, Admin API, ErrorHandler, MongoDB Cloud 구축
+- (1) Order API : Model & Schema 작성, 주문하기, 전체 주문 내역 조회, 주문 상세 내역 조회, 회원 기본 배송지 조회, 회원 기본 배송지 등록 (Router ~ Controller ~ Service)
+- (2) Product API : Model & Schema 작성, 전체 상품 조회, 판매량 TOP4 베스트 상품 조회, 카테고리별 상품 조회, 상품 상세 조회 (Router ~ Controller ~ Service)
+- (3) Admin API : Model & Schema 작성, 회원 전체 주문 내역 조회, 배송 상태 변경 (Router ~ Controller ~ Service)
+- (4) ErrorHandler : 상태 코드에 따른 에러 처리 미들웨어 작성
+  
 
 <br />
 <br />
